@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "989230290242",
+    "project_id": "recruitment-c45b3",
+    "storage_bucket": "recruitment-c45b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989230290242:android:73d86f7d64ff56f5ea64db",
+        "android_client_info": {
+          "package_name": "com.example.untitled2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiNEVEO_YwiObgglIWv1DdxqnX7LGoAYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
