@@ -57,19 +57,19 @@ class _HomeScreenState extends State<HomeScreen> {
     getUser();
   }
   void showAlert(BuildContext context) {
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                content: Container(
-                  height: 100,
-                  child: Column(
-                    children:  const [
-                     Text("You are in applier mode, You can swich mode by just taping switch icon topright corner"),
-                    ],
-                  ),
-                ),
-              ));
-    }
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: Container(
+            height: 100,
+            child: Column(
+              children:  const [
+                Text("You are in applier mode, You can swich mode by just taping switch icon topright corner"),
+              ],
+            ),
+          ),
+        ));
+  }
 
   int index = 0;
   PageController _myPage = PageController(initialPage: 0);
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //         icon: Icon(Icons.change_circle))
       //   ],
       // ),
-      
+
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         elevation: 0,
@@ -112,10 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                
-               GestureDetector(            
+
+                GestureDetector(
                   child: Icon(
-                    
+
                     Icons.home,
                     size: 35,color: index == 0 ? lightColorScheme.primary: lightColorScheme.onBackground,),
                   onTap: () {
@@ -125,9 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   },
                 ),
-                
+
                 GestureDetector(
-                
+
                   child: Icon(Icons.chat_bubble,size: 35,color: index == 1 ? lightColorScheme.primary: lightColorScheme.onBackground),
                   onTap: () {
                     setState(() {
@@ -138,17 +138,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 // SizedBox(width: 25,),
                 GestureDetector(
-                
+
                   child: Icon(FontAwesomeIcons.fileContract,size: 30,color: index == 2 ? lightColorScheme.primary: lightColorScheme.onBackground),
                   onTap: () {
                     setState(() {
-                     _myPage.jumpToPage(2);
+                      _myPage.jumpToPage(2);
                       index = 2;
                     });
                   },
                 ),
                 GestureDetector(
-                
+
                   child: Icon( Icons.bookmark,size: 35,color: index == 3 ? lightColorScheme.primary: lightColorScheme.onBackground),
                   onTap: () {
                     setState(() {
@@ -157,9 +157,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   },
                 ),
-                GestureDetector(            
+                GestureDetector(
                   child: Icon(
-                  Icons.person,size: 35,color: index == 4 ? lightColorScheme.primary: lightColorScheme.onBackground,),
+                    Icons.person,size: 35,color: index == 4 ? lightColorScheme.primary: lightColorScheme.onBackground,),
                   onTap: () {
                     setState(() {
                       _myPage.jumpToPage(4);
@@ -186,8 +186,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         physics: const NeverScrollableScrollPhysics(), // Comment this if you need to use Swipe.
       ),
-      
-        
+
+
     );
   }
 }

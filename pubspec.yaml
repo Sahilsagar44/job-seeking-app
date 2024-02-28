@@ -83,12 +83,12 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-#  assets:
-#    - assets/
-#    - assets/avaters/
-#    - assets/Backgrounds/
-#    - assets/icons/
-#    - assets/RiveAssets/
+  assets:
+    - assets/
+    - assets/avaters/
+    - assets/Backgrounds/
+    - assets/icons/
+    - assets/RiveAssets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -101,24 +101,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-#  fonts:
-#    - family: Roboto-Black
-#      fonts:
-#        - asset: assets/Roboto-Black.ttf
-#        - asset: assets/Roboto-BlackItalic.ttf
-#          style: italic
-#    - family: Roboto-Bold
-#      fonts:
-#        - asset: assets/Roboto-Bold.ttf
-#    - family: Roboto-Light
-#      fonts:
-#        - asset: assets/Roboto-Light.ttf
-#    - family: Roboto-Medium
-#      fonts:
-#        - asset: assets/Roboto-Medium.ttf
-#    - family: Roboto-Regular
-#      fonts:
-#        - asset: assets/Roboto-Regular.ttf
+  fonts:
+    - family: Roboto-Black
+      fonts:
+        - asset: assets/Roboto-Black.ttf
+        - asset: assets/Roboto-BlackItalic.ttf
+          style: italic
+    - family: Roboto-Bold
+      fonts:
+        - asset: assets/Roboto-Bold.ttf
+    - family: Roboto-Light
+      fonts:
+        - asset: assets/Roboto-Light.ttf
+    - family: Roboto-Medium
+      fonts:
+        - asset: assets/Roboto-Medium.ttf
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/Roboto-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

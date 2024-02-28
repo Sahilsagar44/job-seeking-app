@@ -349,7 +349,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                           FirebaseFirestore.instance
                               .collection("Users")
                               .doc(widget.email)
-                              .update({"ProfileImage": imageUrl});
+                              .update({"ProfileImages": imageUrl});
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(builder: (_) => LoginScreen()));
                         

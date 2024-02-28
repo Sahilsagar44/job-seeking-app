@@ -146,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               .collection("Users")
                               .doc(user!.email)
                               .update({"ProfileImage": imageUrl}).then((value) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                 content: Text("Profile Picture Updated...")));
                           });
                           setState(() {
