@@ -75,14 +75,11 @@ class _EmployerProfileState extends State<EmployerProfile> {
               // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
                     CircleAvatar(
-                        radius: 100,
+                        radius: 90,
                         // backgroundColor: lightColorScheme.primary,
                         backgroundImage:
                             NetworkImage(user!.photoURL.toString())),
@@ -316,6 +313,7 @@ class _EmployerProfileState extends State<EmployerProfile> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   onPressed: () {
+                    print(">>>>>>>>>>>>>>>>>>>>>>>>${widget.birthdate.toString()}");
                     final provider = Provider.of<Auth>(context, listen: false);
                     provider.signOut();
                     Navigator.of(context).pushReplacement(
@@ -325,17 +323,7 @@ class _EmployerProfileState extends State<EmployerProfile> {
                     "Sign Out",
                     style: TextStyle(fontFamily: "Roboto-Bold", fontSize: 20),
                   ),
-                )
-                //  Container(
-                //   alignment: Alignment.center,
-                //   height: 50,
-                //   width: MediaQuery.of(context).size.width,
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(10),
-                //     color: Colors.red
-                //   ),
-                //   child: Text("Sign Out",style: TextStyle(fontFamily: "Roboto-Bold",fontSize: 20),),
-                //  )
+                ),
               ],
             ),
           ),

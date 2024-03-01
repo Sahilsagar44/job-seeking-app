@@ -174,15 +174,6 @@ class LoginScreen extends StatelessWidget {
                                   fontSize: 15),
                             ),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-
-                          // GestureDetector(
-                          //   onTap: (){
-
-                          //   },
-                          //   child: Text("Login As Recruiter",style: TextStyle(color: lightColorScheme.primary,fontWeight: FontWeight.bold),))
                         ],
                       ),
                     ),

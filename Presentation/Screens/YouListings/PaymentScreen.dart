@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:pay/pay.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../../../Themes/Themes.dart';
 class PaymentScreen extends StatefulWidget {
   final String title;
@@ -27,45 +29,104 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  List<PaymentItem> paymentItems = [];
-  bool isCompleted = false;
-  void onGooglePayResult(res) {
-    setState(() {
-      isCompleted = true;
-    });
-    final String dateformat = DateFormat('dd-MM-y').format(DateTime.now());
-    final String format = DateFormat('hh:mm a').format(DateTime.now());
-    FirebaseFirestore.instance
-        .collection("Users")
-        .doc(widget.freelancerEmail)
-        .collection("Completed")
-        .doc(widget.title)
-        .update({"PaymentStatus": "Completed"});
-    FirebaseFirestore.instance
-        .collection("Users")
-        .doc(widget.employeerEmail)
-        .collection("Completed")
-        .doc(widget.title)
-        .update({"PaymentStatus": "Completed"});
-    FirebaseFirestore.instance
-        .collection("Users")
-        .doc(widget.freelancerEmail)
-        .collection("Notification")
-        .doc("Chat ${widget.employeerEmail}")
-        .set({
-      "Message":
-          "You have be paid by ${widget.employeerName},Amount: Rs.${widget.proposedPrice}",
-      "MarkAsRead": false,
-      "Time": DateTime.now().microsecondsSinceEpoch,
-      "Time1": format,
-      "Type": "Chat",
-      "Applier": widget.freelancername,
-      "Client": widget.employeerName,
-      "Title": widget.title,
-      "ApplierEmail": widget.employeerEmail,
-      "ClientEmail": widget.freelancerEmail
-    });
+
+
+  late Razorpay _razorpay;
+
+  @override
+  void initState() {
+    _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    super.initState();
   }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    print('Success Response: $response');
+
+
+    Fluttertoast.showToast(
+        msg: "SUCCESS: " + response.paymentId!,
+        toastLength: Toast.LENGTH_SHORT);
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    print('Error Response: $response');
+    Fluttertoast.showToast(
+        msg: "ERROR: " + response.code.toString() + " - " + response.message!,
+        toastLength: Toast.LENGTH_SHORT);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    print('External SDK Response: $response');
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName!,
+        toastLength: Toast.LENGTH_SHORT);
+  }
+
+  void openCheckout() async {
+    var options = {
+      'key': 'rzp_test_w8v5KuRWJ8TzJI',
+      'amount': num.parse(widget.proposedPrice) * 100,
+      'name': '${widget.freelancername}',
+      'description': '${widget.freelancerEmail}',
+      'retry': {'enabled': true, 'max_count': 1},
+      'send_sms_hash': true,
+      'prefill': {'contact': '8866343453', 'email': 'jasmitp00@gmail.com'},
+      'external': {
+        'wallets': ['paytm']
+      }
+    };
+
+    try {
+      _razorpay!.open(options);
+    } catch (e) {
+      print('ERROR->>>>>>>>>>$e');
+    }
+  }
+
+//*************************
+
+  // List<PaymentItem> paymentItems = [];
+  // bool isCompleted = false;
+  // void onGooglePayResult(res) {
+  //   setState(() {
+  //     isCompleted = true;
+  //   });
+  //   final String dateformat = DateFormat('dd-MM-y').format(DateTime.now());
+  //   final String format = DateFormat('hh:mm a').format(DateTime.now());
+  //   FirebaseFirestore.instance
+  //       .collection("Users")
+  //       .doc(widget.freelancerEmail)
+  //       .collection("Completed")
+  //       .doc(widget.title)
+  //       .update({"PaymentStatus": "Completed"});
+  //   FirebaseFirestore.instance
+  //       .collection("Users")
+  //       .doc(widget.employeerEmail)
+  //       .collection("Completed")
+  //       .doc(widget.title)
+  //       .update({"PaymentStatus": "Completed"});
+  //   FirebaseFirestore.instance
+  //       .collection("Users")
+  //       .doc(widget.freelancerEmail)
+  //       .collection("Notification")
+  //       .doc("Chat ${widget.employeerEmail}")
+  //       .set({
+  //     "Message":
+  //         "You have be paid by ${widget.employeerName},Amount: Rs.${widget.proposedPrice}",
+  //     "MarkAsRead": false,
+  //     "Time": DateTime.now().microsecondsSinceEpoch,
+  //     "Time1": format,
+  //     "Type": "Chat",
+  //     "Applier": widget.freelancername,
+  //     "Client": widget.employeerName,
+  //     "Title": widget.title,
+  //     "ApplierEmail": widget.employeerEmail,
+  //     "ClientEmail": widget.freelancerEmail
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -133,24 +194,28 @@ class _PaymentScreenState extends State<PaymentScreen> {
             const SizedBox(
               height: 40,
             ),
-            isCompleted
-                ? MaterialButton(
+            // isCompleted
+            //     ?
+              MaterialButton(
                     height: 50,
                     minWidth: double.infinity,
                     color: Colors.black,
-                    onPressed: () {},
+                    onPressed: () {
+                      openCheckout();
+                      Fluttertoast.showToast(msg: "Complete");
+                    },
                     child: Text(
                       "Done",
                       style: TextStyle(color: Colors.white),
                     ),
-                  )
-                : GooglePayButton(
-                    paymentConfigurationAsset: "gpay.json",
-                    onPressed: () {},
-                    width: double.infinity,
-                    height: 50,
-                    onPaymentResult: onGooglePayResult,
-                    paymentItems: paymentItems)
+                  ),
+                // : GooglePayButton(
+                //     paymentConfigurationAsset: "gpay.json",
+                //     onPressed: () {},
+                //     width: double.infinity,
+                //     height: 50,
+                //     onPaymentResult: onGooglePayResult,
+                //     paymentItems: paymentItems)
           ],
         ),
       )),

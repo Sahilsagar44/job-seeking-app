@@ -32,6 +32,7 @@ dependencies:
   country_list_pick: ^1.0.1+6
   country_picker: ^2.0.19
   cupertino_icons: ^1.0.2
+
   dropdown_button2: ^1.9.4
   email_otp: ^2.1.1
   file_picker: ^6.1.1
@@ -48,6 +49,7 @@ dependencies:
   google_fonts: ^6.1.0
   google_sign_in: ^6.2.1
   image_picker: ^1.0.7
+  razorpay_flutter:
   intl: 0.18.1
   lottie: ^3.0.0
   mockito: ^5.4.0
@@ -56,6 +58,7 @@ dependencies:
   printing: ^5.10.1
   provider: ^6.0.5
   rive: ^0.12.4
+  flutter_svg: ^2.0.9
   shared_preferences: ^2.0.18
   syncfusion_flutter_pdfviewer: ^24.1.45
   url_launcher: ^6.1.8
@@ -64,12 +67,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+#  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -178,9 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
           print('Page Changes to index $int');
         },
         children: <Widget>[
-          const JobsScreen(),
-          const ChatList(),
-          const ProposalScreen(),
+          JobsScreen(),
+          ChatList(),
+          ProposalScreen(),
           SavedProjects(),
           ProfilePage(name: name.toString(), email: email.toString(), country: country.toString(), gender: gender.toString(), phone: phone.toString(), birthdate: birthdate.toString(),imageUrl: imageUrl.toString(),)
         ],
