@@ -152,7 +152,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
         ], // Comment this if you need to use Swipe.
       ),
       floatingActionButton: SizedBox(
-        height: 65.0,
+        height: 63.0,
         width: 65.0,
         child: FittedBox(
           child: FloatingActionButton(

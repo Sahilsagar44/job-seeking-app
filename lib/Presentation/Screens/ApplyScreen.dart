@@ -1,8 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 
 import 'HomeScreen.dart';
 import 'Themes/Themes.dart';
@@ -17,7 +16,6 @@ class ApplyScreen extends StatefulWidget {
   final String country;
   final String time;
   final String date;
-  // ignore: non_constant_identifier_names
   final String ListedEmail;
   const ApplyScreen(
       {Key? key,
@@ -29,8 +27,8 @@ class ApplyScreen extends StatefulWidget {
         required this.listedBy,
         required this.country,
         required this.time,
-        // ignore: non_constant_identifier_names
-        required this.date, required this.ListedEmail})
+        required this.date,
+        required this.ListedEmail})
       : super(key: key);
 
   @override
@@ -38,23 +36,25 @@ class ApplyScreen extends StatefulWidget {
 }
 
 class _ApplyScreenState extends State<ApplyScreen> {
-  QuerySnapshot<Map<String, dynamic>>? userStream;
   final user = FirebaseAuth.instance.currentUser;
   String? name;
-  getUser(){
-    setState(() {
-      FirebaseFirestore.instance.collection("Users").where("email",isEqualTo: user!.email).get().then((value) {
-        userStream = value;
 
-        name = userStream!.docs[0]["name"].toString();
+  Future<void> getUser() async {
+    final userStream = await FirebaseFirestore.instance.collection("Users").where("email",isEqualTo: user!.email).get();
+
+    if (userStream.docs.isNotEmpty) {
+      setState(() {
+        name = userStream.docs[0]["name"].toString();
       });
-    });
+    }
   }
+
   @override
   void initState() {
     super.initState();
     getUser();
   }
+
   final key = GlobalKey<FormState>();
   TextEditingController coverController = TextEditingController();
   TextEditingController link1Controller = TextEditingController();
@@ -62,7 +62,6 @@ class _ApplyScreenState extends State<ApplyScreen> {
   TextEditingController priceController = TextEditingController();
   TextEditingController link3Controller = TextEditingController();
   TextEditingController moreController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -117,9 +116,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           ),
                           TextFormField(
                             controller: coverController,
-                            // maxLength: 100,
                             maxLines: 5,
-                            // controller: titleController,
                             validator: (value) {
                               if(value!.isEmpty){
                                 return "Please type cover letter";
@@ -195,7 +192,6 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           ),
                           const SizedBox(height: 10,),
                           const Divider(),
-                          // SizedBox(height: 5,),
                           Text(
                             "More About You:",
                             style: TextStyle(
@@ -220,54 +216,83 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           const Text("")
                         ],
                       ),
-                      MaterialButton(onPressed: (){
-                        if(key.currentState!.validate()){
-                          final String format = DateFormat('dd-MM-y')
-                              .format(DateTime.now());
-                          FirebaseFirestore.instance.collection("Jobs").doc(widget.title).collection("Proposels").doc(user!.email).set({
-                            "Name":name,
-                            "Date":format,
-                            "Time":TimeOfDay.now().toString(),
-                            "CoverLetter":coverController.text,
-                            "Link 1":link1Controller.text,
-                            "Link 2":link2Controller.text,
-                            "Link 3":link3Controller.text,
-                            "More":moreController.text,
-                            "Title":widget.title,
-                            "Price":widget.budget,
-                            "Duration":widget.duration,
-                            "Status":false,
-                            "Country":userStream!.docs[0]["country"],
-                            "Email":userStream!.docs[0]["email"],
-                            "Skill1":userStream!.docs[0]["skill1"],
-                            "Skill2":userStream!.docs[0]["skill2"],
-                            "Skill3":userStream!.docs[0]["skill3"],
-                            "ListedBy":widget.listedBy,
-                            "ProposedPrice":priceController.text,
-                            "ListedEmail":widget.ListedEmail,
-                            "PaymentStatus":"Request",
-                          });
-                          FirebaseFirestore.instance.collection("Users").doc(user!.email).collection("Proposels").doc(widget.title).set({
-                            "Name":name,
-                            "Date":format,
-                            "Client":widget.listedBy,
-                            "ClientCountry":widget.country,
-                            "Time":TimeOfDay.now().toString(),
-                            "CoverLetter":coverController.text,
-                            "Link 1":link1Controller.text,
-                            "Link 2":link2Controller.text,
-                            "Link 3":link3Controller.text,
-                            "More":moreController.text,
-                            "Title":widget.title,
-                            "Price":widget.budget,
-                            "Duration":widget.duration,
-                            "Status":false,
-                            "ListedBy":widget.listedBy,
-                            "ProposedPrice":priceController.text,
-                            "ListedEmail":widget.ListedEmail,
-                            "PaymentStatus":"Request",
-                          });
-                          Navigator.pushReplacement((context), MaterialPageRoute(builder: (_)=>HomeScreen()));
+                      MaterialButton(onPressed: () async {
+                        if(key.currentState!.validate()) {
+                          final userId = user!.uid;
+                          final jobTitle = widget.title;
+                          final userAppliedRef = FirebaseFirestore.instance.collection("Users").doc(userId).collection("Proposels").doc(jobTitle);
+
+                          final userAppliedSnap = await userAppliedRef.get();
+
+                          if (userAppliedSnap.exists) {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Application Error'),
+                                  content: Text('You have already applied for this job.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else {
+                            // Continue with applying for the job
+                            final format = DateFormat('dd-MM-y').format(DateTime.now());
+                            final proposalsRef = FirebaseFirestore.instance.collection("Jobs").doc(widget.title).collection("Proposels").doc(user!.email);
+
+                            await proposalsRef.set({
+                              "Name": name,
+                              "Date": format,
+                              "Client": widget.listedBy,
+                              "ClientCountry": widget.country,
+                              "Time": TimeOfDay.now().toString(),
+                              "CoverLetter": coverController.text,
+                              "Link 1": link1Controller.text,
+                              "Link 2": link2Controller.text,
+                              "Link 3": link3Controller.text,
+                              "More": moreController.text,
+                              "Title": widget.title,
+                              "Price": widget.budget,
+                              "Duration": widget.duration,
+                              "Status": false,
+                              "ListedBy": widget.listedBy,
+                              "ProposedPrice": priceController.text,
+                              "ListedEmail": widget.ListedEmail,
+                              "PaymentStatus": "Request",
+                            });
+
+                            final userProposalsRef = FirebaseFirestore.instance.collection("Users").doc(user!.email).collection("Proposels").doc(widget.title);
+
+                            await userProposalsRef.set({
+                              "Name": name,
+                              "Date": format,
+                              "Client": widget.listedBy,
+                              "ClientCountry": widget.country,
+                              "Time": TimeOfDay.now().toString(),
+                              "CoverLetter": coverController.text,
+                              "Link 1": link1Controller.text,
+                              "Link 2": link2Controller.text,
+                              "Link 3": link3Controller.text,
+                              "More": moreController.text,
+                              "Title": widget.title,
+                              "Price": widget.budget,
+                              "Duration": widget.duration,
+                              "Status": false,
+                              "ListedBy": widget.listedBy,
+                              "ProposedPrice": priceController.text,
+                              "ListedEmail": widget.ListedEmail,
+                              "PaymentStatus": "Request",
+                            });
+
+                            Navigator.pushReplacement((context), MaterialPageRoute(builder: (_) => HomeScreen()));
+                          }
                         }
                       },
                         color: lightColorScheme.primary,

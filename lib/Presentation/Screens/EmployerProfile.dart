@@ -336,6 +336,9 @@ class _EmployerProfileState extends State<EmployerProfile> {
                 //   ),
                 //   child: Text("Sign Out",style: TextStyle(fontFamily: "Roboto-Bold",fontSize: 20),),
                 //  )
+                ,SizedBox(
+                  height: 45 ,
+                )
               ],
             ),
           ),
