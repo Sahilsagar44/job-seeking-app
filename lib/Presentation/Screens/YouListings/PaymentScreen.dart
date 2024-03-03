@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:pay/pay.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import '../../../Themes/Themes.dart';
+
+import '../Themes/Themes.dart';
+
 class PaymentScreen extends StatefulWidget {
   final String title;
   final String employeerName;
@@ -204,9 +207,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       openCheckout();
                       Fluttertoast.showToast(msg: "Complete");
                     },
-                    child: Text(
-                      "Done",
-                      style: TextStyle(color: Colors.white),
+                    child: Row(
+                      children: [
+                        //Image.asset("assets/Backgrounds/google_logo.png"),
+                        Text(
+                          "Done",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
                   ),
                 // : GooglePayButton(

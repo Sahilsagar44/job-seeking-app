@@ -9,10 +9,12 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../main.dart';
+import 'Providers/AuthProvider.dart';
+import 'Themes/Themes.dart';
 
-import '../../Providers/AuthProvider.dart';
-import '../../Themes/Themes.dart';
-import 'main.dart';
+
+
 
 class EmployerProfile extends StatefulWidget {
   final String birthdate;

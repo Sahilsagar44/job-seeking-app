@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../Functions/UserChatFunctions.dart';
-import '../../Themes/Themes.dart';
+import 'Functions/UserChatFunctions.dart';
+import 'Themes/Themes.dart';
+
+
 
 class UserChatScreen extends StatefulWidget {
   final String title;
