@@ -5,7 +5,7 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:pay/pay.dart';
 
-import '../Themes/Themes.dart';
+import '../../../Themes/Themes.dart';
 import '../ClientChatScreen.dart';
 import '../GenerateInvoice.dart';
 import 'PaymentScreen.dart';
@@ -40,7 +40,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
           children: [
             TabBar(
                 unselectedLabelStyle:
-                    const TextStyle(fontWeight: FontWeight.normal),
+                const TextStyle(fontWeight: FontWeight.normal),
                 labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                 unselectedLabelColor: Colors.black,
                 isScrollable: true,
@@ -57,54 +57,40 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                 ]),
             Expanded(
               child: TabBarView(controller: tabController, children: [
-                StreamBuilder<QuerySnapshot>(
+                StreamBuilder(
                   stream: FirebaseFirestore.instance
                       .collection("Users")
                       .doc(user!.email)
                       .collection("Listed")
                       .where("Sealed", isEqualTo: true)
                       .snapshots(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.connectionState ==
-                        ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    else if (snapshot.hasData) {
-                      return snapshot.data!.docs.isEmpty
-                          ? Center(
-                        child: Image(
-                          image: AssetImage(
-                              "assets/avaters/no_data.jpg"),
-                        ),
-                      ):
-                        ListView.separated(
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.separated(
                         separatorBuilder: (context, index) => const SizedBox(
                           height: 5,
                         ),
-                        itemCount: snapshot.data!.docs.length,
+                        itemCount: snapshot.data.docs.length,
                         itemBuilder: (BuildContext context, int index) {
                           return InkWell(
                             onTap: () {
                               Get.to(
                                   SeeUpdates(
-                                    listedDate: snapshot.data!.docs[index]
-                                        ["ListedDate"],
-                                    freelancername: snapshot.data!.docs[index]
-                                        ["SealedBy"],
-                                    employeerName: snapshot.data!.docs[index]
-                                        ["ListedBy"],
-                                    proposedPrice: snapshot.data!.docs[index]
-                                        ["ProposedPrice"],
-                                    orignalPrice: snapshot.data!.docs[index]
-                                        ["Price"],
-                                    freelancerEmail: snapshot.data!.docs[index]
-                                        ["SealedByEmail"],
-                                    title: snapshot.data!.docs[index]["Title"],
-                                    descrition: snapshot.data!.docs[index]
-                                        ["Description"],
+                                    listedDate: snapshot.data.docs[index]
+                                    ["ListedDate"],
+                                    freelancername: snapshot.data.docs[index]
+                                    ["SealedBy"],
+                                    employeerName: snapshot.data.docs[index]
+                                    ["ListedBy"],
+                                    proposedPrice: snapshot.data.docs[index]
+                                    ["ProposedPrice"],
+                                    orignalPrice: snapshot.data.docs[index]
+                                    ["Price"],
+                                    freelancerEmail: snapshot.data.docs[index]
+                                    ["SealedByEmail"],
+                                    title: snapshot.data.docs[index]["Title"],
+                                    descrition: snapshot.data.docs[index]
+                                    ["Description"],
                                   ),
                                   transition: Transition.downToUp,
                                   duration: const Duration(milliseconds: 500));
@@ -121,10 +107,10 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                       horizontal: 10, vertical: 10),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        snapshot.data!.docs[index]["Title"],
+                                        snapshot.data.docs[index]["Title"],
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -137,11 +123,11 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                       ),
                                       // SizedBox(height: 10,),
                                       Text(
-                                          "Rs: ${snapshot.data!.docs[index]["Price"]}",
+                                          "Rs: ${snapshot.data.docs[index]["Price"]}",
                                           style: const TextStyle(
                                               color: Colors.white54)),
                                       Text(
-                                          "Duration: ${snapshot.data!.docs[index]["Duration"]}",
+                                          "Duration: ${snapshot.data.docs[index]["Duration"]}",
                                           style: const TextStyle(
                                               color: Colors.white54)),
                                       const SizedBox(
@@ -152,13 +138,13 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                           width: 400,
                                           child: Expanded(
                                               child: Text(
-                                            snapshot.data!.docs[index]
+                                                snapshot.data.docs[index]
                                                 ["Description"],
-                                            style: const TextStyle(
-                                                color: Colors.white),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 4,
-                                          ))),
+                                                style: const TextStyle(
+                                                    color: Colors.white),
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 4,
+                                              ))),
                                       const SizedBox(
                                         height: 10,
                                       ),
@@ -166,31 +152,31 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                         onTap: () {
                                           Navigator.of(context).push(MaterialPageRoute(
                                               builder: (_) => ClientChatScreen(
-                                                  title: snapshot.data!
+                                                  title: snapshot.data
                                                       .docs[index]["Title"],
                                                   applieremail:
-                                                      snapshot.data!.docs[index]
-                                                          ["SealedByEmail"],
-                                                  clientemail: snapshot.data!
+                                                  snapshot.data.docs[index]
+                                                  ["SealedByEmail"],
+                                                  clientemail: snapshot.data
                                                       .docs[index]["Email"],
-                                                  ApplierName: snapshot.data!
+                                                  ApplierName: snapshot.data
                                                       .docs[index]["SealedBy"],
                                                   Clientname:
-                                                      snapshot.data!.docs[index]
-                                                          ["ListedBy"])));
+                                                  snapshot.data.docs[index]
+                                                  ["ListedBy"])));
                                         },
                                         child: Container(
                                           alignment: Alignment.center,
                                           height: 50,
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(15),
+                                              BorderRadius.circular(15),
                                               color: Colors.amber),
                                           child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.center,
+                                            CrossAxisAlignment.center,
                                             children: [
                                               Icon(
                                                 Icons.chat,
@@ -200,13 +186,13 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                                 width: 5,
                                               ),
                                               Text(
-                                                  "Sealed By ${snapshot.data!.docs[index]["SealedBy"]}",
+                                                  "Sealed By ${snapshot.data.docs[index]["SealedBy"]}",
                                                   style: TextStyle(
                                                       color: lightColorScheme
                                                           .primary,
                                                       fontSize: 20,
                                                       fontFamily:
-                                                          "Roboto-Bold")),
+                                                      "Roboto-Bold")),
                                             ],
                                           ),
                                         ),
@@ -220,30 +206,21 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                         },
                       );
                     } else {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return const Text("");
                     }
                   },
                 ),
                 Container(
-                  child: StreamBuilder<QuerySnapshot>(
+                  child: StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection('Users')
                         .doc(user!.email)
                         .collection("Completed")
                         .snapshots(),
-                    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
-                        return snapshot.data!.docs.isEmpty
-                            ? Center(
-                          child: Image(
-                            image: AssetImage(
-                                "assets/avaters/no_data.jpg"),
-                          ),
-                        ):
-                          ListView.separated(
-                          itemCount: snapshot.data!.docs.length,
+                        return ListView.separated(
+                          itemCount: snapshot.data.docs.length,
                           separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(
                               height: 10,
@@ -252,7 +229,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              const EdgeInsets.symmetric(horizontal: 10),
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -265,13 +242,13 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(
                                         height: 10,
                                       ),
                                       Text(
-                                        snapshot.data!.docs[index]["Title"],
+                                        snapshot.data.docs[index]["Title"],
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 20,
@@ -281,31 +258,31 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                         color: Colors.white,
                                       ),
                                       Text(
-                                        "Price: Rs.${snapshot.data!.docs[index]["ProposedPrice"]}",
+                                        "Price: Rs.${snapshot.data.docs[index]["ProposedPrice"]}",
                                         style: const TextStyle(
                                           color: Colors.white54,
                                         ),
                                       ),
                                       Text(
-                                        "Listed Date: ${snapshot.data!.docs[index]["ListedDate"]}",
+                                        "Listed Date: ${snapshot.data.docs[index]["ListedDate"]}",
                                         style: const TextStyle(
                                           color: Colors.white54,
                                         ),
                                       ),
                                       Text(
-                                        "Completion Date: ${snapshot.data!.docs[index]["CompletionDate"]}",
+                                        "Completion Date: ${snapshot.data.docs[index]["CompletionDate"]}",
                                         style: const TextStyle(
                                           color: Colors.white54,
                                         ),
                                       ),
                                       Text(
-                                        "Freelancer Name: ${snapshot.data!.docs[index]["FreelancerName"]}",
+                                        "Freelancer Name: ${snapshot.data.docs[index]["FreelancerName"]}",
                                         style: const TextStyle(
                                           color: Colors.white54,
                                         ),
                                       ),
                                       Text(
-                                        "Freelancer Email: ${snapshot.data!.docs[index]["FreelancerEmail"]}",
+                                        "Freelancer Email: ${snapshot.data.docs[index]["FreelancerEmail"]}",
                                         style: const TextStyle(
                                           color: Colors.white54,
                                         ),
@@ -315,31 +292,31 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                       ),
                                       MaterialButton(
                                         minWidth:
-                                            MediaQuery.of(context).size.width,
+                                        MediaQuery.of(context).size.width,
                                         height: 50,
                                         color: Colors.white,
                                         onPressed: () {
                                           Get.to(
                                               GenerateInvoice(
                                                   employeerName:
-                                                      snapshot.data!.docs[index]
-                                                          ["EmployeerName"],
+                                                  snapshot.data.docs[index]
+                                                  ["EmployeerName"],
                                                   employeerEmail:
-                                                      snapshot.data!.docs[index]
-                                                          ["EmployeerEmail"],
+                                                  snapshot.data.docs[index]
+                                                  ["EmployeerEmail"],
                                                   freelancername:
-                                                      snapshot.data!.docs[index]
-                                                          ["FreelancerName"],
+                                                  snapshot.data.docs[index]
+                                                  ["FreelancerName"],
                                                   CompletionDate:
-                                                      snapshot.data!.docs[index]
-                                                          ["CompletionDate"],
+                                                  snapshot.data.docs[index]
+                                                  ["CompletionDate"],
                                                   listedDate:
-                                                      snapshot.data!.docs[index]
-                                                          ["ListedDate"],
-                                                  Price: snapshot.data!.docs[index]
-                                                      ["ProposedPrice"],
+                                                  snapshot.data.docs[index]
+                                                  ["ListedDate"],
+                                                  Price: snapshot.data.docs[index]
+                                                  ["ProposedPrice"],
                                                   title: snapshot.data
-                                                      !.docs[index]["Title"]),
+                                                      .docs[index]["Title"]),
                                               transition: Transition.downToUp);
                                         },
                                         child: const Text(
@@ -350,60 +327,36 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                       const SizedBox(
                                         height: 15,
                                       ),
-                                      snapshot.data!.docs[index]
-                                                  ["PaymentStatus"] ==
-                                              "pending"
+                                      snapshot.data.docs[index]
+                                      ["PaymentStatus"] ==
+                                          "pending"
                                           ? MaterialButton(
-                                              height: 50,
-                                              color: Colors.black,
-                                              minWidth: double.infinity,
-                                              child: const Text(
-                                                "Complete Payment",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.white),
-                                              ),
-                                              onPressed: () {
-                                                Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          PaymentScreen(
-                                                            employeerEmail: snapshot
-                                                                    .data
-                                                                    !.docs[index]
-                                                                [
-                                                                "EmployeerEmail"],
-                                                            title: snapshot.data
-                                                                    !.docs[index]
-                                                                ["Title"],
-                                                            employeerName: snapshot
-                                                                    .data
-                                                                    !.docs[index]
-                                                                [
-                                                                "EmployeerName"],
-                                                            freelancerEmail: snapshot
-                                                                    .data
-                                                                    !.docs[index]
-                                                                [
-                                                                "FreelancerEmail"],
-                                                            freelancername: snapshot
-                                                                    .data
-                                                                    !.docs[index]
-                                                                [
-                                                                "FreelancerName"],
-                                                            completionDate: snapshot
-                                                                    .data
-                                                                    !.docs[index]
-                                                                [
-                                                                "CompletionDate"],
-                                                            proposedPrice: snapshot
-                                                                    .data
-                                                                    !.docs[index]
-                                                                [
-                                                                "ProposedPrice"],
-                                                          )),
-                                                );
-                                              })
+                                          height: 50,
+                                          color: Colors.black,
+                                          minWidth: double.infinity,
+                                          child: const Text(
+                                            "Complete Payment",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (_) =>
+                                                      PaymentScreen(
+                                                        employeerEmail: snapshot.data.docs[index]["EmployeerEmail"],
+                                                        title: snapshot.data
+                                                            .docs[index]
+                                                        ["Title"],
+                                                        employeerName: snapshot.data.docs[index]["EmployeerName"],
+                                                        freelancerEmail: snapshot.data.docs[index]["FreelancerEmail"],
+                                                        freelancername: snapshot.data.docs[index]["FreelancerName"],
+                                                        completionDate: snapshot.data.docs[index]["CompletionDate"],
+                                                        proposedPrice: snapshot.data.docs[index]["ProposedPrice"],
+                                                      )),
+                                            );
+                                          })
                                           : Container(),
                                       const SizedBox(
                                         height: 10,
@@ -416,7 +369,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                           },
                         );
                       } else {
-                        return  Center(child: CircularProgressIndicator());
+                        return const CircularProgressIndicator();
                       }
                     },
                   ),

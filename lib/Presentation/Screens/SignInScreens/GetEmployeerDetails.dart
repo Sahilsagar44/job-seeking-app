@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
-import '../Themes/Themes.dart';
+import '../../../Themes/Themes.dart';
 import 'LoginScreen.dart';
 
 class GetEmployeerDetail extends StatefulWidget {
@@ -52,13 +52,13 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
           key: key,
           child: Column(
             children: [
-             
+
               filepath == ""
                   ? Text("Please Upload Image")
                   : CircleAvatar(
-                      radius: 100,
-                      backgroundImage: FileImage(File(filepath)),
-                    ),
+                radius: 100,
+                backgroundImage: FileImage(File(filepath)),
+              ),
               SizedBox(
                 height: 50,
               ),
@@ -72,7 +72,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                     onPressed: () async {
                       ImagePicker imagePicker = ImagePicker();
                       XFile? file =
-                          await imagePicker.pickImage(source: ImageSource.gallery);
+                      await imagePicker.pickImage(source: ImageSource.gallery);
                       if (file == null) {
                         return;
                       }
@@ -118,7 +118,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                               border: OutlineInputBorder(),
                               focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: lightColorScheme.primary),
+                                BorderSide(color: lightColorScheme.primary),
                               ))),
                       context: context,
                       onSelect: (Country country) {
@@ -131,24 +131,24 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                   },
                   child: selectedCountry == null
                       ? Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Select Country",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                              Icon(
-                                Icons.arrow_drop_down_circle_outlined,
-                                color: Colors.white,
-                                size: 30,
-                              )
-                            ],
-                          ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Select Country",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        Icon(
+                          Icons.arrow_drop_down_circle_outlined,
+                          color: Colors.white,
+                          size: 30,
                         )
+                      ],
+                    ),
+                  )
                       : Text(selectedCountry.toString(),
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
                 ),
               ),
               SizedBox(height:20,),
@@ -175,12 +175,12 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                               firstDate: DateTime(1950),
                               //DateTime.now() - not to allow to choose before today.
                               lastDate: DateTime(2100));
-        
+
                           if (pickedDate != null) {
                             print(
                                 pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                             String formattedDate =
-                                DateFormat('dd-MM-yyyy').format(pickedDate);
+                            DateFormat('dd-MM-yyyy').format(pickedDate);
                             print(
                                 formattedDate); //formatted date output using intl package =>  2021-03-16
                             setState(() {
@@ -216,12 +216,12 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                           ),
                           Radio(
                               fillColor: MaterialStateProperty.resolveWith<Color>(
-                                  (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.disabled)) {
-                                  return Colors.white;
-                                }
-                                return Colors.white;
-                              }),
+                                      (Set<MaterialState> states) {
+                                    if (states.contains(MaterialState.disabled)) {
+                                      return Colors.white;
+                                    }
+                                    return Colors.white;
+                                  }),
                               value: "Male",
                               groupValue: _gender,
                               onChanged: (val) {
@@ -236,12 +236,12 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                           ),
                           Radio(
                               fillColor: MaterialStateProperty.resolveWith<Color>(
-                                  (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.disabled)) {
-                                  return Colors.white;
-                                }
-                                return Colors.white;
-                              }),
+                                      (Set<MaterialState> states) {
+                                    if (states.contains(MaterialState.disabled)) {
+                                      return Colors.white;
+                                    }
+                                    return Colors.white;
+                                  }),
                               value: "Female",
                               groupValue: _gender,
                               onChanged: (val) {
@@ -259,70 +259,70 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                     ),
                     SizedBox(height: 50,),
                     MaterialButton(
-                    onPressed: ()async{
-                      if (filepath == "") {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                content: Container(
-                                  height: 200,
-                                  alignment: Alignment.center,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.image,
-                                        size: 50,
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        "Please upload photo",
-                                        style: TextStyle(
-                                            color: lightColorScheme.primary,
-                                            fontFamily: "Roboto-Bold"),
-                                      ),
-                                    ],
+                      onPressed: ()async{
+                        if (filepath == "") {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: Container(
+                                    height: 200,
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.image,
+                                          size: 50,
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Please upload photo",
+                                          style: TextStyle(
+                                              color: lightColorScheme.primary,
+                                              fontFamily: "Roboto-Bold"),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            });
-                      } else if (selectedCountry == null) {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                content: Container(
-                                  height: 200,
-                                  alignment: Alignment.center,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.flag,
-                                        size: 50,
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        "Please Select Country",
-                                        style: TextStyle(
-                                            color: lightColorScheme.primary,
-                                            fontFamily: "Roboto-Bold"),
-                                      ),
-                                    ],
+                                );
+                              });
+                        } else if (selectedCountry == null) {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: Container(
+                                    height: 200,
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.flag,
+                                          size: 50,
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Please Select Country",
+                                          style: TextStyle(
+                                              color: lightColorScheme.primary,
+                                              fontFamily: "Roboto-Bold"),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            });
-                      }else{
-                       if(key.currentState!.validate()){}
-                        FirebaseFirestore.instance
+                                );
+                              });
+                        }else{
+                          if(key.currentState!.validate()){}
+                          FirebaseFirestore.instance
                               .collection("Users")
                               .doc(widget.email)
                               .update({
@@ -334,32 +334,32 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                           });
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content:
-                                  Text("Uploading Information Please Wait...")));
+                              Text("Uploading Information Please Wait...")));
                           Reference referenceRoot =
-                              FirebaseStorage.instance.ref();
+                          FirebaseStorage.instance.ref();
                           Reference referenceDirImages =
-                              referenceRoot.child("ProfileImages");
+                          referenceRoot.child("ProfileImages");
                           Reference referenceImageToUpload = referenceDirImages
                               .child("ProfileImage ${widget.name}");
                           await referenceImageToUpload.putFile(File(filepath));
                           imageUrl =
-                              await referenceImageToUpload.getDownloadURL();
+                          await referenceImageToUpload.getDownloadURL();
                           print("Hii ${imageUrl}");
                           user.updatePhotoURL(imageUrl);
                           FirebaseFirestore.instance
                               .collection("Users")
                               .doc(widget.email)
-                              .update({"ProfileImages": imageUrl});
+                              .update({"ProfileImage": imageUrl});
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(builder: (_) => LoginScreen()));
-                        
-                      }
-                    },
-                    height: 60,
-                    minWidth: MediaQuery.of(context).size.width,
-                    color: Colors.amber,
-                    elevation: 0,
-                    child: Text("Continue",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold",fontSize: 20),),
+
+                        }
+                      },
+                      height: 60,
+                      minWidth: MediaQuery.of(context).size.width,
+                      color: Colors.amber,
+                      elevation: 0,
+                      child: Text("Continue",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold",fontSize: 20),),
                     )
                   ],
                 ),

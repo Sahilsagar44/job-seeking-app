@@ -22,6 +22,7 @@ class _JobSearchScreenState extends State<JobSearchScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               height: 50,
+
               child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Container(
@@ -43,24 +44,20 @@ class _JobSearchScreenState extends State<JobSearchScreen> {
         ),
         body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Container(
+            child:Container(
               height: MediaQuery.of(context).size.height,
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection("Jobs")
-                    .where("Sealed", isEqualTo: false)
-                    .snapshots(),
+                stream:
+                FirebaseFirestore.instance.collection("Jobs").where("Sealed",isEqualTo: false).snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return ListView.separated(
-                      separatorBuilder: (context, index) => SizedBox(
-                        height: 10,
-                      ),
+                      separatorBuilder: (context, index) => SizedBox(height: 10,),
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (BuildContext context, int index) {
                         var data = snapshot.data!.docs[index].data()
-                            as Map<String, dynamic>;
-                        if (search.isEmpty) {
+                        as Map<String, dynamic>;
+                        if(search.isEmpty){
                           return JobTile(
                             user: user,
                             budget: snapshot.data.docs[index]["Price"],
@@ -77,27 +74,16 @@ class _JobSearchScreenState extends State<JobSearchScreen> {
                             listedBy: snapshot.data.docs[index]["ListedBy"],
                             email: snapshot.data.docs[index]["Email"],
                             experience: snapshot.data.docs[index]["Experience"],
-                            description: snapshot.data.docs[index]
-                                ["Description"],
+                            description: snapshot.data.docs[index]["Description"],
                             duration: snapshot.data.docs[index]["Duration"],
                           );
                         }
-                        if (data['Title']
-                                .toString()
-                                .toLowerCase()
-                                .contains(search) ||
-                            data['Skill1']
-                                .toString()
-                                .toLowerCase()
-                                .contains(search) ||
-                            data['Skill2']
-                                .toString()
-                                .toLowerCase()
-                                .contains(search) ||
-                            data['Skill3']
-                                .toString()
-                                .toLowerCase()
-                                .contains(search)) {
+                        if(
+                        data['Title'].toString().toLowerCase().contains(search) ||
+                            data['Skill1'].toString().toLowerCase().contains(search) ||
+                            data['Skill2'].toString().toLowerCase().contains(search)||
+                            data['Skill3'].toString().toLowerCase().contains(search)
+                        ){
                           return JobTile(
                             user: user,
                             budget: snapshot.data.docs[index]["Price"],
@@ -114,14 +100,13 @@ class _JobSearchScreenState extends State<JobSearchScreen> {
                             listedBy: snapshot.data.docs[index]["ListedBy"],
                             email: snapshot.data.docs[index]["Email"],
                             experience: snapshot.data.docs[index]["Experience"],
-                            description: snapshot.data.docs[index]
-                                ["Description"],
+                            description: snapshot.data.docs[index]["Description"],
                             duration: snapshot.data.docs[index]["Duration"],
                           );
                         }
                         return Container(
-                            // child: Image.asset("assets/saly-17.png"),
-                            );
+                          // child: Image.asset("assets/saly-17.png"),
+                        );
                       },
                     );
                   } else {
@@ -129,6 +114,7 @@ class _JobSearchScreenState extends State<JobSearchScreen> {
                   }
                 },
               ),
-            )));
+            ))
+    );
   }
 }

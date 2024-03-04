@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:flutter/material.dart';
+// import 'package:lottie/lottie.dart';
+// import 'package:recuirmentapp/Presentation/Screens/AdminDashboard.dart';
+// import 'package:recuirmentapp/Presentation/Screens/HomeScreen.dart';
+// import 'package:recuirmentapp/Themes/Themes.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 // class SwitcherScreen extends StatefulWidget {
 //   SwitcherScreen({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // }
 
 // class _SwitcherScreenState extends State<SwitcherScreen> {
-  
+
 
 //   @override
 //   Widget build(BuildContext context) {

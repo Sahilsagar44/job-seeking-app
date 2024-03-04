@@ -5,11 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
+import '../../Themes/Themes.dart';
 import 'DetailScreen.dart';
 import 'Notifications.dart';
 import 'SearchjobScreen.dart';
-import 'Themes/Themes.dart';
 
 class JobsScreen extends StatefulWidget {
   const JobsScreen({Key? key}) : super(key: key);
@@ -85,21 +84,21 @@ class _JobsScreenState extends State<JobsScreen> {
                 child: Row(
                   children: [
                     const Icon(Icons.notifications,size: 20,color: Colors.red,),
-                     StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("Users")
-                    .doc(user!.email)
-                    .collection("Notification")
-                    .where("MarkAsRead", isEqualTo: false)
-                    .snapshots(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.hasData) {
-                    return  Text(snapshot.data.docs.length.toString(),style: const TextStyle(fontFamily: "Roboto-Bold",color: Colors.red),);
-                  } else {
-                    return const Text('0');
-                  }
-                },
-              ),
+                    StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                          .collection("Users")
+                          .doc(user!.email)
+                          .collection("Notification")
+                          .where("MarkAsRead", isEqualTo: false)
+                          .snapshots(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.hasData) {
+                          return  Text(snapshot.data.docs.length.toString(),style: const TextStyle(fontFamily: "Roboto-Bold",color: Colors.red),);
+                        } else {
+                          return const Text('0');
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -117,8 +116,8 @@ class _JobsScreenState extends State<JobsScreen> {
               child: Container(
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(5)
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(5)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -148,9 +147,9 @@ class _JobsScreenState extends State<JobsScreen> {
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (BuildContext context, int index) {
                         return JobTile(
-                          user: user, 
+                          user: user,
                           budget: snapshot.data.docs[index]["Price"],
-                          country: snapshot.data.docs[index]["ClientCountry"], 
+                          country: snapshot.data.docs[index]["ClientCountry"],
                           date: snapshot.data.docs[index]["ListedDate"],
                           time: snapshot.data.docs[index]["ListedTime"],
                           title: snapshot.data.docs[index]["Title"],
@@ -168,9 +167,9 @@ class _JobsScreenState extends State<JobsScreen> {
                         );
                       },
                     );
-                  } 
-                  
-                  
+                  }
+
+
                   else {
                     return const Text("");
                   }
@@ -280,8 +279,8 @@ class JobTile extends StatelessWidget {
                           }).then((value) {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
-                                    content: Text(
-                                        "Project Saved...")));
+                                content: Text(
+                                    "Project Saved...")));
                           });
                         },
                         child: const Icon(
@@ -317,12 +316,12 @@ class JobTile extends StatelessWidget {
                     width: 400,
                     child: Expanded(
                         child: Text(
-                      description,
-                      style:
+                          description,
+                          style:
                           const TextStyle(color: Colors.white60),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 4,
-                    )))
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 4,
+                        )))
               ],
             ),
           ),

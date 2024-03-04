@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
-
-import 'firebase_options.dart';
-
+import 'Providers/AuthProvider.dart';
 // import your LoginScreen class here
-import 'Presentation/Screens/Providers/AuthProvider.dart';
 import 'Presentation/Screens/SignInScreens/LoginScreen.dart';
-import 'Presentation/Screens/SignInScreens/Switcher.dart'; // import your SwitcherScreen class here
+import 'Presentation/Screens/SignInScreens/Switcher.dart';
+import 'firebase_options.dart'; // import your SwitcherScreen class here
 
 bool isClient = false;
 

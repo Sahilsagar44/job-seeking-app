@@ -8,12 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'Providers/AuthProvider.dart';
-import 'Themes/Themes.dart';
-import '../../main.dart';
+import '../../Providers/AuthProvider.dart';
+import '../../Themes/Themes.dart';
 import "dart:core";
 
-
+import '../../main.dart';
 import 'ViewPdf.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -100,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         radius: 100,
                         // backgroundColor: lightColorScheme.primary,
                         backgroundImage:
-                            NetworkImage(user!.photoURL.toString())),
+                        NetworkImage(user!.photoURL.toString())),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: IconButton(
@@ -134,30 +133,30 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 isSelected
                     ? MaterialButton(
-                        color: lightColorScheme.primary,
-                        onPressed: () async {
-                          Reference referenceImageToUpload =
-                              FirebaseStorage.instance.refFromURL(imageUrl);
-                          await referenceImageToUpload.putFile(File(filepath));
-                          imageUrl =
-                              await referenceImageToUpload.getDownloadURL();
-                          print("Hii ${imageUrl}");
-                          user!.updatePhotoURL(imageUrl);
-                          FirebaseFirestore.instance
-                              .collection("Users")
-                              .doc(user!.email)
-                              .update({"ProfileImage": imageUrl}).then((value) {
-                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                content: Text("Profile Picture Updated...")));
-                          });
-                          setState(() {
-                            isSelected = false;
-                          });
-                        },
-                        child: Text(
-                          "Update Profile Image",
-                          style: TextStyle(color: Colors.white),
-                        ))
+                    color: lightColorScheme.primary,
+                    onPressed: () async {
+                      Reference referenceImageToUpload =
+                      FirebaseStorage.instance.refFromURL(imageUrl);
+                      await referenceImageToUpload.putFile(File(filepath));
+                      imageUrl =
+                      await referenceImageToUpload.getDownloadURL();
+                      print("Hii ${imageUrl}");
+                      user!.updatePhotoURL(imageUrl);
+                      FirebaseFirestore.instance
+                          .collection("Users")
+                          .doc(user!.email)
+                          .update({"ProfileImage": imageUrl}).then((value) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("Profile Picture Updated...")));
+                      });
+                      setState(() {
+                        isSelected = false;
+                      });
+                    },
+                    child: Text(
+                      "Update Profile Image",
+                      style: TextStyle(color: Colors.white),
+                    ))
                     : Container(),
                 StreamBuilder(
                   stream: FirebaseFirestore.instance

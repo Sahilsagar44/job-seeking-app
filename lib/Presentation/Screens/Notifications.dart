@@ -3,10 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
-
-import 'Themes/Themes.dart';
+import '../../Themes/Themes.dart';
 import 'UserChatScreen.dart';
 
 class Notifications extends StatefulWidget {
@@ -17,7 +14,7 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-   final user = FirebaseAuth.instance.currentUser;
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,43 +26,43 @@ class _NotificationsState extends State<Notifications> {
       body: Container(
         child: StreamBuilder(
           stream: FirebaseFirestore.instance
-                    .collection("Users")
-                    .doc(user!.email)
-                    .collection("Notification").where("MarkAsRead",isEqualTo: false)
-                    .snapshots(),
+              .collection("Users")
+              .doc(user!.email)
+              .collection("Notification").where("MarkAsRead",isEqualTo: false)
+              .snapshots(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if(snapshot.hasData){
-                return ListView.builder(
-                  itemCount: snapshot.data.docs.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      onTap: (){
-                        if(snapshot.data.docs[index]["Type"]=="Chat"){
-                          FirebaseFirestore.instance.collection("Users").doc(user!.email).collection("Notification").doc("Chat ${snapshot.data.docs[index]["Client"]}").update({
-                            "MarkAsRead":true
-                          });
-                          Get.to(
+            if(snapshot.hasData){
+              return ListView.builder(
+                itemCount: snapshot.data.docs.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    onTap: (){
+                      if(snapshot.data.docs[index]["Type"]=="Chat"){
+                        FirebaseFirestore.instance.collection("Users").doc(user!.email).collection("Notification").doc("Chat ${snapshot.data.docs[index]["Client"]}").update({
+                          "MarkAsRead":true
+                        });
+                        Get.to(
                             UserChatScreen(title: snapshot.data.docs[index]["Title"], applieremail: snapshot.data.docs[index]["ApplierEmail"], clientemail: snapshot.data.docs[index]["ClientEmail"], ApplierName: snapshot.data.docs[index]["Applier"], Clientname: snapshot.data.docs[index]["Client"]),
                             duration: Duration(milliseconds: 500),transition: Transition.rightToLeft
-                            );
-                        }
-                      },
-                      trailing:  GestureDetector(
+                        );
+                      }
+                    },
+                    trailing:  GestureDetector(
                         onTap: () {
                           FirebaseFirestore.instance.collection("Users").doc(user!.email).collection("Notification").doc("Chat ${snapshot.data.docs[index]["Client"]}").update({
                             "MarkAsRead":true
                           });
                         },
                         child: Icon(Icons.done)),
-                      subtitle: Text(snapshot.data.docs[index]["Time1"]),
-                      title: Text(snapshot.data.docs[index]["Message"]),
-                    );
-                  },
-                );
-              }
-              else{
-                return Text("");
-              }
+                    subtitle: Text(snapshot.data.docs[index]["Time1"]),
+                    title: Text(snapshot.data.docs[index]["Message"]),
+                  );
+                },
+              );
+            }
+            else{
+              return Text("");
+            }
           },
         ),
       ),

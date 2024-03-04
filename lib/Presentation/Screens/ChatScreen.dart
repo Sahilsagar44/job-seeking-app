@@ -2,11 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import 'Functions/UserChatFunctions.dart';
-import 'Themes/Themes.dart';
-
-
+import '../../Functions/UserChatFunctions.dart';
+import '../../Themes/Themes.dart';
 
 class ChatScreen extends StatefulWidget {
   final String applieremail;
@@ -14,9 +11,9 @@ class ChatScreen extends StatefulWidget {
   final String title;
   const ChatScreen(
       {Key? key,
-      required this.applieremail,
-      required this.clientemail,
-      required this.title})
+        required this.applieremail,
+        required this.clientemail,
+        required this.title})
       : super(key: key);
 
   @override
@@ -114,7 +111,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                     style: const TextStyle(fontSize: 10)),
                                 leading: CircleAvatar(
                                   child: user!.email ==
-                                          snapshot.data.docs[index]["SendBy"]
+                                      snapshot.data.docs[index]["SendBy"]
                                       ? const Text("You")
                                       : const Text("No"),
                                 ),
@@ -167,25 +164,25 @@ class _ChatScreenState extends State<ChatScreen> {
                           onTap: () {
                             if (key.currentState!.validate()) {
                               final String dateFormat =
-                                  DateFormat('dd-MM-y').format(DateTime.now());
+                              DateFormat('dd-MM-y').format(DateTime.now());
                               final String format =
-                                  DateFormat('hh:mm a').format(DateTime.now());
-                                  FirebaseFirestore.instance.collection("Users").doc(widget.applieremail).collection("Notification").doc("Chat $Clientname").set({
-                            "Message":"You have recived messeged from $Clientname",
-                            "MarkAsRead":false,
-                            "Time":DateTime.now().microsecondsSinceEpoch,
-                            "Time1":format,
-                            "Type":"Chat",
-                            "Applier":ApplierName,
-                            "Client":Clientname,
-                            "Title":widget.title,
-                            "ApplierEmail":widget.applieremail,
-                            "ClientEmail":widget.clientemail
-                          });
+                              DateFormat('hh:mm a').format(DateTime.now());
+                              FirebaseFirestore.instance.collection("Users").doc(widget.applieremail).collection("Notification").doc("Chat $Clientname").set({
+                                "Message":"You have recived messeged from $Clientname",
+                                "MarkAsRead":false,
+                                "Time":DateTime.now().microsecondsSinceEpoch,
+                                "Time1":format,
+                                "Type":"Chat",
+                                "Applier":ApplierName,
+                                "Client":Clientname,
+                                "Title":widget.title,
+                                "ApplierEmail":widget.applieremail,
+                                "ClientEmail":widget.clientemail
+                              });
                               FirebaseFirestore.instance
                                   .collection("Chats")
                                   .doc(
-                                      "${widget.title} $ApplierName $Clientname")
+                                  "${widget.title} $ApplierName $Clientname")
                                   .set({
                                 "ClientEmail": widget.clientemail,
                                 "ApplierEmail": widget.applieremail,
@@ -198,10 +195,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                 FirebaseFirestore.instance
                                     .collection("Chats")
                                     .doc(
-                                        "${widget.title} $ApplierName $Clientname")
+                                    "${widget.title} $ApplierName $Clientname")
                                     .collection("Chat")
                                     .doc(
-                                        "${messageController.text}${user!.email}")
+                                    "${messageController.text}${user!.email}")
                                     .set({
                                   "Message": messageController.text,
                                   "SendBy": user!.email,

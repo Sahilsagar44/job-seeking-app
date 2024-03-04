@@ -3,9 +3,8 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import '../../Themes/Themes.dart';
 import 'AdminDashboard.dart';
-import 'Themes/Themes.dart';
 
 class ListProjectScreen extends StatefulWidget {
   const ListProjectScreen({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class ListProjectScreen extends StatefulWidget {
 }
 
 class _ListProjectScreenState extends State<ListProjectScreen> {
-
   final user = FirebaseAuth.instance.currentUser;
   QuerySnapshot<Map<String, dynamic>>? userStream;
   String _value = 'Less Than 1 Month';
@@ -113,7 +111,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: lightColorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -145,7 +143,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: lightColorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -164,14 +162,14 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                             children: [
                               Radio(
                                   fillColor:
-                                      MaterialStateProperty.resolveWith<Color>(
+                                  MaterialStateProperty.resolveWith<Color>(
                                           (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.disabled)) {
-                                      return Colors.white;
-                                    }
-                                    return lightColorScheme.primary;
-                                  }),
+                                        if (states
+                                            .contains(MaterialState.disabled)) {
+                                          return Colors.white;
+                                        }
+                                        return lightColorScheme.primary;
+                                      }),
                                   value: "Less Than 1 Month",
                                   groupValue: _value,
                                   onChanged: (val) {
@@ -189,14 +187,14 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                             children: [
                               Radio(
                                   fillColor:
-                                      MaterialStateProperty.resolveWith<Color>(
+                                  MaterialStateProperty.resolveWith<Color>(
                                           (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.disabled)) {
-                                      return Colors.white;
-                                    }
-                                    return lightColorScheme.primary;
-                                  }),
+                                        if (states
+                                            .contains(MaterialState.disabled)) {
+                                          return Colors.white;
+                                        }
+                                        return lightColorScheme.primary;
+                                      }),
                                   value: "1 to 3 Months",
                                   groupValue: _value,
                                   onChanged: (val) {
@@ -214,14 +212,14 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                             children: [
                               Radio(
                                   fillColor:
-                                      MaterialStateProperty.resolveWith<Color>(
+                                  MaterialStateProperty.resolveWith<Color>(
                                           (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.disabled)) {
-                                      return Colors.white;
-                                    }
-                                    return lightColorScheme.primary;
-                                  }),
+                                        if (states
+                                            .contains(MaterialState.disabled)) {
+                                          return Colors.white;
+                                        }
+                                        return lightColorScheme.primary;
+                                      }),
                                   value: "More Than 3 Months",
                                   groupValue: _value,
                                   onChanged: (val) {
@@ -336,7 +334,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: lightColorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -357,7 +355,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: lightColorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 10,
@@ -369,7 +367,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: lightColorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 10,
@@ -381,7 +379,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: lightColorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -436,17 +434,17 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               ),
                               items: items
                                   .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               value: selectedSkill1,
                               onChanged: (value) {
@@ -463,7 +461,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               buttonHeight: 50,
                               buttonWidth: 350,
                               buttonPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
+                              const EdgeInsets.only(left: 14, right: 14),
                               buttonDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
 
@@ -472,7 +470,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               // buttonElevation: 2,
                               itemHeight: 40,
                               itemPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
+                              const EdgeInsets.only(left: 14, right: 14),
                               // dropdownMaxHeight: 200,
                               // dropdownWidth: MediaQuery.of(context).size.width -10,
                               dropdownPadding: null,
@@ -534,17 +532,17 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               ),
                               items: items
                                   .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               value: selectedSkill2,
                               onChanged: (value) {
@@ -561,7 +559,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               buttonHeight: 50,
                               buttonWidth: 350,
                               buttonPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
+                              const EdgeInsets.only(left: 14, right: 14),
                               buttonDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
 
@@ -570,7 +568,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               // buttonElevation: 2,
                               itemHeight: 40,
                               itemPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
+                              const EdgeInsets.only(left: 14, right: 14),
                               // dropdownMaxHeight: 200,
                               // dropdownWidth: MediaQuery.of(context).size.width -10,
                               dropdownPadding: null,
@@ -632,17 +630,17 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               ),
                               items: items
                                   .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               value: selectedSkill3,
                               onChanged: (value) {
@@ -659,7 +657,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               buttonHeight: 50,
                               buttonWidth: 350,
                               buttonPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
+                              const EdgeInsets.only(left: 14, right: 14),
                               buttonDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
 
@@ -668,7 +666,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               // buttonElevation: 2,
                               itemHeight: 40,
                               itemPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
+                              const EdgeInsets.only(left: 14, right: 14),
                               // dropdownMaxHeight: 200,
                               // dropdownWidth: MediaQuery.of(context).size.width -10,
                               dropdownPadding: null,
@@ -700,7 +698,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
             child: MaterialButton(
               onPressed: () {
                 final String format =
-                    DateFormat('dd-MM-y').format(DateTime.now());
+                DateFormat('dd-MM-y').format(DateTime.now());
                 if (key.currentState!.validate()) {
                   FirebaseFirestore.instance
                       .collection("Users")

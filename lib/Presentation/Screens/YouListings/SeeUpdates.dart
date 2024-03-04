@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../Themes/Themes.dart';
+import '../../../Themes/Themes.dart';
 import '../AdminDashboard.dart';
 
 class SeeUpdates extends StatefulWidget {
@@ -17,14 +17,14 @@ class SeeUpdates extends StatefulWidget {
   final String descrition;
   SeeUpdates(
       {Key? key,
-      required this.freelancerEmail,
-      required this.title,
-      required this.proposedPrice,
-      required this.orignalPrice,
-      required this.freelancername,
-      required this.employeerName,
-      required this.listedDate,
-      required this.descrition})
+        required this.freelancerEmail,
+        required this.title,
+        required this.proposedPrice,
+        required this.orignalPrice,
+        required this.freelancername,
+        required this.employeerName,
+        required this.listedDate,
+        required this.descrition})
       : super(key: key);
 
   @override
@@ -66,7 +66,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
             if (snapshot.hasData) {
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: ListView.separated(
                   separatorBuilder: (context, index) => SizedBox(
                     height: 10,
@@ -86,7 +86,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(snapshot.data.docs[index]["Title"],
                                           style: TextStyle(
@@ -96,7 +96,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
                                       Divider(),
                                       Text(
                                           snapshot.data.docs[index]
-                                              ["Description"],
+                                          ["Description"],
                                           style: TextStyle(
                                             color: lightColorScheme.primary,
                                             fontFamily: "Roboto-Regular",
@@ -105,7 +105,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
                                       MaterialButton(
                                         color: lightColorScheme.primary,
                                         minWidth:
-                                            MediaQuery.of(context).size.width,
+                                        MediaQuery.of(context).size.width,
                                         height: 50,
                                         onPressed: () {
                                           Navigator.pop(context);
@@ -169,7 +169,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             final String dateformat =
-                DateFormat('dd-MM-y').format(DateTime.now());
+            DateFormat('dd-MM-y').format(DateTime.now());
             final String format = DateFormat('hh:mm a').format(DateTime.now());
             FirebaseFirestore.instance
                 .collection("Users")
@@ -219,7 +219,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
               "CompletionDate": dateformat,
               "PaymentStatus":"pending"
             });
-            
+
             FirebaseFirestore.instance
                 .collection("Users")
                 .doc(widget.freelancerEmail)
@@ -240,7 +240,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
             FirebaseFirestore.instance
                 .collection("Chats")
                 .doc(
-                    "${widget.title} ${widget.freelancername} ${widget.employeerName}")
+                "${widget.title} ${widget.freelancername} ${widget.employeerName}")
                 .collection("Chat")
                 .doc("Completed ${user.email}")
                 .set({
@@ -249,7 +249,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
               "Time": DateTime.now().microsecondsSinceEpoch,
               "Time1": format,
               "Date": dateformat,
-              
+
             });
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>const AdminDashboard()));
           },

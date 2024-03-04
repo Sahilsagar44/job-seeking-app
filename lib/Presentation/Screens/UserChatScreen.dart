@@ -3,10 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'Functions/UserChatFunctions.dart';
-import 'Themes/Themes.dart';
-
-
+import '../../Functions/UserChatFunctions.dart';
+import '../../Themes/Themes.dart';
 
 class UserChatScreen extends StatefulWidget {
   final String title;
@@ -14,14 +12,7 @@ class UserChatScreen extends StatefulWidget {
   final String clientemail;
   final String ApplierName;
   final String Clientname;
-  UserChatScreen(
-      {Key? key,
-      required this.title,
-      required this.applieremail,
-      required this.clientemail,
-      required this.ApplierName,
-      required this.Clientname})
-      : super(key: key);
+  UserChatScreen({Key? key, required this.title, required this.applieremail, required this.clientemail, required this.ApplierName, required this.Clientname}) : super(key: key);
 
   @override
   State<UserChatScreen> createState() => _UserChatScreenState();
@@ -33,6 +24,7 @@ class _UserChatScreenState extends State<UserChatScreen> {
   final key = GlobalKey<FormState>();
   TextEditingController messageController = TextEditingController();
   @override
+
   final Key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -50,10 +42,8 @@ class _UserChatScreenState extends State<UserChatScreen> {
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection("Chats")
-                    .doc(
-                        "${widget.title} ${widget.ApplierName} ${widget.Clientname}")
-                    .collection("Chat")
-                    .orderBy("Time")
+                    .doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}")
+                    .collection("Chat").orderBy("Time")
                     .snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
@@ -61,22 +51,12 @@ class _UserChatScreenState extends State<UserChatScreen> {
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
-                          subtitle: Text(
-                            "${snapshot.data.docs[index]["Time1"]} / ${snapshot.data.docs[index]["Date"]}"
-                                .toString(),
-                            style: TextStyle(fontSize: 10),
-                          ),
+                          subtitle: Text("${snapshot.data.docs[index]["Time1"]} / ${snapshot.data.docs[index]["Date"]}".toString(),style: TextStyle(fontSize: 10),),
                           leading: CircleAvatar(
-                            child: snapshot.data.docs[index]["SendBy"] ==
-                                    FirebaseAuth.instance.currentUser!.email
-                                ? Text("You")
-                                : Text(snapshot.data.docs[index]["SendBy"]
-                                    .toString()
-                                    .substring(0, 1)
-                                    .toUpperCase()),
+                            child: snapshot.data.docs[index]["SendBy"] == FirebaseAuth.instance.currentUser!.email ? Text("You") : Text(snapshot.data.docs[index]["SendBy"].toString().substring(0,1).toUpperCase()),
                           ),
-                          title: SelectableText(
-                              snapshot.data.docs[index]["Message"].toString()),
+                          title:
+                          SelectableText(snapshot.data.docs[index]["Message"].toString()),
                         );
                       },
                     );
@@ -90,9 +70,8 @@ class _UserChatScreenState extends State<UserChatScreen> {
           Container(
             decoration: BoxDecoration(
                 color: lightColorScheme.primary,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15))),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))
+            ),
             height: 55,
             child: Form(
               key: key,
@@ -105,7 +84,7 @@ class _UserChatScreenState extends State<UserChatScreen> {
                       width: 300,
                       child: TextFormField(
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if(value!.isEmpty){
                             return "Can't be Empty";
                           }
                         },
@@ -119,33 +98,21 @@ class _UserChatScreenState extends State<UserChatScreen> {
                         ),
                       ),
                     ),
+
                   ),
                   GestureDetector(
                       onTap: () {
                         final String Dateformat =
-                            DateFormat('dd-MM-y').format(DateTime.now());
-                        final String format =
-                            DateFormat('hh:mm a').format(DateTime.now());
-                        if (key.currentState!.validate()) {
-                          sendMessage(
-                                  Dateformat,
-                                  widget.title,
-                                  widget.ApplierName,
-                                  widget.Clientname,
-                                  widget.clientemail,
-                                  widget.applieremail,
-                                  messageController.text,
-                                  user!.email.toString(),
-                                  format)
-                              .then((value) {
+                        DateFormat('dd-MM-y').format(DateTime.now());
+                        final String format = DateFormat('hh:mm a').format(DateTime.now());
+                        if(key.currentState!.validate()){
+                          sendMessage(Dateformat, widget.title, widget.ApplierName, widget.Clientname, widget.clientemail, widget.applieremail, messageController.text, user!.email.toString(), format).then((value) {
                             setState(() {
                               messageController.text = "";
                             });
                           });
-                          setUserPushTrue(widget.title, widget.ApplierName,
-                              widget.Clientname);
-                          setClientPushFalse(widget.title, widget.ApplierName,
-                              widget.Clientname);
+                          setUserPushTrue(widget.title, widget.ApplierName, widget.Clientname);
+                          setClientPushFalse(widget.title, widget.ApplierName, widget.Clientname);
                           // FirebaseFirestore.instance.collection("Chats").doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}").collection("Chat").doc("${messageController.text}${user!.email}").set({
                           //   "Message": messageController.text,
                           //   "SendBy": user!.email,
@@ -180,19 +147,15 @@ class _UserChatScreenState extends State<UserChatScreen> {
                         //   });
                         // }
                       },
-                      child: Icon(
-                        Icons.send,
-                        color: Colors.white,
-                      )),
-                  SizedBox(
-                    width: 10,
-                  )
+                      child: Icon(Icons.send,color: Colors.white,)),
+                  SizedBox(width: 10,)
                 ],
               ),
             ),
           )
         ],
       ),
+
     );
   }
 }

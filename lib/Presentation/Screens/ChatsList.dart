@@ -3,10 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
-import 'Functions/UserChatFunctions.dart';
-import 'Themes/Themes.dart';
+import '../../Functions/UserChatFunctions.dart';
+import '../../Themes/Themes.dart';
 import 'UserChatScreen.dart';
 
 class ChatList extends StatefulWidget {
@@ -22,7 +20,7 @@ class _ChatListState extends State<ChatList> {
   @override
   void initState() {
     super.initState();
-    
+
     Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         isLoading = false;
@@ -42,33 +40,33 @@ class _ChatListState extends State<ChatList> {
       StreamBuilder(
         stream: FirebaseFirestore.instance.collection("Chats").where("ApplierEmail",isEqualTo: FirebaseAuth.instance.currentUser!.email).snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-         if(snapshot.hasData){
-          return ListView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                subtitle: Text(snapshot.data.docs[index]["Client"]),
-                onTap: () {
-                  FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.email).collection("Notification").doc("Chat ${snapshot.data.docs[index]["Client"]}").update({
-                    "MarkAsRead":true
-                  });
-                  setClientPushFalse(snapshot.data.docs[index]["Title"], snapshot.data.docs[index]["Applier"], snapshot.data.docs[index]["Client"]);
-                  Get.to(UserChatScreen(title: snapshot.data.docs[index]["Title"],
-                        applieremail: snapshot.data.docs[index]
-                            ["ApplierEmail"],
-                        clientemail: snapshot.data.docs[index]["ClientEmail"],
-                        ApplierName: snapshot.data.docs[index]["Applier"],
-                        Clientname: snapshot.data.docs[index]["Client"],),transition: Transition.downToUp,duration: const Duration(milliseconds: 600));
-                },
-                title: Text("${snapshot.data.docs[index]["Title"]}",
+          if(snapshot.hasData){
+            return ListView.builder(
+              itemCount: snapshot.data.docs.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  subtitle: Text(snapshot.data.docs[index]["Client"]),
+                  onTap: () {
+                    FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.email).collection("Notification").doc("Chat ${snapshot.data.docs[index]["Client"]}").update({
+                      "MarkAsRead":true
+                    });
+                    setClientPushFalse(snapshot.data.docs[index]["Title"], snapshot.data.docs[index]["Applier"], snapshot.data.docs[index]["Client"]);
+                    Get.to(UserChatScreen(title: snapshot.data.docs[index]["Title"],
+                      applieremail: snapshot.data.docs[index]
+                      ["ApplierEmail"],
+                      clientemail: snapshot.data.docs[index]["ClientEmail"],
+                      ApplierName: snapshot.data.docs[index]["Applier"],
+                      Clientname: snapshot.data.docs[index]["Client"],),transition: Transition.downToUp,duration: const Duration(milliseconds: 600));
+                  },
+                  title: Text("${snapshot.data.docs[index]["Title"]}",
                     style: snapshot.data.docs[index]["ClientPush"] ? const TextStyle(fontFamily: "Roboto-Black") :const TextStyle(fontFamily: "Roboto-Regular"),
-                ),);
-            },
-          );
-         }
-         else{
-          return const Text("");
-         }
+                  ),);
+              },
+            );
+          }
+          else{
+            return const Text("");
+          }
         },
       ),
     );

@@ -9,18 +9,15 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/AuthProvider.dart';
+import '../../Themes/Themes.dart';
 import '../../main.dart';
-import 'Providers/AuthProvider.dart';
-import 'Themes/Themes.dart';
-
-
-
 
 class EmployerProfile extends StatefulWidget {
-  final String birthdate;
-  final String gender;
-  final String country;
-  final String phone;
+  String birthdate;
+  String gender;
+  String country;
+  String phone;
   EmployerProfile({Key? key, required this.birthdate, required this.gender, required this.country, required this.phone}) : super(key: key);
 
   @override
@@ -34,20 +31,28 @@ class _EmployerProfileState extends State<EmployerProfile> {
   final user = FirebaseAuth.instance.currentUser;
   QuerySnapshot<Map<String, dynamic>>? userStream;
 
-  getUser() {
-    setState(() {
-      FirebaseFirestore.instance
-          .collection("Users")
-          .where("email", isEqualTo: user!.email)
-          .get()
-          .then((value) {
-        userStream = value;
+  getUser() async {
+    final userCollection = FirebaseFirestore.instance.collection("Users");
 
-        imageUrl = userStream!.docs[0]["ProfileImage"].toString();
-
-        // print(name);
-      });
-    });
+    try {
+      final userDoc = await userCollection.doc(user!.email).get();
+      if (userDoc.exists) {
+        final data = userDoc.data()!;
+        setState(() {
+          imageUrl = data["ProfileImage"] ?? "";
+          widget.birthdate = data["birthdate"] ?? ""; // Adjust this according to the correct field name in your Firestore database.
+          widget.country = data["country"] ?? ""; // Adjust this according to the correct field name in your Firestore database.
+          widget.phone = data["phone"] ?? ""; // Adjust this according to the correct field name in your Firestore database.
+          widget.gender = data["gender"] ?? ""; // Adjust this according to the correct field name in your Firestore database.
+        });
+      } else {
+        // Handle the case where the user document doesn't exist
+        print("User document not found");
+      }
+    } catch (e) {
+      // Handle any errors that occur while fetching the user document
+      print("Error fetching user document: $e");
+    }
   }
 
   @override
@@ -77,14 +82,17 @@ class _EmployerProfileState extends State<EmployerProfile> {
               // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 20,
+                ),
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
                     CircleAvatar(
-                        radius: 90,
+                        radius: 100,
                         // backgroundColor: lightColorScheme.primary,
                         backgroundImage:
-                            NetworkImage(user!.photoURL.toString())),
+                        NetworkImage(user!.photoURL.toString())),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: IconButton(
@@ -118,32 +126,32 @@ class _EmployerProfileState extends State<EmployerProfile> {
                 ),
                 isSelected
                     ? MaterialButton(
-                        color: lightColorScheme.primary,
-                        onPressed: () async {
-                          Reference referenceImageToUpload =
-                              FirebaseStorage.instance.refFromURL(imageUrl);
-                          await referenceImageToUpload.putFile(File(filepath));
-                          imageUrl =
-                              await referenceImageToUpload.getDownloadURL();
-                          print("Hii ${imageUrl}");
-                          user!.updatePhotoURL(imageUrl);
-                          FirebaseFirestore.instance
-                              .collection("Users")
-                              .doc(user!.email)
-                              .update({"ProfileImage": imageUrl}).then((value) {
-                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                content: Text("Profile Picture Updated...")));
-                          });
-                          setState(() {
-                            isSelected = false;
-                          });
-                        },
-                        child: const Text(
-                          "Update Profile Image",
-                          style: TextStyle(color: Colors.white),
-                        ))
+                    color: lightColorScheme.primary,
+                    onPressed: () async {
+                      Reference referenceImageToUpload =
+                      FirebaseStorage.instance.refFromURL(imageUrl);
+                      await referenceImageToUpload.putFile(File(filepath));
+                      imageUrl =
+                      await referenceImageToUpload.getDownloadURL();
+                      print("Hii ${imageUrl}");
+                      user!.updatePhotoURL(imageUrl);
+                      FirebaseFirestore.instance
+                          .collection("Users")
+                          .doc(user!.email)
+                          .update({"ProfileImage": imageUrl}).then((value) {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text("Profile Picture Updated...")));
+                      });
+                      setState(() {
+                        isSelected = false;
+                      });
+                    },
+                    child: const Text(
+                      "Update Profile Image",
+                      style: TextStyle(color: Colors.white),
+                    ))
                     : Container(),
-                
+
                 Container(
                   alignment: Alignment.centerLeft,
                   height: 50,
@@ -315,7 +323,6 @@ class _EmployerProfileState extends State<EmployerProfile> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   onPressed: () {
-                    print(">>>>>>>>>>>>>>>>>>>>>>>>${widget.birthdate.toString()}");
                     final provider = Provider.of<Auth>(context, listen: false);
                     provider.signOut();
                     Navigator.of(context).pushReplacement(
@@ -325,7 +332,17 @@ class _EmployerProfileState extends State<EmployerProfile> {
                     "Sign Out",
                     style: TextStyle(fontFamily: "Roboto-Bold", fontSize: 20),
                   ),
-                ),
+                )
+                //  Container(
+                //   alignment: Alignment.center,
+                //   height: 50,
+                //   width: MediaQuery.of(context).size.width,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(10),
+                //     color: Colors.red
+                //   ),
+                //   child: Text("Sign Out",style: TextStyle(fontFamily: "Roboto-Bold",fontSize: 20),),
+                //  )
               ],
             ),
           ),

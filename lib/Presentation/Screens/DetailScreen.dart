@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../Themes/Themes.dart';
 import 'ApplyScreen.dart';
-import 'Themes/Themes.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title;
@@ -80,7 +80,7 @@ class _DetailScreenState extends State<DetailScreen> {
         .doc(user!.email)
         .get()
         .then(
-      (docSnapshot) {
+          (docSnapshot) {
         if (docSnapshot.exists) {
           setState(() {
             isApplied = true;
@@ -303,17 +303,17 @@ class _DetailScreenState extends State<DetailScreen> {
                 ],
               ),
               GestureDetector(
-                        onTap: () {
-                          launch(widget.link1);
-                        }, child: Text(widget.link1)),
-               GestureDetector(
-                        onTap: () {
-                          launch(widget.link2);
-                        }, child: Text(widget.link2)),
-               GestureDetector(
-                        onTap: () {
-                          launch(widget.link3);
-                        }, child: Text(widget.link3)),
+                  onTap: () {
+                    launch(widget.link1);
+                  }, child: Text(widget.link1)),
+              GestureDetector(
+                  onTap: () {
+                    launch(widget.link2);
+                  }, child: Text(widget.link2)),
+              GestureDetector(
+                  onTap: () {
+                    launch(widget.link3);
+                  }, child: Text(widget.link3)),
               const SizedBox(
                 height: 10,
               ),
@@ -322,10 +322,10 @@ class _DetailScreenState extends State<DetailScreen> {
                 height: 10,
               ),
               Text(
-                    "Required Skills: ",
-                    style: TextStyle(
-                        color: lightColorScheme.primary,
-                        fontWeight: FontWeight.bold),
+                "Required Skills: ",
+                style: TextStyle(
+                    color: lightColorScheme.primary,
+                    fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10,),
               SingleChildScrollView(
@@ -333,46 +333,46 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Row(
                   children: [
                     Container(
-                    alignment: Alignment.center,
-                    height: 45,
-                    // width: 100,
-                    decoration: BoxDecoration(
-                      color: lightColorScheme.primary,
-                      borderRadius: BorderRadius.circular(15)
+                      alignment: Alignment.center,
+                      height: 45,
+                      // width: 100,
+                      decoration: BoxDecoration(
+                          color: lightColorScheme.primary,
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(widget.skill1,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                      ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(widget.skill1,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                    const SizedBox(width: 5,),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 45,
+                      // width: 100,
+                      decoration: BoxDecoration(
+                          color: lightColorScheme.primary,
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(widget.skill2,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 5,),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 45,
-                    // width: 100,
-                    decoration: BoxDecoration(
-                      color: lightColorScheme.primary,
-                      borderRadius: BorderRadius.circular(15)
+                    const SizedBox(width: 5,),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 45,
+                      // width: 100,
+                      decoration: BoxDecoration(
+                          color: lightColorScheme.primary,
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(widget.skill3,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                      ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(widget.skill2,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                    ),
-                  ),
-                  const SizedBox(width: 5,),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 45,
-                    // width: 100,
-                    decoration: BoxDecoration(
-                      color: lightColorScheme.primary,
-                      borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(widget.skill3,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                    ),
-                  ),
                   ],
                 ),
               ),
@@ -396,64 +396,64 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
       bottomNavigationBar: isYou
           ? Container(
+        alignment: Alignment.center,
+        height: 50,
+        decoration: BoxDecoration(color: lightColorScheme.primary),
+        child: Column(
+          children: [
+            const Text(
+              "You Can't Apply",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+            const Text("This Job is posted by you.",style: TextStyle(color: Colors.white54,fontSize: 8),)
+          ],
+        ),
+      )
+          : BottomAppBar(
+        child: Container(
             alignment: Alignment.center,
-              height: 50,
-              decoration: BoxDecoration(color: lightColorScheme.primary),
-              child: Column(
-                children: [
-                  const Text(
-                    "You Can't Apply",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Text("This Job is posted by you.",style: TextStyle(color: Colors.white54,fontSize: 8),)
-                ],
+            height: 50,
+            decoration: BoxDecoration(color: lightColorScheme.primary),
+            child: isApplied
+                ? Container(
+              child: const Text(
+                "Applied!",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
               ),
             )
-          : BottomAppBar(
-              child: Container(
-                  alignment: Alignment.center,
-                  height: 50,
-                  decoration: BoxDecoration(color: lightColorScheme.primary),
-                  child: isApplied
-                      ? Container(
-                          child: const Text(
-                            "Applied!",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      : MaterialButton(
-                          height: 50,
-                          minWidth: MediaQuery.of(context).size.width,
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) => ApplyScreen(
-                                  ListedEmail: widget.email,
-                                      time: widget.time,
-                                      date: widget.date,
-                                      title: widget.title,
-                                      description: widget.description,
-                                      budget: widget.budget,
-                                      experience: widget.experience,
-                                      duration: widget.duration,
-                                      country: widget.country,
-                                      listedBy: widget.listedBy,
-                                    )));
-                          },
-                          child: const Text(
-                            "Apply",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )),
-            ),
+                : MaterialButton(
+              height: 50,
+              minWidth: MediaQuery.of(context).size.width,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => ApplyScreen(
+                      ListedEmail: widget.email,
+                      time: widget.time,
+                      date: widget.date,
+                      title: widget.title,
+                      description: widget.description,
+                      budget: widget.budget,
+                      experience: widget.experience,
+                      duration: widget.duration,
+                      country: widget.country,
+                      listedBy: widget.listedBy,
+                    )));
+              },
+              child: const Text(
+                "Apply",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+            )),
+      ),
     );
   }
 }

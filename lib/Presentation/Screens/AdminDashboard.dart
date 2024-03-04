@@ -2,8 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'Themes/Themes.dart';
+import '../../Themes/Themes.dart';
 import 'ClientChatList.dart';
 import 'EmployerProfile.dart';
 import 'ListProject.dart';
@@ -48,11 +47,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
   @override
   void initState() {
-    
+
     super.initState();
     getUser();
   }
-   int index = 0;
+  int index = 0;
   final PageController _myPage = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
@@ -71,30 +70,30 @@ class _AdminDashboardState extends State<AdminDashboard> {
               // mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                
-               GestureDetector(
-                
+
+                GestureDetector(
+
                   child: Icon(Icons.home,size: 35,color: index == 0 ? lightColorScheme.primary: lightColorScheme.onBackground,),
                   onTap: () {
                     setState(() {
-                       _myPage.animateToPage(
-                        0,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut
+                      _myPage.animateToPage(
+                          0,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut
                       );
                       index = 0;
                     });
                   },
                 ),
                 GestureDetector(
-                
+
                   child: Icon(Icons.change_circle_outlined,size: 35,color: index == 1 ? lightColorScheme.primary: lightColorScheme.onBackground),
                   onTap: () {
                     setState(() {
-                       _myPage.animateToPage(
-                        1,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut
+                      _myPage.animateToPage(
+                          1,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut
                       );
                       index = 1;
                     });
@@ -102,28 +101,28 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 ),
                 const SizedBox(width: 25,),
                 GestureDetector(
-                
+
                   child: Icon(Icons.chat,size: 35,color: index == 2 ? lightColorScheme.primary: lightColorScheme.onBackground),
                   onTap: () {
                     setState(() {
-                       _myPage.animateToPage(
-                        2,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut
+                      _myPage.animateToPage(
+                          2,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut
                       );
                       index = 2;
                     });
                   },
                 ),
                 GestureDetector(
-                
+
                   child: Icon(Icons.settings,size: 35,color: index == 3 ? lightColorScheme.primary: lightColorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.animateToPage(
-                        3,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut
+                          3,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut
                       );
                       index = 3;
                     });
@@ -152,7 +151,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
         ], // Comment this if you need to use Swipe.
       ),
       floatingActionButton: SizedBox(
-        height: 63.0,
+        height: 65.0,
         width: 65.0,
         child: FittedBox(
           child: FloatingActionButton(

@@ -3,14 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import '../../Themes/Themes.dart';
 import 'ChatsList.dart';
 import 'JobScreen.dart';
-
 import 'ProfilePage.dart';
 import 'ProposelScreen.dart';
 import 'SavedProjects.dart';
-import 'Themes/Themes.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -178,9 +176,9 @@ class _HomeScreenState extends State<HomeScreen> {
           print('Page Changes to index $int');
         },
         children: <Widget>[
-          JobsScreen(),
-          ChatList(),
-          ProposalScreen(),
+          const JobsScreen(),
+          const ChatList(),
+          const ProposalScreen(),
           SavedProjects(),
           ProfilePage(name: name.toString(), email: email.toString(), country: country.toString(), gender: gender.toString(), phone: phone.toString(), birthdate: birthdate.toString(),imageUrl: imageUrl.toString(),)
         ],

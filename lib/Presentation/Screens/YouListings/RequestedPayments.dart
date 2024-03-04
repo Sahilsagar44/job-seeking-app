@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-
-import '../Themes/Themes.dart';
+import '../../../Themes/Themes.dart';
 
 class PaymentRequests extends StatefulWidget {
   PaymentRequests({Key? key}) : super(key: key);
@@ -17,7 +15,7 @@ class _PaymentRequestsState extends State<PaymentRequests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(),
+      appBar: AppBar(),
       body: Container(
         height: 500,
         child: StreamBuilder(
@@ -33,8 +31,8 @@ class _PaymentRequestsState extends State<PaymentRequests> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: lightColorScheme.primary,
-                        borderRadius: BorderRadius.circular(10)
+                          color: lightColorScheme.primary,
+                          borderRadius: BorderRadius.circular(10)
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

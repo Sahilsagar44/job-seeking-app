@@ -2,10 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-
-import 'Themes/Themes.dart';
-
+import '../../Themes/Themes.dart';
 
 class PostUpdate extends StatefulWidget {
   final String employeerEmail;
@@ -46,7 +43,7 @@ class _PostUpdateState extends State<PostUpdate> {
             if (snapshot.hasData) {
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: ListView.separated(
                   separatorBuilder: (context, index) => SizedBox(
                     height: 10,
@@ -66,7 +63,7 @@ class _PostUpdateState extends State<PostUpdate> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(snapshot.data.docs[index]["Title"],
                                           style: TextStyle(
@@ -76,16 +73,16 @@ class _PostUpdateState extends State<PostUpdate> {
                                       Divider(),
                                       Text(
                                           snapshot.data.docs[index]
-                                              ["Description"],
+                                          ["Description"],
                                           style: TextStyle(
                                             color: lightColorScheme.primary,
                                             fontFamily: "Roboto-Regular",
                                           )),
-                                        Spacer(),
+                                      Spacer(),
                                       MaterialButton(
                                         color: lightColorScheme.primary,
                                         minWidth:
-                                            MediaQuery.of(context).size.width,
+                                        MediaQuery.of(context).size.width,
                                         height: 50,
                                         onPressed: () {
                                           Navigator.pop(context);
@@ -117,11 +114,11 @@ class _PostUpdateState extends State<PostUpdate> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   InkWell(
-                                    onTap: () {
-                                      FirebaseFirestore.instance.collection("Users").doc(widget.employeerEmail).collection("HiredByYou").doc(widget.title).collection("Updates").doc(snapshot.data.docs[index]["Title"]).delete();
-                                      FirebaseFirestore.instance.collection("Users").doc(user.email).collection("Proposels").doc(widget.title).collection("Updates").doc(snapshot.data.docs[index]["Title"]).delete();
-                                    },
-                                    child: Icon(Icons.delete,color: Colors.white,)),
+                                      onTap: () {
+                                        FirebaseFirestore.instance.collection("Users").doc(widget.employeerEmail).collection("HiredByYou").doc(widget.title).collection("Updates").doc(snapshot.data.docs[index]["Title"]).delete();
+                                        FirebaseFirestore.instance.collection("Users").doc(user.email).collection("Proposels").doc(widget.title).collection("Updates").doc(snapshot.data.docs[index]["Title"]).delete();
+                                      },
+                                      child: Icon(Icons.delete,color: Colors.white,)),
                                 ],
                               ),
                               SizedBox(height: 10,),
@@ -211,8 +208,8 @@ class _PostUpdateState extends State<PostUpdate> {
                                 onPressed: () {
                                   final firestore = FirebaseFirestore.instance;
                                   final String dateformat =
-                                      DateFormat('dd-MM-y')
-                                          .format(DateTime.now());
+                                  DateFormat('dd-MM-y')
+                                      .format(DateTime.now());
                                   final String format = DateFormat('hh:mm a')
                                       .format(DateTime.now());
                                   firestore

@@ -9,10 +9,7 @@ import 'package:pdf/pdf.dart';
 
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as pw;
-
-import 'Themes/Themes.dart';
-
-
+import '../../Themes/Themes.dart';
 
 class GenerateInvoice extends StatefulWidget {
   final String employeerName;
@@ -24,13 +21,13 @@ class GenerateInvoice extends StatefulWidget {
   final String title;
   GenerateInvoice(
       {Key? key,
-      required this.employeerName,
-      required this.employeerEmail,
-      required this.freelancername,
-      required this.CompletionDate,
-      required this.listedDate,
-      required this.Price,
-      required this.title})
+        required this.employeerName,
+        required this.employeerEmail,
+        required this.freelancername,
+        required this.CompletionDate,
+        required this.listedDate,
+        required this.Price,
+        required this.title})
       : super(key: key);
 
   @override
@@ -55,7 +52,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
   String? clientphone;
   String? clientbirthdate;
   String? clientimageUrl;
- Future<void> getUser()async {
+  Future<void> getUser()async {
     setState(() {
       FirebaseFirestore.instance
           .collection("Users")
@@ -128,7 +125,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 160,
+                    height: 150,
                     color: lightColorScheme.primary,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -185,7 +182,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                     ),
                   ),
                   Container(
-                    height: 15,
+                    height: 20,
                     color: Colors.blue[200],
                   ),
                   const SizedBox(
@@ -353,11 +350,11 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("Description",
-                                  style: GoogleFonts.tinos(
-                                      fontWeight: FontWeight.bold)),
+                                style: GoogleFonts.tinos(
+                                    fontWeight: FontWeight.bold)),
                             Text("Amount",
-                                  style: GoogleFonts.tinos(
-                                      fontWeight: FontWeight.bold)),
+                                style: GoogleFonts.tinos(
+                                    fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
@@ -366,37 +363,37 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(widget.title,
-                                  style: GoogleFonts.tinos(
-                                      fontWeight: FontWeight.bold)),
-                            Text(widget.Price,
-                                  style: GoogleFonts.tinos(
-                                      fontWeight: FontWeight.bold)),
-                          ],
-                        
-                      ),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(widget.title,
+                            style: GoogleFonts.tinos(
+                                fontWeight: FontWeight.bold)),
+                        Text(widget.Price,
+                            style: GoogleFonts.tinos(
+                                fontWeight: FontWeight.bold)),
+                      ],
+
                     ),
+                  ),
                   const SizedBox(height: 50,),
                   const Divider(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Total:",
-                                  style: GoogleFonts.tinos(
-                                      fontWeight: FontWeight.bold)),
-                            Text("Rs.${widget.Price}",
-                                  style: GoogleFonts.tinos(
-                                      fontWeight: FontWeight.bold)),
-                          ],
-                        
-                      ),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total:",
+                            style: GoogleFonts.tinos(
+                                fontWeight: FontWeight.bold)),
+                        Text("Rs.${widget.Price}",
+                            style: GoogleFonts.tinos(
+                                fontWeight: FontWeight.bold)),
+                      ],
+
                     ),
-                    const SizedBox(height: 25,),
-                    Text("This is dummy invoice generated by 'JOB Hunt App' for education purpose only...",style: GoogleFonts.tinos(fontSize: 9),)
+                  ),
+                  const SizedBox(height: 25,),
+                  Text("This is dummy invoice generated by 'JOB SEEKER APP' for education purpose only...",style: GoogleFonts.tinos(fontSize: 9),)
                 ],
               ),
             ),
@@ -404,324 +401,324 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
         ),
       ),
       floatingActionButton: isLoading ? Container() :FloatingActionButton(
-        backgroundColor: lightColorScheme.primary,
-        onPressed: () async {
-        final tionsregular = await PdfGoogleFonts.tinosRegular();
-        final tionsbold = await PdfGoogleFonts.tinosBold();
+          backgroundColor: lightColorScheme.primary,
+          onPressed: () async {
+            final tionsregular = await PdfGoogleFonts.tinosRegular();
+            final tionsbold = await PdfGoogleFonts.tinosBold();
 
-        final doc = pw.Document();
-        doc.addPage(pw.Page(
-          pageFormat: PdfPageFormat.a4,
-          build: (context) {
-            return pw.Container(
-                decoration: pw.BoxDecoration(
-                    border: pw.Border.all(color: PdfColors.black)),
-                child: pw.Column(children: [
-                  pw.Container(
-                      alignment: pw.Alignment.center,
-                      height: 130,
-                      color: PdfColors.indigo,
-                      child: pw.Padding(
-                          padding: const pw.EdgeInsets.symmetric(horizontal: 10),
-                          child: pw.Column(
-                              mainAxisAlignment: pw.MainAxisAlignment.start,
-                              crossAxisAlignment: pw.CrossAxisAlignment.start,
-                              children: [
-                                pw.SizedBox(height: 10),
-                                pw.Row(
-                                    mainAxisAlignment:
+            final doc = pw.Document();
+            doc.addPage(pw.Page(
+              pageFormat: PdfPageFormat.a4,
+              build: (context) {
+                return pw.Container(
+                    decoration: pw.BoxDecoration(
+                        border: pw.Border.all(color: PdfColors.black)),
+                    child: pw.Column(children: [
+                      pw.Container(
+                          alignment: pw.Alignment.center,
+                          height: 130,
+                          color: PdfColors.indigo,
+                          child: pw.Padding(
+                              padding: const pw.EdgeInsets.symmetric(horizontal: 10),
+                              child: pw.Column(
+                                  mainAxisAlignment: pw.MainAxisAlignment.start,
+                                  crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                  children: [
+                                    pw.SizedBox(height: 10),
+                                    pw.Row(
+                                        mainAxisAlignment:
                                         pw.MainAxisAlignment.center,
-                                    crossAxisAlignment:
+                                        crossAxisAlignment:
                                         pw.CrossAxisAlignment.center,
-                                    children: [
-                                      pw.Text("Freelance Invoice",
-                                          style: pw.TextStyle(
-                                              color: PdfColors.white,
-                                              fontWeight: pw.FontWeight.bold,
-                                              fontSize: 25)),
-                                    ]),
-                                pw.SizedBox(height: 15),
-                                pw.Text("Freelancer Details",
-                                    style: pw.TextStyle(
-                                        font: tionsbold,
-                                        color: PdfColors.white,
-                                        fontWeight: pw.FontWeight.bold,
-                                        fontSize: 15)),
-                                pw.Text("Name: ${widget.freelancername}",
-                                    style: pw.TextStyle(
-                                        font: tionsregular,
-                                        color: PdfColors.white,
-                                        fontWeight: pw.FontWeight.bold,
-                                        fontSize: 15)),
-                                pw.Text("Email: $email",
-                                    style: pw.TextStyle(
-                                        font: tionsregular,
-                                        color: PdfColors.white,
-                                        fontWeight: pw.FontWeight.bold,
-                                        fontSize: 15)),
-                                pw.Text("Counrty: $country",
-                                    style: pw.TextStyle(
-                                        font: tionsregular,
-                                        color: PdfColors.white,
-                                        fontWeight: pw.FontWeight.bold,
-                                        fontSize: 15)),
-                              ]))),
-                  pw.Container(height: 20, color: PdfColors.blue200),
-                  pw.SizedBox(height: 10),
-                  pw.Padding(
-                      padding: const pw.EdgeInsets.symmetric(horizontal: 10),
-                      child: pw.Column(children: [
-                        pw.Row(
-                            mainAxisAlignment:
+                                        children: [
+                                          pw.Text("Freelance Invoice",
+                                              style: pw.TextStyle(
+                                                  color: PdfColors.white,
+                                                  fontWeight: pw.FontWeight.bold,
+                                                  fontSize: 25)),
+                                        ]),
+                                    pw.SizedBox(height: 15),
+                                    pw.Text("Freelancer Details",
+                                        style: pw.TextStyle(
+                                            font: tionsbold,
+                                            color: PdfColors.white,
+                                            fontWeight: pw.FontWeight.bold,
+                                            fontSize: 15)),
+                                    pw.Text("Name: ${widget.freelancername}",
+                                        style: pw.TextStyle(
+                                            font: tionsregular,
+                                            color: PdfColors.white,
+                                            fontWeight: pw.FontWeight.bold,
+                                            fontSize: 15)),
+                                    pw.Text("Email: $email",
+                                        style: pw.TextStyle(
+                                            font: tionsregular,
+                                            color: PdfColors.white,
+                                            fontWeight: pw.FontWeight.bold,
+                                            fontSize: 15)),
+                                    pw.Text("Counrty: $country",
+                                        style: pw.TextStyle(
+                                            font: tionsregular,
+                                            color: PdfColors.white,
+                                            fontWeight: pw.FontWeight.bold,
+                                            fontSize: 15)),
+                                  ]))),
+                      pw.Container(height: 20, color: PdfColors.blue200),
+                      pw.SizedBox(height: 10),
+                      pw.Padding(
+                          padding: const pw.EdgeInsets.symmetric(horizontal: 10),
+                          child: pw.Column(children: [
+                            pw.Row(
+                                mainAxisAlignment:
                                 pw.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pw.Column(
-                                  mainAxisAlignment: pw.MainAxisAlignment.start,
-                                  crossAxisAlignment:
+                                children: [
+                                  pw.Column(
+                                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                                      crossAxisAlignment:
                                       pw.CrossAxisAlignment.start,
-                                  children: [
-                                    pw.Text("Client Information",
-                                        style: pw.TextStyle(
-                                            color: PdfColors.indigo,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 18)),
-                                    pw.SizedBox(height: 5),
-                                    pw.Container(
-                                        height: 5,
-                                        width: 200,
-                                        color: PdfColors.blue200)
-                                  ]),
-                              pw.Column(
-                                  mainAxisAlignment: pw.MainAxisAlignment.start,
-                                  crossAxisAlignment:
+                                      children: [
+                                        pw.Text("Client Information",
+                                            style: pw.TextStyle(
+                                                color: PdfColors.indigo,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 18)),
+                                        pw.SizedBox(height: 5),
+                                        pw.Container(
+                                            height: 5,
+                                            width: 200,
+                                            color: PdfColors.blue200)
+                                      ]),
+                                  pw.Column(
+                                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                                      crossAxisAlignment:
                                       pw.CrossAxisAlignment.start,
-                                  children: [
-                                    pw.Text("Invoice Details",
-                                        style: pw.TextStyle(
-                                            color: PdfColors.indigo,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 18)),
-                                    pw.SizedBox(height: 5),
-                                    pw.Container(
-                                        width: 200,
-                                        height: 5,
-                                        color: PdfColors.blue200)
-                                  ]),
-                            ]),
-                        pw.SizedBox(height: 10),
-                        pw.Row(
-                            mainAxisAlignment:
+                                      children: [
+                                        pw.Text("Invoice Details",
+                                            style: pw.TextStyle(
+                                                color: PdfColors.indigo,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 18)),
+                                        pw.SizedBox(height: 5),
+                                        pw.Container(
+                                            width: 200,
+                                            height: 5,
+                                            color: PdfColors.blue200)
+                                      ]),
+                                ]),
+                            pw.SizedBox(height: 10),
+                            pw.Row(
+                                mainAxisAlignment:
                                 pw.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pw.Column(
-                                  mainAxisAlignment: pw.MainAxisAlignment.start,
-                                  crossAxisAlignment:
+                                children: [
+                                  pw.Column(
+                                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                                      crossAxisAlignment:
                                       pw.CrossAxisAlignment.start,
-                                  children: [
-                                    pw.Text("Name",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 2),
-                                    pw.Text(widget.employeerName,
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 10),
-                                    pw.Text("Email",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 2),
-                                    pw.Text(widget.employeerEmail,
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 10),
-                                    pw.Text("Phone Number",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 2),
-                                    pw.Text(clientphone.toString(),
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 10),
-                                    pw.Text("Country",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 2),
-                                    pw.Text(clientcountry.toString(),
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                  ]),
-                              pw.Column(
-                                  mainAxisAlignment: pw.MainAxisAlignment.start,
-                                  crossAxisAlignment:
+                                      children: [
+                                        pw.Text("Name",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 2),
+                                        pw.Text(widget.employeerName,
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 10),
+                                        pw.Text("Email",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 2),
+                                        pw.Text(widget.employeerEmail,
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 10),
+                                        pw.Text("Phone Number",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 2),
+                                        pw.Text(clientphone.toString(),
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 10),
+                                        pw.Text("Country",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 2),
+                                        pw.Text(clientcountry.toString(),
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                      ]),
+                                  pw.Column(
+                                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                                      crossAxisAlignment:
                                       pw.CrossAxisAlignment.start,
-                                  children: [
-                                    pw.Text("Invoice Number",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 2),
-                                    pw.Text("1",
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 10),
-                                    pw.Text("Invoice Date",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.Text(dateformat.toString(),
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 10),
-                                    pw.Text("Listed Date",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.Text(widget.listedDate,
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                    pw.SizedBox(height: 10),
-                                    pw.Text("Completion Date",
-                                        style: pw.TextStyle(
-                                            font: tionsbold,
-                                            color: PdfColors.black,
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 15)),
-                                    pw.Text(widget.CompletionDate,
-                                        style: pw.TextStyle(
-                                            color: PdfColors.black,
-                                            font: tionsregular,
-                                            fontSize: 15)),
-                                  ])
+                                      children: [
+                                        pw.Text("Invoice Number",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 2),
+                                        pw.Text("1",
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 10),
+                                        pw.Text("Invoice Date",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.Text(dateformat.toString(),
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 10),
+                                        pw.Text("Listed Date",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.Text(widget.listedDate,
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                        pw.SizedBox(height: 10),
+                                        pw.Text("Completion Date",
+                                            style: pw.TextStyle(
+                                                font: tionsbold,
+                                                color: PdfColors.black,
+                                                fontWeight: pw.FontWeight.bold,
+                                                fontSize: 15)),
+                                        pw.Text(widget.CompletionDate,
+                                            style: pw.TextStyle(
+                                                color: PdfColors.black,
+                                                font: tionsregular,
+                                                fontSize: 15)),
+                                      ])
+                                ]),
+                            pw.SizedBox(height: 10),
+                            pw.Container(height: 5, color: PdfColors.blue200),
+                            pw.SizedBox(height: 10),
+                            pw.Row(children: [
+                              pw.Text("Services Details",
+                                  style: pw.TextStyle(
+                                      color: PdfColors.indigo,
+                                      fontWeight: pw.FontWeight.bold,
+                                      fontSize: 18)),
                             ]),
-                        pw.SizedBox(height: 10),
-                        pw.Container(height: 5, color: PdfColors.blue200),
-                        pw.SizedBox(height: 10),
-                        pw.Row(children: [
-                          pw.Text("Services Details",
-                              style: pw.TextStyle(
-                                  color: PdfColors.indigo,
-                                  fontWeight: pw.FontWeight.bold,
-                                  fontSize: 18)),
-                        ]),
-                        pw.SizedBox(height: 5),
-                        pw.Container(
-                            height: 40,
-                            color: PdfColors.blue200,
-                            child: pw.Padding(
-                                padding:
+                            pw.SizedBox(height: 5),
+                            pw.Container(
+                                height: 40,
+                                color: PdfColors.blue200,
+                                child: pw.Padding(
+                                    padding:
                                     const pw.EdgeInsets.symmetric(horizontal: 10),
+                                    child: pw.Row(
+                                        mainAxisAlignment:
+                                        pw.MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          pw.Container(
+                                            width: 150,
+                                            child:  pw.Text("Description",
+                                                style: pw.TextStyle(
+                                                    font: tionsbold,
+                                                    color: PdfColors.black,
+                                                    fontWeight: pw.FontWeight.bold,
+                                                    fontSize: 15)),
+                                          ),
+                                          pw.Text("Amount",
+                                              style: pw.TextStyle(
+                                                  font: tionsbold,
+                                                  color: PdfColors.black,
+                                                  fontWeight: pw.FontWeight.bold,
+                                                  fontSize: 15))
+                                        ]))),
+                            pw.SizedBox(height: 10),
+                            pw.Padding(
+                                padding: const pw.EdgeInsets.symmetric(horizontal: 10),
                                 child: pw.Row(
                                     mainAxisAlignment:
-                                        pw.MainAxisAlignment.spaceBetween,
+                                    pw.MainAxisAlignment.spaceBetween,
                                     children: [
-                                     pw.Container(
-                                      width: 150,
-                                      child:  pw.Text("Description",
+                                      pw.Text(widget.title,
                                           style: pw.TextStyle(
                                               font: tionsbold,
                                               color: PdfColors.black,
                                               fontWeight: pw.FontWeight.bold,
                                               fontSize: 15)),
-                                     ),
-                                      pw.Text("Amount",
+                                      pw.Text(widget.Price,
                                           style: pw.TextStyle(
                                               font: tionsbold,
                                               color: PdfColors.black,
                                               fontWeight: pw.FontWeight.bold,
                                               fontSize: 15))
-                                    ]))),
-                        pw.SizedBox(height: 10),
-                        pw.Padding(
-                            padding: const pw.EdgeInsets.symmetric(horizontal: 10),
-                            child: pw.Row(
-                                mainAxisAlignment:
+                                    ])),
+                            pw.SizedBox(height: 50),
+                            pw.Divider(thickness: 0.5),
+                            pw.Padding(
+                                padding: const pw.EdgeInsets.symmetric(horizontal: 10),
+                                child: pw.Row(
+                                    mainAxisAlignment:
                                     pw.MainAxisAlignment.spaceBetween,
-                                children: [
-                                  pw.Text(widget.title,
-                                      style: pw.TextStyle(
-                                          font: tionsbold,
-                                          color: PdfColors.black,
-                                          fontWeight: pw.FontWeight.bold,
-                                          fontSize: 15)),
-                                  pw.Text(widget.Price,
-                                      style: pw.TextStyle(
-                                          font: tionsbold,
-                                          color: PdfColors.black,
-                                          fontWeight: pw.FontWeight.bold,
-                                          fontSize: 15))
-                                ])),
-                        pw.SizedBox(height: 50),
-                        pw.Divider(thickness: 0.5),
-                        pw.Padding(
-                            padding: const pw.EdgeInsets.symmetric(horizontal: 10),
-                            child: pw.Row(
-                                mainAxisAlignment:
-                                    pw.MainAxisAlignment.spaceBetween,
-                                children: [
-                                  pw.Text("Total: ",
-                                      style: pw.TextStyle(
-                                          font: tionsbold,
-                                          color: PdfColors.black,
-                                          fontWeight: pw.FontWeight.bold,
-                                          fontSize: 15)),
-                                  pw.Text("Rs.${widget.Price}",
-                                      style: pw.TextStyle(
-                                          font: tionsbold,
-                                          color: PdfColors.black,
-                                          fontWeight: pw.FontWeight.bold,
-                                          fontSize: 15))
-                                ])),
-                        pw.SizedBox(height: 100),
-                        pw.Text(
-                            "This is dummy invoice generated by 'JOB SEEKER APP' for education purpose only...",
-                            style: pw.TextStyle(
-                                color: PdfColors.black,
-                                font: tionsregular,
-                                fontSize: 10)),
-                      ]))
-                ]));
+                                    children: [
+                                      pw.Text("Total: ",
+                                          style: pw.TextStyle(
+                                              font: tionsbold,
+                                              color: PdfColors.black,
+                                              fontWeight: pw.FontWeight.bold,
+                                              fontSize: 15)),
+                                      pw.Text("Rs.${widget.Price}",
+                                          style: pw.TextStyle(
+                                              font: tionsbold,
+                                              color: PdfColors.black,
+                                              fontWeight: pw.FontWeight.bold,
+                                              fontSize: 15))
+                                    ])),
+                            pw.SizedBox(height: 100),
+                            pw.Text(
+                                "This is dummy invoice generated by 'JOB SEEKER APP' for education purpose only...",
+                                style: pw.TextStyle(
+                                    color: PdfColors.black,
+                                    font: tionsregular,
+                                    fontSize: 10)),
+                          ]))
+                    ]));
+              },
+            ));
+            await Printing.layoutPdf(
+                usePrinterSettings: true,
+                name: "Freelance Invoice".toString(),
+                onLayout: (PdfPageFormat format) async {
+                  return doc.save();
+                });
           },
-        ));
-        await Printing.layoutPdf(
-            usePrinterSettings: true,
-            name: "Freelance Invoice".toString(),
-            onLayout: (PdfPageFormat format) async {
-              return doc.save();
-            });
-      },
-        child: const Icon(Icons.download,color: Colors.white,)),
+          child: const Icon(Icons.download,color: Colors.white,)),
     );
   }
 }

@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_list_pick/country_list_pick.dart';
-
 import 'package:country_picker/country_picker.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:file_picker/file_picker.dart';
@@ -13,8 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
-
-import '../Themes/Themes.dart';
+import '../../../Themes/Themes.dart';
 import '../ViewPdf.dart';
 import 'LoginScreen.dart';
 
@@ -93,9 +91,9 @@ class _SkillsGatherState extends State<SkillsGather> {
                           filepath == ""
                               ? Text("Please Upload Image")
                               : CircleAvatar(
-                                  radius: 100,
-                                  backgroundImage: FileImage(File(filepath)),
-                                ),
+                            radius: 100,
+                            backgroundImage: FileImage(File(filepath)),
+                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -140,62 +138,62 @@ class _SkillsGatherState extends State<SkillsGather> {
                           ),
                           Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
+                              const EdgeInsets.symmetric(horizontal: 50),
                               child: isResumeUploaded
                                   ? Container(
-                                      height: 30,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: lightColorScheme.primary)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5),
-                                        child: InkWell(
-                                            onTap: () {
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ViewPdf(
-                                                            url: resumeLink,
-                                                          )));
-                                            },
-                                            child: Text(
-                                              resumeLink,
-                                              overflow: TextOverflow.ellipsis,
-                                            )),
-                                      ),
-                                    )
+                                height: 30,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: lightColorScheme.primary)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ViewPdf(
+                                                      url: resumeLink,
+                                                    )));
+                                      },
+                                      child: Text(
+                                        resumeLink,
+                                        overflow: TextOverflow.ellipsis,
+                                      )),
+                                ),
+                              )
                                   : MaterialButton(
-                                      elevation: 0,
-                                      height: 50,
-                                      // minWidth: 100,
-                                      color: lightColorScheme.primary,
-                                      onPressed: () async {
-                                        setState(() {
-                                          status = "Started";
-                                        });
-                                        FilePickerResult? result =
-                                            await FilePicker.platform
-                                                .pickFiles();
-                                        if (result != null) {
-                                          File pick = File(result
-                                              .files.single.path
-                                              .toString());
-                                          var file = pick.readAsBytesSync();
-                                          var pdfFile = FirebaseStorage.instance
-                                              .ref()
-                                              .child("Resume")
-                                              .child("Resume ${user.email}");
-                                          UploadTask task =
-                                              pdfFile.putData(file);
-                                          TaskSnapshot snapshot = await task;
-                                          String url = await snapshot.ref
-                                              .getDownloadURL();
-                                          await FirebaseFirestore.instance
-                                              .collection("Users")
-                                              .doc(user.email)
-                                              .update({"ResumeLink": url}).then(
-                                                  (value) {
+                                  elevation: 0,
+                                  height: 50,
+                                  // minWidth: 100,
+                                  color: lightColorScheme.primary,
+                                  onPressed: () async {
+                                    setState(() {
+                                      status = "Started";
+                                    });
+                                    FilePickerResult? result =
+                                    await FilePicker.platform
+                                        .pickFiles();
+                                    if (result != null) {
+                                      File pick = File(result
+                                          .files.single.path
+                                          .toString());
+                                      var file = pick.readAsBytesSync();
+                                      var pdfFile = FirebaseStorage.instance
+                                          .ref()
+                                          .child("Resume")
+                                          .child("Resume ${user.email}");
+                                      UploadTask task =
+                                      pdfFile.putData(file);
+                                      TaskSnapshot snapshot = await task;
+                                      String url = await snapshot.ref
+                                          .getDownloadURL();
+                                      await FirebaseFirestore.instance
+                                          .collection("Users")
+                                          .doc(user.email)
+                                          .update({"ResumeLink": url}).then(
+                                              (value) {
                                             setState(() {
                                               resumeLink = url.toString();
                                               print(resumeLink);
@@ -203,30 +201,30 @@ class _SkillsGatherState extends State<SkillsGather> {
                                               status = "Done";
                                             });
                                           });
-                                        } else {
-                                          setState(() {
-                                            status = "Canceled";
-                                          });
-                                        }
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.file_open,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            "Upload Resume",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          )
-                                        ],
-                                      ))),
+                                    } else {
+                                      setState(() {
+                                        status = "Canceled";
+                                      });
+                                    }
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.file_open,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Upload Resume",
+                                        style:
+                                        TextStyle(color: Colors.white),
+                                      )
+                                    ],
+                                  ))),
                           SizedBox(
                             height: 20,
                           ),
@@ -243,11 +241,11 @@ class _SkillsGatherState extends State<SkillsGather> {
                                     controller: BirthDateController,
                                     decoration: InputDecoration(
                                         prefixIcon:
-                                            Icon(Icons.calendar_month_outlined),
+                                        Icon(Icons.calendar_month_outlined),
                                         hintText: 'Birth Date',
                                         border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(15))),
+                                            BorderRadius.circular(15))),
                                     onTap: () async {
                                       DateTime? pickedDate = await showDatePicker(
                                           context: context,
@@ -260,8 +258,8 @@ class _SkillsGatherState extends State<SkillsGather> {
                                         print(
                                             pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                                         String formattedDate =
-                                            DateFormat('dd-MM-yyyy')
-                                                .format(pickedDate);
+                                        DateFormat('dd-MM-yyyy')
+                                            .format(pickedDate);
                                         print(
                                             formattedDate); //formatted date output using intl package =>  2021-03-16
                                         setState(() {
@@ -299,12 +297,12 @@ class _SkillsGatherState extends State<SkillsGather> {
                                           fillColor: MaterialStateProperty
                                               .resolveWith<Color>(
                                                   (Set<MaterialState> states) {
-                                            if (states.contains(
-                                                MaterialState.disabled)) {
-                                              return Colors.white;
-                                            }
-                                            return Colors.white;
-                                          }),
+                                                if (states.contains(
+                                                    MaterialState.disabled)) {
+                                                  return Colors.white;
+                                                }
+                                                return Colors.white;
+                                              }),
                                           value: "Male",
                                           groupValue: _gender,
                                           onChanged: (val) {
@@ -321,12 +319,12 @@ class _SkillsGatherState extends State<SkillsGather> {
                                           fillColor: MaterialStateProperty
                                               .resolveWith<Color>(
                                                   (Set<MaterialState> states) {
-                                            if (states.contains(
-                                                MaterialState.disabled)) {
-                                              return Colors.white;
-                                            }
-                                            return Colors.white;
-                                          }),
+                                                if (states.contains(
+                                                    MaterialState.disabled)) {
+                                                  return Colors.white;
+                                                }
+                                                return Colors.white;
+                                              }),
                                           value: "Female",
                                           groupValue: _gender,
                                           onChanged: (val) {
@@ -366,7 +364,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color:
-                                                    lightColorScheme.primary),
+                                                lightColorScheme.primary),
                                           ))),
                                   context: context,
                                   onSelect: (Country country) {
@@ -381,29 +379,29 @@ class _SkillsGatherState extends State<SkillsGather> {
                               },
                               child: selectedCountry == null
                                   ? Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Select Country",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20),
-                                          ),
-                                          Icon(
-                                            Icons
-                                                .arrow_drop_down_circle_outlined,
-                                            color: Colors.white,
-                                            size: 30,
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  : Text(selectedCountry.toString(),
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Select Country",
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 20)),
+                                          color: Colors.white,
+                                          fontSize: 20),
+                                    ),
+                                    Icon(
+                                      Icons
+                                          .arrow_drop_down_circle_outlined,
+                                      color: Colors.white,
+                                      size: 30,
+                                    )
+                                  ],
+                                ),
+                              )
+                                  : Text(selectedCountry.toString(),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
                             ),
                           ),
                           SizedBox(
@@ -460,19 +458,19 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       ),
                                       items: items
                                           .map((item) =>
-                                              DropdownMenuItem<String>(
-                                                value: item,
-                                                child: Text(
-                                                  item,
-                                                  style: const TextStyle(
-                                                    fontSize: 20,
-                                                    // fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
-                                                  ),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ))
+                                          DropdownMenuItem<String>(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                // fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                              overflow:
+                                              TextOverflow.ellipsis,
+                                            ),
+                                          ))
                                           .toList(),
                                       value: selectedSkill1,
                                       onChanged: (value) {
@@ -508,7 +506,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       ),
                                       dropdownElevation: 8,
                                       scrollbarRadius:
-                                          const Radius.circular(40),
+                                      const Radius.circular(40),
                                       scrollbarThickness: 6,
                                       scrollbarAlwaysShow: true,
                                       offset: const Offset(0, -10),
@@ -564,19 +562,19 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       ),
                                       items: items
                                           .map((item) =>
-                                              DropdownMenuItem<String>(
-                                                value: item,
-                                                child: Text(
-                                                  item,
-                                                  style: const TextStyle(
-                                                    fontSize: 20,
-                                                    // fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
-                                                  ),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ))
+                                          DropdownMenuItem<String>(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                // fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                              overflow:
+                                              TextOverflow.ellipsis,
+                                            ),
+                                          ))
                                           .toList(),
                                       value: selectedSkill2,
                                       onChanged: (value) {
@@ -611,7 +609,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       ),
                                       dropdownElevation: 8,
                                       scrollbarRadius:
-                                          const Radius.circular(40),
+                                      const Radius.circular(40),
                                       scrollbarThickness: 6,
                                       scrollbarAlwaysShow: true,
                                       offset: const Offset(0, -10),
@@ -667,19 +665,19 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       ),
                                       items: items
                                           .map((item) =>
-                                              DropdownMenuItem<String>(
-                                                value: item,
-                                                child: Text(
-                                                  item,
-                                                  style: const TextStyle(
-                                                    fontSize: 20,
-                                                    // fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
-                                                  ),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ))
+                                          DropdownMenuItem<String>(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                // fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                              overflow:
+                                              TextOverflow.ellipsis,
+                                            ),
+                                          ))
                                           .toList(),
                                       value: selectedSkill3,
                                       onChanged: (value) {
@@ -713,7 +711,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       ),
                                       dropdownElevation: 8,
                                       scrollbarRadius:
-                                          const Radius.circular(40),
+                                      const Radius.circular(40),
                                       scrollbarThickness: 6,
                                       scrollbarAlwaysShow: true,
                                       offset: const Offset(0, -10),
@@ -839,16 +837,16 @@ class _SkillsGatherState extends State<SkillsGather> {
                         });
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content:
-                                Text("Uploading Information Please Wait...")));
+                            Text("Uploading Information Please Wait...")));
                         Reference referenceRoot =
-                            FirebaseStorage.instance.ref();
+                        FirebaseStorage.instance.ref();
                         Reference referenceDirImages =
-                            referenceRoot.child("ProfileImages");
+                        referenceRoot.child("ProfileImages");
                         Reference referenceImageToUpload = referenceDirImages
                             .child("ProfileImage ${widget.name}");
                         await referenceImageToUpload.putFile(File(filepath));
                         imageUrl =
-                            await referenceImageToUpload.getDownloadURL();
+                        await referenceImageToUpload.getDownloadURL();
                         print("Hii ${imageUrl}");
                         user.updatePhotoURL(imageUrl);
                         FirebaseFirestore.instance
@@ -877,38 +875,38 @@ class _SkillsGatherState extends State<SkillsGather> {
             ),
             status == "Started"
                 ? Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    color: Colors.black45,
-                    child: Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
-                        height: 250,
-                        width: 250,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              child: LinearProgressIndicator(),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Uploading Resume...",
-                              style: TextStyle(
-                                  color: lightColorScheme.primary,
-                                  fontSize: 15),
-                            )
-                          ],
-                        ),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.black45,
+              child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  height: 250,
+                  width: 250,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                        const EdgeInsets.symmetric(horizontal: 15),
+                        child: LinearProgressIndicator(),
                       ),
-                    ),
-                  )
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Uploading Resume...",
+                        style: TextStyle(
+                            color: lightColorScheme.primary,
+                            fontSize: 15),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
                 : Container(),
           ],
         ));
