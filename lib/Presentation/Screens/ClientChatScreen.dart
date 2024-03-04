@@ -18,7 +18,6 @@ class ClientChatScreen extends StatefulWidget {
   @override
   State<ClientChatScreen> createState() => _ClientChatScreenState();
 }
-
 class _ClientChatScreenState extends State<ClientChatScreen> {
   final user = FirebaseAuth.instance.currentUser;
   // QuerySnapshot<Map<String, dynamic>>? ClientStream;
@@ -55,7 +54,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
   //     });
   //   });
   // }
-
   // @override
   // void initState() {
   //   // TODO: implement initState
@@ -63,7 +61,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
   //   getApplier();
   //   getClient();
   // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +69,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
         backgroundColor: Colors.transparent,
         title: Text(widget.ApplierName.toString()),
         centerTitle: true,
-
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -91,7 +87,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                     return ListView.builder(
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (BuildContext context, int index) {
-
                         return ListTile(
                           subtitle: Text("${snapshot.data.docs[index]["Time1"]} / ${snapshot.data.docs[index]["Date"]}",style: TextStyle(fontSize: 10)),
                           leading: CircleAvatar(
@@ -140,8 +135,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                         ),
                       ),
                     ),
-
-
                     GestureDetector(
                         onTap: () {
                           if(key.currentState!.validate()){
@@ -153,7 +146,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                               "Client":widget.Clientname,
                               "ClientEmail":widget.clientemail,
                               "ApplierEmail":widget.applieremail,
-
                             });
                             FirebaseFirestore.instance.collection("Chats").doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}").collection("Chat").doc("${messageController.text}${user!.email}").set({
                               "Message": messageController.text,
@@ -185,7 +177,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                               "UserPush":false
                             });
                           }
-
                         },
                         child: const Icon(Icons.send,color: Colors.white,)),
                     InkWell(
@@ -200,8 +191,6 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
           )
         ],
       ),
-
     );
   }
-
 }

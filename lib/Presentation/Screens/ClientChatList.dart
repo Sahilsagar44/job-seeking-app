@@ -34,7 +34,8 @@ class _ClientChatListState extends State<ClientChatList> {
               .snapshots(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return ListView.builder(
+              return snapshot.data!.docs.isEmpty?Center(child: Image(image: AssetImage("assets/avaters/no_data.jpg"),)):
+                ListView.builder(
                 itemCount: snapshot.data.docs.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(

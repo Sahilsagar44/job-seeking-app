@@ -77,19 +77,16 @@ class _EmployerProfileState extends State<EmployerProfile> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
                     CircleAvatar(
-                        radius: 100,
+                        radius: 90,
                         // backgroundColor: lightColorScheme.primary,
                         backgroundImage:
                         NetworkImage(user!.photoURL.toString())),

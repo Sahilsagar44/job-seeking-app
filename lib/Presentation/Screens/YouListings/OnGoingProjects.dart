@@ -66,7 +66,8 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                       .snapshots(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.hasData) {
-                      return ListView.separated(
+                      return snapshot.data!.docs.isEmpty?Center(child: Image(image: AssetImage("assets/avaters/no_data.jpg"),)):
+                        ListView.separated(
                         separatorBuilder: (context, index) => const SizedBox(
                           height: 5,
                         ),
@@ -219,7 +220,8 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                         .snapshots(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
-                        return ListView.separated(
+                        return snapshot.data!.docs.isEmpty?Center(child: Image(image: AssetImage("assets/avaters/no_data.jpg"),)):
+                          ListView.separated(
                           itemCount: snapshot.data.docs.length,
                           separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(
@@ -369,7 +371,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                           },
                         );
                       } else {
-                        return const CircularProgressIndicator();
+                        return  Center(child: CircularProgressIndicator());
                       }
                     },
                   ),
