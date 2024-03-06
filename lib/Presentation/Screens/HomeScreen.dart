@@ -1,7 +1,10 @@
 // ignore: file_names
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../Themes/Themes.dart';
 import 'ChatsList.dart';
@@ -74,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     // Future.delayed(Duration.zero,() => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You can swich mode by taping icon at topRight corner."))));
-    return Scaffold(
+    return WillPopScope(child: Scaffold(
       // appBar:AppBar(
       //   elevation: 0,
       //   title: Text("Jobs"),
@@ -186,6 +189,36 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
 
+    ), onWillPop: () =>_onBackButtonPressed(context) ,);
+  }
+  _onBackButtonPressed(BuildContext context) async {
+    bool? exitapp = await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Really ??"),
+          content: Text("Do You want to close the App??"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                if (Platform.isAndroid) {
+                  SystemNavigator.pop();
+                } else {
+                  exit(0);
+                }
+              },
+              child: Text("Yes"),
+            ),
+          ],
+        );
+      },
     );
+    return exitapp ?? false;
   }
 }

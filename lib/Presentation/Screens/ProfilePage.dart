@@ -89,19 +89,17 @@ class _ProfilePageState extends State<ProfilePage> {
               // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 20,
-                ),
+
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
                     CircleAvatar(
-                        radius: 100,
+                        radius: 90,
                         // backgroundColor: lightColorScheme.primary,
                         backgroundImage:
                         NetworkImage(user!.photoURL.toString())),
                     Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.only(right: 15),
                       child: IconButton(
                           style: IconButton.styleFrom(
                               backgroundColor: lightColorScheme.primary),
@@ -217,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -244,7 +242,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -271,7 +269,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -298,7 +296,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -325,7 +323,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,

@@ -79,7 +79,14 @@ class _ProposalScreenState extends State<ProposalScreen>
                           .snapshots(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
                         if (snapshot.hasData) {
-                          return ListView.separated(
+                          return snapshot.data!.docs.isEmpty
+                              ? Center(
+                            child: Image(
+                              image: AssetImage("assets/avaters/no_data.jpg"),
+                            ),
+                          )
+                              :
+                            ListView.separated(
                             separatorBuilder: (context, index) => SizedBox(
                               height: 5,
                             ),
@@ -157,7 +164,14 @@ class _ProposalScreenState extends State<ProposalScreen>
                           .snapshots(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
                         if (snapshot.hasData) {
-                          return ListView.separated(
+                          return snapshot.data!.docs.isEmpty
+                              ? Center(
+                            child: Image(
+                              image: AssetImage("assets/avaters/no_data.jpg"),
+                            ),
+                          )
+                              :
+                            ListView.separated(
                             separatorBuilder: (context, index) => SizedBox(
                               height: 10,
                             ),
@@ -270,7 +284,14 @@ class _ProposalScreenState extends State<ProposalScreen>
                           .snapshots(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
                         if (snapshot.hasData) {
-                          return ListView.separated(
+                          return snapshot.data!.docs.isEmpty
+                              ? Center(
+                            child: Image(
+                              image: AssetImage("assets/avaters/no_data.jpg"),
+                            ),
+                          )
+                              :
+                            ListView.separated(
                             separatorBuilder: (context, index) => SizedBox(
                               height: 10,
                             ),

@@ -403,7 +403,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       color: lightColorScheme.primary,
                                       fontSize: 15),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),

@@ -1,7 +1,10 @@
 // ignore: file_names
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../Themes/Themes.dart';
 import 'ClientChatList.dart';
 import 'EmployerProfile.dart';
@@ -55,7 +58,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   final PageController _myPage = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return WillPopScope(child: Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         color: lightColorScheme.background,
@@ -167,6 +170,37 @@ class _AdminDashboardState extends State<AdminDashboard> {
           ),
         ),
       ),
+    ), onWillPop: () => _onBackButtonPressed(context),);
+      
+  }
+  _onBackButtonPressed(BuildContext context) async {
+    bool? exitapp = await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Really ??"),
+          content: Text("Do You want to close the App??"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                if (Platform.isAndroid) {
+                  SystemNavigator.pop();
+                } else {
+                  exit(0);
+                }
+              },
+              child: Text("Yes"),
+            ),
+          ],
+        );
+      },
     );
+    return exitapp ?? false;
   }
 }

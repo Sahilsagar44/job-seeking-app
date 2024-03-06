@@ -26,7 +26,14 @@ class _SavedProjectsState extends State<SavedProjects> {
           stream: FirebaseFirestore.instance.collection("Users").doc(user!.email).collection("Saved").snapshots(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if(snapshot.hasData){
-              return  ListView.separated(
+              return snapshot.data!.docs.isEmpty
+                  ? Center(
+                    child: Image(
+                                    image: AssetImage("assets/avaters/no_data.jpg"),
+                                  ),
+                  )
+                  :
+                ListView.separated(
                 separatorBuilder: (context, index) => SizedBox(
                   height: 10,
                 ),

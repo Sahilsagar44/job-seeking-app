@@ -140,7 +140,14 @@ class _JobsScreenState extends State<JobsScreen> {
                     .snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
-                    return ListView.separated(
+                    return snapshot.data!.docs.isEmpty
+                        ? Center(
+                      child: Image(
+                        image: AssetImage("assets/avaters/no_data.jpg"),
+                      ),
+                    )
+                        :
+                      ListView.separated(
                       separatorBuilder: (context, index) => const SizedBox(
                         height: 5,
                       ),

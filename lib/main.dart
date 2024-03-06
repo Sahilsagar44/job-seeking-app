@@ -1,9 +1,12 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled2/Presentation/Screens/SignInScreens/Splash_Screen.dart';
 
+import 'Presentation/Screens/SignInScreens/Welcome_Screen.dart';
 import 'Providers/AuthProvider.dart';
 // import your LoginScreen class here
 import 'Presentation/Screens/SignInScreens/LoginScreen.dart';
@@ -29,12 +32,11 @@ class MyApp extends StatelessWidget {
       create: (context) => Auth(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: const Main(),
+        home: const Welcome_Screen(),
       ),
     );
   }
@@ -68,7 +70,7 @@ class _MainState extends State<Main> {
             child: Text("Something Went Wrong"),
           );
         } else {
-          return const LoginScreen(); // Use your LoginScreen here
+          return const SplaceScreen(); // Use your LoginScreen here
         }
       },
     );
