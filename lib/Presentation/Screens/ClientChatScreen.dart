@@ -222,20 +222,20 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                           Icons.send,
                           color: Colors.white,
                         )),
-                    InkWell(
-                        onTap: () {
-                          Get.to(
-                              FreelancerDetails(
-                                  email: widget.applieremail,
-                                  title: widget.title),
-                              transition: Transition.fadeIn,
-                              duration: Duration(milliseconds: 500));
-                        },
-                        child: const Text(
-                          "Hire",
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: "Roboto-Bold"),
-                        )),
+                    // InkWell(
+                    //     onTap: () {
+                    //       Get.to(
+                    //           FreelancerDetails(
+                    //               email: widget.applieremail,
+                    //               title: widget.title),
+                    //           transition: Transition.fadeIn,
+                    //           duration: Duration(milliseconds: 500));
+                    //     },
+                    //     child: const Text(
+                    //       "Hire",
+                    //       style: TextStyle(
+                    //           color: Colors.white, fontFamily: "Roboto-Bold"),
+                    //     )),
                   ]
                 ),
               ),

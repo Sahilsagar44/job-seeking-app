@@ -63,7 +63,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
 
         name = userStream!.docs[0]["name"].toString();
         email = userStream!.docs[0]["email"].toString();
-        imageUrl = userStream!.docs[0]["ProfileImage"].toString();//aa line cmt karvi
+        // imageUrl = userStream!.docs[0]["ProfileImage"].toString();//aa line cmt karvi
         country = userStream!.docs[0]["country"].toString();
         phone = userStream!.docs[0]["phone"].toString();
         gender = userStream!.docs[0]["gender"].toString();
@@ -83,7 +83,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
 
         clientname = userStream!.docs[0]["name"].toString();
         clientemail = userStream!.docs[0]["email"].toString();
-        clientimageUrl = userStream!.docs[0]["ProfileImage"].toString();//aa line cmt karvi
+        // clientimageUrl = userStream!.docs[0]["ProfileImage"].toString();//aa line cmt karvi
         clientcountry = userStream!.docs[0]["country"].toString();
         clientphone = userStream!.docs[0]["phone"].toString();
         clientgender = userStream!.docs[0]["gender"].toString();
