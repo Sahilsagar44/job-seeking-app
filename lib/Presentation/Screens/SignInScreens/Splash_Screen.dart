@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled2/Presentation/Screens/SignInScreens/LoginScreen.dart';
 
+import '../../../Themes/Themes.dart';
 import '../../../main.dart';
 
 class SplaceScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class _SplaceScreenState extends State<SplaceScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Main(),
+                                builder: (context) => LoginScreen(),
                               ));
                         },
                         child: Text(
@@ -175,7 +176,7 @@ class _SplaceScreenState extends State<SplaceScreen> {
                           borderRadius: BorderRadius.circular(20)),
                       height: 60,
                       minWidth: 350,
-                      color: Color(0xff557688),
+                      color: lightColorScheme.primary,
                       child: selected == 2 ? Text("Get Started") : Text("Next"),
                       onPressed: () {
                         if (selected != 2) {

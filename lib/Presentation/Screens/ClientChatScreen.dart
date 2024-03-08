@@ -13,11 +13,19 @@ class ClientChatScreen extends StatefulWidget {
   final String clientemail;
   final String ApplierName;
   final String Clientname;
-  ClientChatScreen({Key? key, required this.title, required this.applieremail, required this.clientemail, required this.ApplierName, required this.Clientname}) : super(key: key);
+  ClientChatScreen(
+      {Key? key,
+      required this.title,
+      required this.applieremail,
+      required this.clientemail,
+      required this.ApplierName,
+      required this.Clientname})
+      : super(key: key);
 
   @override
   State<ClientChatScreen> createState() => _ClientChatScreenState();
 }
+
 class _ClientChatScreenState extends State<ClientChatScreen> {
   final user = FirebaseAuth.instance.currentUser;
   // QuerySnapshot<Map<String, dynamic>>? ClientStream;
@@ -79,8 +87,10 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection("Chats")
-                    .doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}")
-                    .collection("Chat").orderBy("Time")
+                    .doc(
+                        "${widget.title} ${widget.ApplierName} ${widget.Clientname}")
+                    .collection("Chat")
+                    .orderBy("Time")
                     .snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
@@ -88,12 +98,20 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                       itemCount: snapshot.data.docs.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
-                          subtitle: Text("${snapshot.data.docs[index]["Time1"]} / ${snapshot.data.docs[index]["Date"]}",style: TextStyle(fontSize: 10)),
+                          subtitle: Text(
+                              "${snapshot.data.docs[index]["Time1"]} / ${snapshot.data.docs[index]["Date"]}",
+                              style: TextStyle(fontSize: 10)),
                           leading: CircleAvatar(
-                            child: snapshot.data.docs[index]["SendBy"] == FirebaseAuth.instance.currentUser!.email ? Text("You") : Text(snapshot.data.docs[index]["SendBy"].toString().substring(0,1).toUpperCase()),
+                            child: snapshot.data.docs[index]["SendBy"] ==
+                                    FirebaseAuth.instance.currentUser!.email
+                                ? Text("You")
+                                : Text(snapshot.data.docs[index]["SendBy"]
+                                    .toString()
+                                    .substring(0, 1)
+                                    .toUpperCase()),
                           ),
-                          title:
-                          Text(snapshot.data.docs[index]["Message"].toString()),
+                          title: Text(
+                              snapshot.data.docs[index]["Message"].toString()),
                         );
                       },
                     );
@@ -106,8 +124,9 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: lightColorScheme.primary,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))
+              color: lightColorScheme.primary,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15), topRight: Radius.circular(15)),
             ),
             height: 55,
             child: Form(
@@ -121,7 +140,7 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                       width: 250,
                       child: TextFormField(
                         validator: (value) {
-                          if(value!.isEmpty){
+                          if (value!.isEmpty) {
                             return "Can't be Empty";
                           }
                         },
@@ -131,60 +150,93 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                         decoration: const InputDecoration(
                             hintStyle: TextStyle(color: Colors.white),
                             border: InputBorder.none,
-                            hintText: "Type Message Here..."
-                        ),
+                            hintText: "Type Message Here..."),
                       ),
                     ),
                     GestureDetector(
                         onTap: () {
-                          if(key.currentState!.validate()){
-                            final String dateformat = DateFormat('dd-MM-y').format(DateTime.now());
-                            final String format = DateFormat('hh:mm a').format(DateTime.now());
-                            FirebaseFirestore.instance.collection("Chats").doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}").set({
-                              "Applier":widget.ApplierName,
-                              "Title":widget.title,
-                              "Client":widget.Clientname,
-                              "ClientEmail":widget.clientemail,
-                              "ApplierEmail":widget.applieremail,
+                          if (key.currentState!.validate()) {
+                            final String dateformat =
+                                DateFormat('dd-MM-y').format(DateTime.now());
+                            final String format =
+                                DateFormat('hh:mm a').format(DateTime.now());
+                            FirebaseFirestore.instance
+                                .collection("Chats")
+                                .doc(
+                                    "${widget.title} ${widget.ApplierName} ${widget.Clientname}")
+                                .set({
+                              "Applier": widget.ApplierName,
+                              "Title": widget.title,
+                              "Client": widget.Clientname,
+                              "ClientEmail": widget.clientemail,
+                              "ApplierEmail": widget.applieremail,
                             });
-                            FirebaseFirestore.instance.collection("Chats").doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}").collection("Chat").doc("${messageController.text}${user!.email}").set({
+                            FirebaseFirestore.instance
+                                .collection("Chats")
+                                .doc(
+                                    "${widget.title} ${widget.ApplierName} ${widget.Clientname}")
+                                .collection("Chat")
+                                .doc("${messageController.text}${user!.email}")
+                                .set({
                               "Message": messageController.text,
                               "SendBy": user!.email,
                               "Time": DateTime.now().microsecondsSinceEpoch,
-                              "Time1":format,
+                              "Time1": format,
                               "Date": dateformat
                             }).then((value) {
                               setState(() {
                                 messageController.text = "";
                               });
                             });
-                            FirebaseFirestore.instance.collection("Users").doc(widget.applieremail).collection("Notification").doc("Chat ${widget.Clientname}").set({
-                              "Message":"You have recived messeged from ${widget.Clientname}",
-                              "MarkAsRead":false,
-                              "Time":DateTime.now().microsecondsSinceEpoch,
-                              "Time1":format,
-                              "Type":"Chat",
-                              "Applier":widget.ApplierName,
-                              "Client":widget.Clientname,
-                              "Title":widget.title,
-                              "ApplierEmail":widget.applieremail,
-                              "ClientEmail":widget.clientemail
+                            FirebaseFirestore.instance
+                                .collection("Users")
+                                .doc(widget.applieremail)
+                                .collection("Notification")
+                                .doc("Chat ${widget.Clientname}")
+                                .set({
+                              "Message":
+                                  "You have recived messeged from ${widget.Clientname}",
+                              "MarkAsRead": false,
+                              "Time": DateTime.now().microsecondsSinceEpoch,
+                              "Time1": format,
+                              "Type": "Chat",
+                              "Applier": widget.ApplierName,
+                              "Client": widget.Clientname,
+                              "Title": widget.title,
+                              "ApplierEmail": widget.applieremail,
+                              "ClientEmail": widget.clientemail
                             });
-                            FirebaseFirestore.instance.collection("Chats").doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}").update({
-                              "ClientPush":true
-                            });
-                            FirebaseFirestore.instance.collection("Chats").doc("${widget.title} ${widget.ApplierName} ${widget.Clientname}").update({
-                              "UserPush":false
-                            });
+                            FirebaseFirestore.instance
+                                .collection("Chats")
+                                .doc(
+                                    "${widget.title} ${widget.ApplierName} ${widget.Clientname}")
+                                .update({"ClientPush": true});
+                            FirebaseFirestore.instance
+                                .collection("Chats")
+                                .doc(
+                                    "${widget.title} ${widget.ApplierName} ${widget.Clientname}")
+                                .update({"UserPush": false});
                           }
                         },
-                        child: const Icon(Icons.send,color: Colors.white,)),
+                        child: const Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        )),
                     InkWell(
                         onTap: () {
-                          Get.to(FreelancerDetails(email: widget.applieremail, title: widget.title),transition: Transition.fadeIn,duration: Duration(milliseconds: 500));
+                          Get.to(
+                              FreelancerDetails(
+                                  email: widget.applieremail,
+                                  title: widget.title),
+                              transition: Transition.fadeIn,
+                              duration: Duration(milliseconds: 500));
                         },
-                        child: const Text("Hire",style: TextStyle(color: Colors.white,fontFamily: "Roboto-Bold"),))
-                  ],
+                        child: const Text(
+                          "Hire",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "Roboto-Bold"),
+                        )),
+                  ]
                 ),
               ),
             ),

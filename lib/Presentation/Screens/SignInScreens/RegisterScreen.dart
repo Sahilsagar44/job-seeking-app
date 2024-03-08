@@ -25,7 +25,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  bool isVisible = true;
+  bool isVisible = false;
   String? role;
   @override
   void initState() {
@@ -259,15 +259,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   }
                                 },
                                 keyboardType: TextInputType.visiblePassword,
-                                obscureText: isVisible,
+                                obscureText: !isVisible,
                                 decoration: InputDecoration(
                                   suffix: GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          isVisible = false;
+                                          isVisible = !isVisible;
                                         });
                                       },
-                                      child: Icon(Icons.remove_red_eye_outlined)),
+                                      child: Icon(isVisible?Icons.remove_red_eye_outlined:Icons.visibility_off)),
                                   hintText: "Password",
                                   label: Text(
                                     "Password",

@@ -78,7 +78,7 @@ bool isFinished=false;
       'description': '${widget.freelancerEmail}',
       'retry': {'enabled': true, 'max_count': 1},
       'send_sms_hash': true,
-      'prefill': {'contact': '8866343453', 'email': 'jasmitp00@gmail.com'},
+      'prefill': {'contact': '8866343453', 'email': '${widget.employeerEmail}'},
       'external': {
         'wallets': ['paytm']
       }

@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:text_neon_widget/text_neon_widget.dart';
 import 'package:untitled2/main.dart';
 
+import '../../../Themes/Themes.dart';
 import 'Splash_Screen.dart';
 
 
@@ -20,7 +22,6 @@ class _Welcome_ScreenState extends State<Welcome_Screen> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                //GetStorage().read('uid') == null ? SplaceScreen() : Register_screen(),
                 Main(),
           )),
     );
@@ -30,8 +31,14 @@ class _Welcome_ScreenState extends State<Welcome_Screen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image(
-          image: AssetImage("assets/avaters/app_logo.jpeg"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(
+              image: AssetImage("assets/Backgrounds/img.png"),height: 200,
+            ),
+            SizedBox(height: 10,),
+           Text("JOB HUNT",style: TextStyle(fontSize: 30,color:  lightColorScheme.primary,fontWeight: FontWeight.bold),),]
         ),
       ),
     );
