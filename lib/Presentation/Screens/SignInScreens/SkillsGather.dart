@@ -44,12 +44,29 @@ class _SkillsGatherState extends State<SkillsGather> {
   }
 
   final List<String> items = [
-    'Python Developer',
+    'C',
+    'C++',
     'Flutter Developer',
     'Frontend Developer',
     'Backend Developer',
     'Angular Developer',
     'Web Development',
+    'JAVA',
+    'Dart',
+    'Python',
+    'Java Script',
+    'NodeJS',
+    'HTML',
+    'CSS',
+    'Kotlin',
+    'PHP',
+    'Swift',
+    'ASP.net',
+    'C#',
+    'SQL',
+    'Ruby',
+    'TypeScript',
+    'Python Developer',
     'Android Development',
     'Ios Development',
     'Data Science',
@@ -64,7 +81,7 @@ class _SkillsGatherState extends State<SkillsGather> {
     'UI & UX Designer',
     'Analyser',
     'Graphic Designer',
-    'FullStack Developer',
+    'FullStack Developer'
   ];
 
   String? selectedSkill1;

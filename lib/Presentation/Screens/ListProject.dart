@@ -23,6 +23,11 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
   final List<String> items = [
     'C',
     'C++',
+    'Flutter Developer',
+    'Frontend Developer',
+    'Backend Developer',
+    'Angular Developer',
+    'Web Development',
     'JAVA',
     'Dart',
     'Python',
@@ -38,6 +43,22 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
     'SQL',
     'Ruby',
     'TypeScript',
+    'Python Developer',
+    'Android Development',
+    'Ios Development',
+    'Data Science',
+    'Machine Learning',
+    'Artificial Intelligence',
+    'Big Data Technologies',
+    'Cyber-security',
+    'Software Developer',
+    'Php Developers',
+    'Software Tester',
+    'React Developer',
+    'UI & UX Designer',
+    'Analyser',
+    'Graphic Designer',
+    'FullStack Developer'
 
 
   ];
