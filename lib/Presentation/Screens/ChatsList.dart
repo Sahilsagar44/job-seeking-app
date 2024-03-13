@@ -34,7 +34,7 @@ class _ChatListState extends State<ChatList> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Your Chats",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold"),),
+        title: Text("Your Chats",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold"),),
       ),
       body: isLoading ? const Center(child: CircularProgressIndicator(),) :
       StreamBuilder(

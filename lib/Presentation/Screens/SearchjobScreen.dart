@@ -34,7 +34,7 @@ class _JobSearchScreenState extends State<JobSearchScreen> {
                             hintText: "Search Here..."),
                         onChanged: (value) {
                           setState(() {
-                            search = value;
+                            search = value.toLowerCase().trim();
                             print(search);
                           });
                         },

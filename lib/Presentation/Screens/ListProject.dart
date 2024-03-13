@@ -21,27 +21,25 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
   String? selectedSkill2;
   String? selectedSkill3;
   final List<String> items = [
-    'Python Developer',
-    'Flutter Developer',
-    'Frontend Developer',
-    'Backend Developer',
-    'Angular Developer',
-    'Web Development',
-    'Android Development',
-    'Ios Development',
-    'Data Science',
-    'Machine Learning',
-    'Artificial Intelligence',
-    'Big Data Technologies',
-    'Cyber-security',
-    'Software Developer',
-    'Php Developers',
-    'Software Tester',
-    'React Developer',
-    'UI & UX Designer',
-    'Analyser',
-    'Graphic Designer',
-    'FullStack Developer',
+    'C',
+    'C++',
+    'JAVA',
+    'Dart',
+    'Python',
+    'Java Script',
+    'NodeJS',
+    'HTML',
+    'CSS',
+    'Kotlin',
+    'PHP',
+    'Swift',
+    'ASP.net',
+    'C#',
+    'SQL',
+    'Ruby',
+    'TypeScript',
+
+
   ];
   final key = GlobalKey<FormState>();
   TextEditingController titleController = TextEditingController();
@@ -84,7 +82,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
             "List Your Project",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          backgroundColor: lightColorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.background,
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -103,7 +101,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                     Text(
                       "Title",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
@@ -124,7 +122,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: Theme.of(context).colorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -132,7 +130,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                     Text(
                       "Price",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
@@ -156,7 +154,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: Theme.of(context).colorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -164,7 +162,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                     Text(
                       "Duration",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 5),
@@ -181,7 +179,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                                             .contains(MaterialState.disabled)) {
                                           return Colors.white;
                                         }
-                                        return lightColorScheme.primary;
+                                        return Theme.of(context).colorScheme.primary;
                                       }),
                                   value: "Less Than 1 Month",
                                   groupValue: _value,
@@ -206,7 +204,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                                             .contains(MaterialState.disabled)) {
                                           return Colors.white;
                                         }
-                                        return lightColorScheme.primary;
+                                        return Theme.of(context).colorScheme.primary;
                                       }),
                                   value: "1 to 3 Months",
                                   groupValue: _value,
@@ -231,7 +229,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                                             .contains(MaterialState.disabled)) {
                                           return Colors.white;
                                         }
-                                        return lightColorScheme.primary;
+                                        return Theme.of(context).colorScheme.primary;
                                       }),
                                   value: "More Than 3 Months",
                                   groupValue: _value,
@@ -257,7 +255,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                         Text(
                           "Experience ",
                           style: TextStyle(
-                              color: lightColorScheme.primary,
+                              color: Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -267,7 +265,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                         MaterialButton(
                             minWidth: 100,
                             color: experienc == "Expert"
-                                ? lightColorScheme.primary
+                                ? Theme.of(context).colorScheme.primary
                                 : Colors.white,
                             onPressed: () {
                               setState(() {
@@ -279,7 +277,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               style: TextStyle(
                                   color: experienc == "Expert"
                                       ? Colors.white
-                                      : lightColorScheme.primary),
+                                      : Theme.of(context).colorScheme.primary),
                             )),
                         const SizedBox(
                           width: 10,
@@ -287,7 +285,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                         MaterialButton(
                             minWidth: 100,
                             color: experienc == "Intermediate"
-                                ? lightColorScheme.primary
+                                ? Theme.of(context).colorScheme.primary
                                 : Colors.white,
                             onPressed: () {
                               setState(() {
@@ -299,7 +297,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               style: TextStyle(
                                   color: experienc == "Intermediate"
                                       ? Colors.white
-                                      : lightColorScheme.primary),
+                                      : Theme.of(context).colorScheme.primary),
                             )),
                         const SizedBox(
                           width: 10,
@@ -307,7 +305,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                         MaterialButton(
                             minWidth: 100,
                             color: experienc == "Entry Level"
-                                ? lightColorScheme.primary
+                                ? Theme.of(context).colorScheme.primary
                                 : Colors.white,
                             onPressed: () {
                               setState(() {
@@ -319,7 +317,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               style: TextStyle(
                                   color: experienc == "Entry Level"
                                       ? Colors.white
-                                      : lightColorScheme.primary),
+                                      : Theme.of(context).colorScheme.primary),
                             ))
                       ],
                     ),
@@ -329,7 +327,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                     Text(
                       "Description",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
@@ -347,7 +345,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: Theme.of(context).colorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -355,7 +353,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                     Text(
                       "Links",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
@@ -368,7 +366,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: Theme.of(context).colorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 10,
@@ -380,7 +378,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: Theme.of(context).colorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 10,
@@ -392,7 +390,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: lightColorScheme.primary))),
+                              BorderSide(color: Theme.of(context).colorScheme.primary))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -400,7 +398,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                     Text(
                       "Required Skills",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
@@ -410,7 +408,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: lightColorScheme.primary),
+                          color: Theme.of(context).colorScheme.primary),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -489,7 +487,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               dropdownPadding: null,
                               dropdownDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               dropdownElevation: 8,
                               scrollbarRadius: const Radius.circular(40),
@@ -508,7 +506,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: lightColorScheme.primary),
+                          color: Theme.of(context).colorScheme.primary),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -587,7 +585,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               dropdownPadding: null,
                               dropdownDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               dropdownElevation: 8,
                               scrollbarRadius: const Radius.circular(40),
@@ -606,7 +604,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: lightColorScheme.primary),
+                          color: Theme.of(context).colorScheme.primary),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -685,7 +683,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
                               dropdownPadding: null,
                               dropdownDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               dropdownElevation: 8,
                               scrollbarRadius: const Radius.circular(40),
@@ -766,7 +764,7 @@ class _ListProjectScreenState extends State<ListProjectScreen> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               minWidth: MediaQuery.of(context).size.width,
-              color: lightColorScheme.primary,
+              color: Theme.of(context).colorScheme.primary,
               child: const Text(
                 "List Project",
                 style: TextStyle(

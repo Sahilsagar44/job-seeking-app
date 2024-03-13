@@ -201,7 +201,7 @@ class _FreelancerDetailsState extends State<FreelancerDetails> {
                       return MaterialButton(
                         height: 50,
                         minWidth: 300,
-                        color: lightColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -244,7 +244,7 @@ class _FreelancerDetailsState extends State<FreelancerDetails> {
                       minWidth: 400,
                       height: 50,
                       color: Colors.amber,
-                      child: Text("Hire",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold",fontSize: 20),),
+                      child: Text("Hire",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold",fontSize: 20),),
                       onPressed: () {
                       FirebaseFirestore.instance
                           .collection("Jobs")

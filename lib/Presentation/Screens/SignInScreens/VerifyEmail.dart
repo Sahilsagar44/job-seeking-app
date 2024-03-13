@@ -76,7 +76,7 @@ class _VerifyEmailUserState extends State<VerifyEmailUser> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("A verification email has been sent...",style: TextStyle(color: lightColorScheme.primary,fontSize: 18,fontFamily: "Roboto-Bold"),)
+                    Text("A verification email has been sent...",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 18,fontFamily: "Roboto-Bold"),)
                   ],
                 ),
               )

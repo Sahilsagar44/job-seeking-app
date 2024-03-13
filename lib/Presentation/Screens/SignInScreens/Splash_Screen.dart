@@ -176,7 +176,7 @@ class _SplaceScreenState extends State<SplaceScreen> {
                           borderRadius: BorderRadius.circular(20)),
                       height: 60,
                       minWidth: 350,
-                      color: lightColorScheme.primary,
+                      color: Theme.of(context).colorScheme.primary,
                       child: selected == 2 ? Text("Get Started") : Text("Next"),
                       onPressed: () {
                         if (selected != 2) {

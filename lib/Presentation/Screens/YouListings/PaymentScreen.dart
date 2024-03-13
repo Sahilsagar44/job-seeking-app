@@ -78,7 +78,7 @@ bool isFinished=false;
       'description': '${widget.freelancerEmail}',
       'retry': {'enabled': true, 'max_count': 1},
       'send_sms_hash': true,
-      'prefill': {'contact': '8866343453', 'email': '${widget.employeerEmail}'},
+      'prefill': {'contact': '9265235635', 'email': '${widget.employeerEmail}'},
       'external': {
         'wallets': ['paytm']
       }
@@ -148,7 +148,7 @@ bool isFinished=false;
             Text(
               "Title",
               style: TextStyle(
-                  color: lightColorScheme.primary, fontWeight: FontWeight.bold),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             Text(widget.title),
             const SizedBox(
@@ -157,7 +157,7 @@ bool isFinished=false;
             Text(
               "Freelancer",
               style: TextStyle(
-                  color: lightColorScheme.primary, fontWeight: FontWeight.bold),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             Text(widget.freelancername),
             const SizedBox(
@@ -166,7 +166,7 @@ bool isFinished=false;
             Text(
               "Email",
               style: TextStyle(
-                  color: lightColorScheme.primary, fontWeight: FontWeight.bold),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             Text(widget.freelancerEmail),
             const SizedBox(
@@ -175,7 +175,7 @@ bool isFinished=false;
             Text(
               "Employeer",
               style: TextStyle(
-                  color: lightColorScheme.primary, fontWeight: FontWeight.bold),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             Text(widget.employeerName),
             const SizedBox(
@@ -184,7 +184,7 @@ bool isFinished=false;
             Text(
               "Completion Date",
               style: TextStyle(
-                  color: lightColorScheme.primary, fontWeight: FontWeight.bold),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             Text(widget.completionDate),
             const SizedBox(
@@ -193,7 +193,7 @@ bool isFinished=false;
             Text(
               "Price",
               style: TextStyle(
-                  color: lightColorScheme.primary, fontWeight: FontWeight.bold),
+                  color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
             ),
             Text(widget.proposedPrice),
             const SizedBox(

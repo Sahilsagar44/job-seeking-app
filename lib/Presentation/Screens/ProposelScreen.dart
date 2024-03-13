@@ -39,7 +39,7 @@ class _ProposalScreenState extends State<ProposalScreen>
         title: Text(
           "Your Proposals",
           style: TextStyle(
-              fontFamily: "Roboto-Bold", color: lightColorScheme.primary),
+              fontFamily: "Roboto-Bold", color: Theme.of(context).colorScheme.primary),
         ),
       ),
       body: Column(
@@ -49,8 +49,8 @@ class _ProposalScreenState extends State<ProposalScreen>
               labelStyle: TextStyle(fontWeight: FontWeight.bold),
               unselectedLabelColor: Colors.black,
               isScrollable: true,
-              indicatorColor: lightColorScheme.primary,
-              labelColor: lightColorScheme.primary,
+              indicatorColor: Theme.of(context).colorScheme.primary,
+              labelColor: Theme.of(context).colorScheme.primary,
               controller: tabController,
               tabs: [
                 Tab(
@@ -99,7 +99,7 @@ class _ProposalScreenState extends State<ProposalScreen>
                                   height: 200,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
-                                      color: lightColorScheme.primary),
+                                      color: Theme.of(context).colorScheme.primary),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 10),
@@ -184,7 +184,7 @@ class _ProposalScreenState extends State<ProposalScreen>
                                   // height: 200,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
-                                      color: lightColorScheme.primary),
+                                      color: Theme.of(context).colorScheme.primary),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 10),
@@ -255,7 +255,7 @@ class _ProposalScreenState extends State<ProposalScreen>
                                               "Post Update",
                                               style: TextStyle(
                                                   color:
-                                                  lightColorScheme.primary,
+                                                  Theme.of(context).colorScheme.primary,
                                                   fontFamily: "Roboto-Black",
                                                   fontSize: 20),
                                             ),
@@ -304,7 +304,7 @@ class _ProposalScreenState extends State<ProposalScreen>
                                   // height: 200,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
-                                      color: lightColorScheme.primary),
+                                      color: Theme.of(context).colorScheme.primary),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 10),

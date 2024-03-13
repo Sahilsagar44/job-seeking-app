@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           TextFormField(
                             controller: emailController,
-                            cursorColor: lightColorScheme.secondary,
+                            cursorColor: Theme.of(context).colorScheme.secondary,
                             validator: (value) {
                               bool emailValid = RegExp(
                                       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -80,17 +80,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 label: Text(
                                   "Email",
                                   style: TextStyle(
-                                      color: lightColorScheme.primary),
+                                      color: Theme.of(context).colorScheme.primary),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary)),
+                                        color: Theme.of(context).colorScheme.primary)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
                                 prefixIcon: Icon(
                                   Icons.email_outlined,
-                                  color: lightColorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                 )),
                           ),
                           SizedBox(
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           TextFormField(
                             controller: passwordController,
-                            cursorColor: lightColorScheme.secondary,
+                            cursorColor: Theme.of(context).colorScheme.secondary,
                             validator: (value) {
                               if (value!.length < 6 || value.length > 12) {
                                 return "Enter minimum 4 and Maximum 12 characters";
@@ -120,17 +120,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 label: Text(
                                   "Password",
                                   style: TextStyle(
-                                      color: lightColorScheme.primary),
+                                      color: Theme.of(context).colorScheme.primary),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary)),
+                                        color: Theme.of(context).colorScheme.primary)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
                                 prefixIcon: Icon(
                                   Icons.lock_outline,
-                                  color: lightColorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                 )),
                           ),
                           SizedBox(
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(20)),
                             height: 60,
                             minWidth: 350,
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             elevation: 0,
                             onPressed: () {
                               if (key.currentState!.validate()) {
@@ -185,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               "Don't Have An Account?",
                               style: TextStyle(
-                                  color: lightColorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                   fontSize: 15),
                             ),
                           ),

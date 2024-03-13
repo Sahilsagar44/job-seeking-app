@@ -61,7 +61,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     return WillPopScope(child: Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        color: lightColorScheme.background,
+        color: Theme.of(context).colorScheme.background,
         elevation: 00,
         // shape: CircularNotchedRectangle(),
         child: SizedBox(
@@ -76,7 +76,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
                 GestureDetector(
 
-                  child: Icon(Icons.home,size: 35,color: index == 0 ? lightColorScheme.primary: lightColorScheme.onBackground,),
+                  child: Icon(Icons.home,size: 35,color: index == 0 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground,),
                   onTap: () {
                     setState(() {
                       _myPage.animateToPage(
@@ -90,7 +90,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 ),
                 GestureDetector(
 
-                  child: Icon(Icons.change_circle_outlined,size: 35,color: index == 1 ? lightColorScheme.primary: lightColorScheme.onBackground),
+                  child: Icon(Icons.change_circle_outlined,size: 35,color: index == 1 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.animateToPage(
@@ -105,7 +105,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 const SizedBox(width: 25,),
                 GestureDetector(
 
-                  child: Icon(Icons.chat,size: 35,color: index == 2 ? lightColorScheme.primary: lightColorScheme.onBackground),
+                  child: Icon(Icons.chat,size: 35,color: index == 2 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.animateToPage(
@@ -119,7 +119,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 ),
                 GestureDetector(
 
-                  child: Icon(Icons.settings,size: 35,color: index == 3 ? lightColorScheme.primary: lightColorScheme.onBackground),
+                  child: Icon(Icons.settings,size: 35,color: index == 3 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.animateToPage(
@@ -158,7 +158,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
         width: 65.0,
         child: FittedBox(
           child: FloatingActionButton(
-            backgroundColor: lightColorScheme.primary,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const ListProjectScreen()));
             },

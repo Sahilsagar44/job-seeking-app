@@ -32,7 +32,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
         backgroundColor: Colors.transparent,
         title: Text("Ongoing Projects",
             style: TextStyle(
-                color: lightColorScheme.primary, fontFamily: "Roboto-Bold")),
+                color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold")),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -44,8 +44,8 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                 labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                 unselectedLabelColor: Colors.black,
                 isScrollable: true,
-                indicatorColor: lightColorScheme.primary,
-                labelColor: lightColorScheme.primary,
+                indicatorColor: Theme.of(context).colorScheme.primary,
+                labelColor: Theme.of(context).colorScheme.primary,
                 controller: tabController,
                 tabs: const [
                   Tab(
@@ -115,7 +115,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
-                                    color: lightColorScheme.primary),
+                                    color: Theme.of(context).colorScheme.primary),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 10),
@@ -194,7 +194,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                             children: [
                                               Icon(
                                                 Icons.chat,
-                                                color: lightColorScheme.primary,
+                                                color: Theme.of(context).colorScheme.primary,
                                               ),
                                               const SizedBox(
                                                 width: 5,
@@ -202,7 +202,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                                               Text(
                                                   "Sealed By ${snapshot.data!.docs[index]["SealedBy"]}",
                                                   style: TextStyle(
-                                                      color: lightColorScheme
+                                                      color: Theme.of(context).colorScheme
                                                           .primary,
                                                       fontSize: 20,
                                                       fontFamily:
@@ -256,7 +256,7 @@ class _OnGoingProjectsState extends State<OnGoingProjects>
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  color: lightColorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                                 // height: 200,
                                 child: Padding(

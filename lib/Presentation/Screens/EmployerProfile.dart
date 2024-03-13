@@ -71,7 +71,7 @@ class _EmployerProfileState extends State<EmployerProfile> {
         title: Text(
           "Your Profile",
           style: TextStyle(
-              color: lightColorScheme.primary, fontFamily: "Roboto-Bold"),
+              color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold"),
         ),
       ),
       body: SingleChildScrollView(
@@ -94,7 +94,7 @@ class _EmployerProfileState extends State<EmployerProfile> {
                       padding: const EdgeInsets.only(right: 10),
                       child: IconButton(
                           style: IconButton.styleFrom(
-                              backgroundColor: lightColorScheme.primary),
+                              backgroundColor: Theme.of(context).colorScheme.primary),
                           onPressed: () async {
                             ImagePicker imagePicker = ImagePicker();
                             XFile? file = await imagePicker.pickImage(
@@ -123,7 +123,7 @@ class _EmployerProfileState extends State<EmployerProfile> {
                 ),
                 isSelected
                     ? MaterialButton(
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     onPressed: () async {
                       Reference referenceImageToUpload =
                       FirebaseStorage.instance.refFromURL(imageUrl);

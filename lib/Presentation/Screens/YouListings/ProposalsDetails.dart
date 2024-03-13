@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -68,7 +69,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
-                        color: lightColorScheme.primary)),
+                        color: Theme.of(context).colorScheme.primary)),
                 Text(
                   "(You can select and copy links from coverletter)",
                   style: TextStyle(color: Colors.black45, fontSize: 11),
@@ -83,21 +84,24 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                 Divider(
                   thickness: 1,
                 ),
-                Row(
-                  children: [
-                    Text("Link 1:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: lightColorScheme.primary)),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          launch(widget.Link1);
-                        }, child: Text(widget.Link1))
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Text("Link 1:",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.primary)),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            launch(widget.Link1);
+                          }, child: Text(widget.Link1))
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -108,7 +112,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
-                            color: lightColorScheme.primary)),
+                            color: Theme.of(context).colorScheme.primary)),
                     SizedBox(
                       width: 5,
                     ),
@@ -124,7 +128,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
-                            color: lightColorScheme.primary)),
+                            color: Theme.of(context).colorScheme.primary)),
                     SizedBox(
                       width: 5,
                     ),
@@ -139,7 +143,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
-                        color: lightColorScheme.primary)),
+                        color: Theme.of(context).colorScheme.primary)),
                 SizedBox(
                   height: 10,
                 ),
@@ -152,7 +156,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
-                        color: lightColorScheme.primary)),
+                        color: Theme.of(context).colorScheme.primary)),
                 SizedBox(
                   height: 10,
                 ),
@@ -165,7 +169,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                         height: 45,
                         // width: 100,
                         decoration: BoxDecoration(
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(15)
                         ),
                         child: Padding(
@@ -179,7 +183,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                         height: 45,
                         // width: 100,
                         decoration: BoxDecoration(
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(15)
                         ),
                         child: Padding(
@@ -193,7 +197,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
                         height: 45,
                         // width: 100,
                         decoration: BoxDecoration(
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(15)
                         ),
                         child: Padding(
@@ -236,7 +240,7 @@ class _ProposalDetailsState extends State<ProposalDetails> {
               duration: Duration(milliseconds: 500)),
           child: BottomAppBar(
             child: Container(
-                color: lightColorScheme.primary,
+                color: Theme.of(context).colorScheme.primary,
                 height: 50,
                 alignment: Alignment.center,
                 child: Text("Start Chat",style: TextStyle(

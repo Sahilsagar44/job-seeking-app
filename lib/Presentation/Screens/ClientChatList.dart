@@ -23,7 +23,7 @@ class _ClientChatListState extends State<ClientChatList> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Your Chats",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold"),),
+        title: Text("Your Chats",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold"),),
         
       ),
       body: Container(

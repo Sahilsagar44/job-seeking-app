@@ -78,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           "Your Profile",
           style: TextStyle(
-              color: lightColorScheme.primary, fontFamily: "Roboto-Bold"),
+              color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold"),
         ),
       ),
       body: SingleChildScrollView(
@@ -102,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       padding: const EdgeInsets.only(right: 15),
                       child: IconButton(
                           style: IconButton.styleFrom(
-                              backgroundColor: lightColorScheme.primary),
+                              backgroundColor: Theme.of(context).colorScheme.primary),
                           onPressed: () async {
                             ImagePicker imagePicker = ImagePicker();
                             XFile? file = await imagePicker.pickImage(
@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 isSelected
                     ? MaterialButton(
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     onPressed: () async {
                       Reference referenceImageToUpload =
                       FirebaseStorage.instance.refFromURL(imageUrl);
@@ -166,7 +166,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       return MaterialButton(
                         height: 50,
                         elevation: 0,
-                        color: lightColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         minWidth: MediaQuery.of(context).size.width,
                         child: Text(
                           "View Resume",

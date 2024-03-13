@@ -83,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   decoration: BoxDecoration(
                                       border: Border.all(
                                           color: role == "Freelancer"
-                                              ? lightColorScheme.primary
+                                              ? Theme.of(context).colorScheme.primary
                                               : Colors.white),
                                       borderRadius: BorderRadius.circular(15),
                                       color: Colors.white),
@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     "Freelancer",
                                     style: TextStyle(
                                         color: role == "Freelancer"
-                                            ? lightColorScheme.primary
+                                            ? Theme.of(context).colorScheme.primary
                                             : Colors.black,
                                         fontFamily: "Roboto-Bold"),
                                   ),
@@ -117,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       borderRadius: BorderRadius.circular(15),
                                       border: Border.all(
                                         color: role == "Employeer"
-                                            ? lightColorScheme.primary
+                                            ? Theme.of(context).colorScheme.primary
                                             : Colors.white,
                                       ),
                                       color: Colors.white),
@@ -125,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     "Employeer",
                                     style: TextStyle(
                                         color: role == "Employeer"
-                                            ? lightColorScheme.primary
+                                            ? Theme.of(context).colorScheme.primary
                                             : Colors.black,
                                         fontFamily: "Roboto-Bold"),
                                   ),
@@ -144,7 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             children: [
                               TextFormField(
                                 controller: nameController,
-                                cursorColor: lightColorScheme.secondary,
+                                cursorColor: Theme.of(context).colorScheme.secondary,
                                 validator: (value) {
                                   if (value!.contains("!") ||
                                       value.contains("*") ||
@@ -164,17 +164,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     label: Text(
                                       "Name",
                                       style: TextStyle(
-                                          color: lightColorScheme.primary),
+                                          color: Theme.of(context).colorScheme.primary),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
-                                            color: lightColorScheme.primary)),
+                                            color: Theme.of(context).colorScheme.primary)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15)),
                                     prefixIcon: Icon(
                                       Icons.person_outline,
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                     )),
                               ),
                               SizedBox(
@@ -182,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               TextFormField(
                                 controller: emailController,
-                                cursorColor: lightColorScheme.secondary,
+                                cursorColor: Theme.of(context).colorScheme.secondary,
                                 validator: (value) {
                                   bool emailValid = RegExp(
                                       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -199,17 +199,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     label: Text(
                                       "Email",
                                       style: TextStyle(
-                                          color: lightColorScheme.primary),
+                                          color: Theme.of(context).colorScheme.primary),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
-                                            color: lightColorScheme.primary)),
+                                            color: Theme.of(context).colorScheme.primary)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15)),
                                     prefixIcon: Icon(
                                       Icons.email_outlined,
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                     )),
                               ),
                               SizedBox(
@@ -217,7 +217,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               TextFormField(
                                 controller: mobileController,
-                                cursorColor: lightColorScheme.secondary,
+                                cursorColor: Theme.of(context).colorScheme.secondary,
                                 validator: (value) {
                                   if (value!.isEmpty) {
                                     return "Enter Phone";
@@ -232,17 +232,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     label: Text(
                                       "Mobile",
                                       style: TextStyle(
-                                          color: lightColorScheme.primary),
+                                          color: Theme.of(context).colorScheme.primary),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15),
                                         borderSide: BorderSide(
-                                            color: lightColorScheme.primary)),
+                                            color: Theme.of(context).colorScheme.primary)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(15)),
                                     prefixIcon: Icon(
                                       Icons.phone_outlined,
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                     )),
                               ),
                               SizedBox(
@@ -250,7 +250,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               TextFormField(
                                 controller: passwordController,
-                                cursorColor: lightColorScheme.secondary,
+                                cursorColor: Theme.of(context).colorScheme.secondary,
                                 validator: (value) {
                                   if (value!.length < 6 || value.length > 12) {
                                     return "Enter minimum 4 and Maximum 12 characters";
@@ -272,17 +272,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   label: Text(
                                     "Password",
                                     style:
-                                    TextStyle(color: lightColorScheme.primary),
+                                    TextStyle(color: Theme.of(context).colorScheme.primary),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15),
                                       borderSide: BorderSide(
-                                          color: lightColorScheme.primary)),
+                                          color: Theme.of(context).colorScheme.primary)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   prefixIcon: Icon(
                                     Icons.lock_outline,
-                                    color: lightColorScheme.primary,
+                                    color: Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ),
@@ -295,7 +295,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     borderRadius: BorderRadius.circular(20)),
                                 height: 60,
                                 minWidth: 350,
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 elevation: 0,
                                 onPressed: () async {
                                   if (role == null) {
@@ -312,7 +312,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                   Text(
                                                     "Please Select Role",
                                                     style: TextStyle(
-                                                        color: lightColorScheme
+                                                        color: Theme.of(context).colorScheme
                                                             .primary,
                                                         fontFamily: "Roboto-Bold",
                                                         fontSize: 18),
@@ -400,7 +400,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: Text(
                                   "Already Have An Account?",
                                   style: TextStyle(
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                       fontSize: 15),
                                 ),
                               ),

@@ -23,13 +23,13 @@ class _YourLisingsState extends State<YourLisings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightColorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           "Your Listings",
           style: TextStyle(
-              color: lightColorScheme.primary, fontFamily: "Roboto-Bold"),
+              color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold"),
         ),
         actions: [
           IconButton(
@@ -78,7 +78,7 @@ class _YourLisingsState extends State<YourLisings> {
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
-                                    color: lightColorScheme.primary),
+                                    color: Theme.of(context).colorScheme.primary),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 10),

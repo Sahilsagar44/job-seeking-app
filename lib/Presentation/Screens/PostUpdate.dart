@@ -27,7 +27,7 @@ class _PostUpdateState extends State<PostUpdate> {
         title: Text(
           "Post Update",
           style: TextStyle(
-              color: lightColorScheme.primary, fontFamily: "Roboto-Bold"),
+              color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold"),
         ),
       ),
       body: Container(
@@ -67,7 +67,7 @@ class _PostUpdateState extends State<PostUpdate> {
                                     children: [
                                       Text(snapshot.data.docs[index]["Title"],
                                           style: TextStyle(
-                                              color: lightColorScheme.primary,
+                                              color: Theme.of(context).colorScheme.primary,
                                               fontFamily: "Roboto-Bold",
                                               fontSize: 20)),
                                       Divider(),
@@ -75,12 +75,12 @@ class _PostUpdateState extends State<PostUpdate> {
                                           snapshot.data.docs[index]
                                           ["Description"],
                                           style: TextStyle(
-                                            color: lightColorScheme.primary,
+                                            color: Theme.of(context).colorScheme.primary,
                                             fontFamily: "Roboto-Regular",
                                           )),
                                       Spacer(),
                                       MaterialButton(
-                                        color: lightColorScheme.primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                         minWidth:
                                         MediaQuery.of(context).size.width,
                                         height: 50,
@@ -101,7 +101,7 @@ class _PostUpdateState extends State<PostUpdate> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -153,9 +153,9 @@ class _PostUpdateState extends State<PostUpdate> {
       ),
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
-        color: lightColorScheme.primary,
+        color: Theme.of(context).colorScheme.primary,
         child: MaterialButton(
-          color: lightColorScheme.primary,
+          color: Theme.of(context).colorScheme.primary,
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             showModalBottomSheet(
@@ -173,7 +173,7 @@ class _PostUpdateState extends State<PostUpdate> {
                             children: [
                               Text("Post an update",
                                   style: TextStyle(
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                       fontFamily: "Roboto-Bold",
                                       fontSize: 25)),
                               SizedBox(
@@ -202,7 +202,7 @@ class _PostUpdateState extends State<PostUpdate> {
                                 height: 20,
                               ),
                               MaterialButton(
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 minWidth: MediaQuery.of(context).size.width,
                                 height: 50,
                                 onPressed: () {

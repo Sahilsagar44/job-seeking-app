@@ -66,11 +66,11 @@ class _ApplyScreenState extends State<ApplyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightColorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         elevation: 0,
-        foregroundColor: lightColorScheme.primary,
-        backgroundColor: lightColorScheme.background,
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.background,
         title: const Text("Apply For This Job"),
       ),
       body: SingleChildScrollView(
@@ -82,7 +82,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
               Text(
                 widget.title,
                 style: TextStyle(
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                     fontSize: 20),
               ),
@@ -110,7 +110,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           Text(
                             "Cover Letter:",
                             style: TextStyle(
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
                           ),
@@ -129,14 +129,14 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary))),
+                                        color: Theme.of(context).colorScheme.primary))),
                           ),
                           const SizedBox(height: 10,),
                           Row(
                             children: [
                               Text("Proposed Price: ",
                                   style: TextStyle(
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15)),
                             ],
@@ -155,14 +155,14 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary))),
+                                        color: Theme.of(context).colorScheme.primary))),
                           ),
                           const Divider(),
                           Row(
                             children: [
                               Text("Links: ",
                                   style: TextStyle(
-                                      color: lightColorScheme.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15)),
                             ],
@@ -172,7 +172,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary))),
+                                        color: Theme.of(context).colorScheme.primary))),
                           ),
                           const SizedBox(height: 10,),
                           TextFormField(
@@ -181,7 +181,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary))),
+                                        color: Theme.of(context).colorScheme.primary))),
                           ),
                           const SizedBox(height: 10,),
                           TextFormField(
@@ -190,7 +190,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary))),
+                                        color: Theme.of(context).colorScheme.primary))),
                           ),
                           const SizedBox(height: 10,),
                           const Divider(),
@@ -198,7 +198,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           Text(
                             "More About You:",
                             style: TextStyle(
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
                           ),
@@ -213,7 +213,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: lightColorScheme.primary))),
+                                        color: Theme.of(context).colorScheme.primary))),
                           ),
                           const SizedBox(height: 30,),
                           const Text("")
@@ -269,7 +269,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           Navigator.pushReplacement((context), MaterialPageRoute(builder: (_)=>HomeScreen()));
                         }
                       },
-                        color: lightColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         minWidth: MediaQuery.of(context).size.width,
                         height: 50,
                         child: const Text("Apply",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),

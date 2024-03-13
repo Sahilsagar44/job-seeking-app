@@ -104,7 +104,6 @@ class _HomeScreenState extends State<HomeScreen> {
       // ),
 
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
         elevation: 0,
         child: Container(
           height: 50,
@@ -118,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Icon(
 
                     Icons.home,
-                    size: 35,color: index == 0 ? lightColorScheme.primary: lightColorScheme.onBackground,),
+                    size: 35,color: index == 0 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground,),
                   onTap: () {
                     setState(() {
                       _myPage.jumpToPage(0);
@@ -129,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 GestureDetector(
 
-                  child: Icon(Icons.chat_bubble,size: 35,color: index == 1 ? lightColorScheme.primary: lightColorScheme.onBackground),
+                  child: Icon(Icons.chat_bubble,size: 35,color: index == 1 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.jumpToPage(1);
@@ -140,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // SizedBox(width: 25,),
                 GestureDetector(
 
-                  child: Icon(FontAwesomeIcons.fileContract,size: 30,color: index == 2 ? lightColorScheme.primary: lightColorScheme.onBackground),
+                  child: Icon(FontAwesomeIcons.fileContract,size: 30,color: index == 2 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.jumpToPage(2);
@@ -150,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GestureDetector(
 
-                  child: Icon( Icons.bookmark,size: 35,color: index == 3 ? lightColorScheme.primary: lightColorScheme.onBackground),
+                  child: Icon( Icons.bookmark,size: 35,color: index == 3 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
                   onTap: () {
                     setState(() {
                       _myPage.jumpToPage(3);
@@ -160,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GestureDetector(
                   child: Icon(
-                    Icons.person,size: 35,color: index == 4 ? lightColorScheme.primary: lightColorScheme.onBackground,),
+                    Icons.person,size: 35,color: index == 4 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground,),
                   onTap: () {
                     setState(() {
                       _myPage.jumpToPage(4);

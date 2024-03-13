@@ -111,7 +111,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Invoice",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold"),),
+        title: Text("Invoice",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold"),),
       ),
       // bottomNavigationBar: BottomAppBar(height: 30,elevation: 0,),
       body: isLoading ? Center(child: LottieBuilder.asset("assets/invoice.json")) :Padding(
@@ -126,7 +126,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: 160,
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: Column(
@@ -191,12 +191,12 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                       children: [
                         Text("Client Details",
                             style: TextStyle(
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontFamily: "Roboto-bold",
                                 fontSize: 18)),
                         Text("Invoice Details",
                             style: TextStyle(
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontFamily: "Roboto-bold",
                                 fontSize: 18))
                       ],
@@ -331,7 +331,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                   ),
                   Text("Services Details",
                       style: TextStyle(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontFamily: "Roboto-bold",
                           fontSize: 18)),
                   Padding(
@@ -397,7 +397,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
         ),
       ),
       floatingActionButton: isLoading ? Container() :FloatingActionButton(
-          backgroundColor: lightColorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           onPressed: () async {
             final tionsregular = await PdfGoogleFonts.tinosRegular();
             final tionsbold = await PdfGoogleFonts.tinosBold();

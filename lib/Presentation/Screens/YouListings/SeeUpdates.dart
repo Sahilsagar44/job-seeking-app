@@ -50,7 +50,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
         title: Text(
           "See Updates",
           style: TextStyle(
-              color: lightColorScheme.primary, fontFamily: "Roboto-Bold"),
+              color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold"),
         ),
       ),
       body: Container(
@@ -90,7 +90,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
                                     children: [
                                       Text(snapshot.data.docs[index]["Title"],
                                           style: TextStyle(
-                                              color: lightColorScheme.primary,
+                                              color: Theme.of(context).colorScheme.primary,
                                               fontFamily: "Roboto-Bold",
                                               fontSize: 20)),
                                       Divider(),
@@ -98,12 +98,12 @@ class _SeeUpdatesState extends State<SeeUpdates> {
                                           snapshot.data.docs[index]
                                           ["Description"],
                                           style: TextStyle(
-                                            color: lightColorScheme.primary,
+                                            color: Theme.of(context).colorScheme.primary,
                                             fontFamily: "Roboto-Regular",
                                           )),
                                       Spacer(),
                                       MaterialButton(
-                                        color: lightColorScheme.primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                         minWidth:
                                         MediaQuery.of(context).size.width,
                                         height: 50,
@@ -124,7 +124,7 @@ class _SeeUpdatesState extends State<SeeUpdates> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -163,9 +163,9 @@ class _SeeUpdatesState extends State<SeeUpdates> {
       ),
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
-        color: lightColorScheme.primary,
+        color: Theme.of(context).colorScheme.primary,
         child: MaterialButton(
-          color: lightColorScheme.primary,
+          color: Theme.of(context).colorScheme.primary,
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             final String dateformat =

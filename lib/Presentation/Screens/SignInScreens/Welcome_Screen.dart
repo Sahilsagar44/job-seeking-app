@@ -38,7 +38,7 @@ class _Welcome_ScreenState extends State<Welcome_Screen> {
               image: AssetImage("assets/Backgrounds/img.png"),height: 200,
             ),
             SizedBox(height: 10,),
-           Text("JOB HUNT",style: TextStyle(fontSize: 30,color:  lightColorScheme.primary,fontWeight: FontWeight.bold),),]
+           Text("JOB HUNT",style: TextStyle(fontSize: 30,color:  Theme.of(context).colorScheme.primary,fontWeight: FontWeight.bold),),]
         ),
       ),
     );

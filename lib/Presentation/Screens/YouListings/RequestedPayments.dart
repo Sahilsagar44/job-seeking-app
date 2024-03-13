@@ -31,7 +31,7 @@ class _PaymentRequestsState extends State<PaymentRequests> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(10)
                       ),
                       child: Padding(

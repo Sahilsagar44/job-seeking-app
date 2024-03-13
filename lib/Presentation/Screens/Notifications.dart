@@ -21,7 +21,7 @@ class _NotificationsState extends State<Notifications> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text("Notifications",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold"),),
+        title: Text("Notifications",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold"),),
       ),
       body: Container(
         child: StreamBuilder(

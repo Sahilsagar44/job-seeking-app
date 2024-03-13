@@ -116,7 +116,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                 elevation: 0,
                                 height: 50,
                                 // minWidth: 100,
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                                 onPressed: () async {
                                   ImagePicker imagePicker = ImagePicker();
                                   XFile? file = await imagePicker.pickImage(
@@ -158,7 +158,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: lightColorScheme.primary)),
+                                        color: Theme.of(context).colorScheme.primary)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(5),
                                   child: InkWell(
@@ -180,7 +180,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                   elevation: 0,
                                   height: 50,
                                   // minWidth: 100,
-                                  color: lightColorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                   onPressed: () async {
                                     setState(() {
                                       status = "Started";
@@ -289,7 +289,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                   height: 60,
                                   width: 360,
                                   decoration: BoxDecoration(
-                                    color: lightColorScheme.primary,
+                                    color: Theme.of(context).colorScheme.primary,
                                     // borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: Row(
@@ -366,7 +366,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                               height: 60,
                               minWidth: 350,
                               shape: RoundedRectangleBorder(),
-                              color: lightColorScheme.primary,
+                              color: Theme.of(context).colorScheme.primary,
                               onPressed: () {
                                 showCountryPicker(
                                   showPhoneCode: false,
@@ -377,7 +377,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color:
-                                                lightColorScheme.primary),
+                                                Theme.of(context).colorScheme.primary),
                                           ))),
                                   context: context,
                                   onSelect: (Country country) {
@@ -434,7 +434,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                               height: 60,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                  color: lightColorScheme.primary),
+                                  color: Theme.of(context).colorScheme.primary),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -515,7 +515,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       dropdownPadding: null,
                                       dropdownDecoration: BoxDecoration(
                                         // borderRadius: BorderRadius.circular(15),
-                                        color: lightColorScheme.primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                       ),
                                       dropdownElevation: 8,
                                       scrollbarRadius:
@@ -538,7 +538,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                               height: 60,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                  color: lightColorScheme.primary),
+                                  color: Theme.of(context).colorScheme.primary),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -618,7 +618,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       // dropdownWidth: MediaQuery.of(context).size.width -10,
                                       dropdownPadding: null,
                                       dropdownDecoration: BoxDecoration(
-                                        color: lightColorScheme.primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                       ),
                                       dropdownElevation: 8,
                                       scrollbarRadius:
@@ -641,7 +641,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                               height: 60,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                  color: lightColorScheme.primary),
+                                  color: Theme.of(context).colorScheme.primary),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -710,7 +710,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                           left: 14, right: 14),
                                       buttonDecoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(14),
-                                        color: lightColorScheme.primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                       ),
                                       // buttonElevation: 2,
                                       itemHeight: 40,
@@ -720,7 +720,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                       // dropdownWidth: MediaQuery.of(context).size.width -10,
                                       dropdownPadding: null,
                                       dropdownDecoration: BoxDecoration(
-                                        color: lightColorScheme.primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                       ),
                                       dropdownElevation: 8,
                                       scrollbarRadius:
@@ -765,7 +765,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                     Text(
                                       "Please Upload Resume",
                                       style: TextStyle(
-                                          color: lightColorScheme.primary,
+                                          color: Theme.of(context).colorScheme.primary,
                                           fontFamily: "Roboto-Bold"),
                                     ),
                                   ],
@@ -795,7 +795,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                     Text(
                                       "Please upload photo",
                                       style: TextStyle(
-                                          color: lightColorScheme.primary,
+                                          color: Theme.of(context).colorScheme.primary,
                                           fontFamily: "Roboto-Bold"),
                                     ),
                                   ],
@@ -825,7 +825,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                                     Text(
                                       "Please Select Country",
                                       style: TextStyle(
-                                          color: lightColorScheme.primary,
+                                          color: Theme.of(context).colorScheme.primary,
                                           fontFamily: "Roboto-Bold"),
                                     ),
                                   ],
@@ -874,7 +874,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                   child: Container(
                     height: 50,
                     alignment: Alignment.center,
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     child: Text(
                       "Continue",
                       style: TextStyle(
@@ -912,7 +912,7 @@ class _SkillsGatherState extends State<SkillsGather> {
                       Text(
                         "Uploading Resume...",
                         style: TextStyle(
-                            color: lightColorScheme.primary,
+                            color: Theme.of(context).colorScheme.primary,
                             fontSize: 15),
                       )
                     ],

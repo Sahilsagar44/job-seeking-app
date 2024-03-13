@@ -21,10 +21,10 @@ class _RecivedProposalsState extends State<RecivedProposals> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightColorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: lightColorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.background,
         title: Text(widget.Title),
       ),
       body: SafeArea(
@@ -84,7 +84,7 @@ class _RecivedProposalsState extends State<RecivedProposals> {
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
-                                    color: lightColorScheme.primary),
+                                    color: Theme.of(context).colorScheme.primary),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 10),
@@ -177,7 +177,7 @@ class _RecivedProposalsState extends State<RecivedProposals> {
                                               "See Details",
                                               style: TextStyle(
                                                   color:
-                                                      lightColorScheme.primary,
+                                                  Theme.of(context).colorScheme.primary,
                                                   fontFamily: "Roboto-Bold",
                                                   fontSize: 18),
                                             ),
@@ -217,7 +217,7 @@ class _RecivedProposalsState extends State<RecivedProposals> {
                                               "Hire",
                                               style: TextStyle(
                                                   color:
-                                                      lightColorScheme.primary,
+                                                  Theme.of(context).colorScheme.primary,
                                                   fontFamily: "Roboto-Bold",
                                                   fontSize: 18),
                                             ),

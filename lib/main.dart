@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled2/Presentation/Screens/SignInScreens/Splash_Screen.dart';
+import 'package:untitled2/Themes/Themes.dart';
 
 import 'Presentation/Screens/SignInScreens/Welcome_Screen.dart';
 import 'Providers/AuthProvider.dart';
@@ -32,10 +33,10 @@ class MyApp extends StatelessWidget {
       create: (context) => Auth(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+        theme: lightColorScheme,
+        // darkTheme: darkColorScheme,
+        // themeMode: ThemeMode.system,
+
         home: const Welcome_Screen(),
       ),
     );

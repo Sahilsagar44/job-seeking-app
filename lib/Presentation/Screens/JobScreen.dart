@@ -58,7 +58,7 @@ class _JobsScreenState extends State<JobsScreen> {
         title: Text(
           "Jobs",
           style: TextStyle(
-              color: lightColorScheme.primary, fontFamily: "Roboto-Bold"),
+              color: Theme.of(context).colorScheme.primary, fontFamily: "Roboto-Bold"),
         ),
         centerTitle: true,
         foregroundColor: Colors.black,
@@ -249,7 +249,7 @@ class JobTile extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               // border: Border.all(color: Colors.white54),
-              color: lightColorScheme.primary),
+              color: Theme.of(context).colorScheme.primary),
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: 10, vertical: 10),

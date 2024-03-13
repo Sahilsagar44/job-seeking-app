@@ -108,11 +108,11 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightColorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         elevation: 0,
         foregroundColor: Colors.black,
-        backgroundColor: lightColorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.background,
         title: Text(widget.title),
       ),
       body: SingleChildScrollView(
@@ -147,7 +147,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         Icon(
                           FontAwesomeIcons.tags,
                           size: 20,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(
                           width: 10,
@@ -181,7 +181,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       children: [
                         Icon(
                           Icons.timer,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           size: 20,
                         ),
                         const SizedBox(
@@ -219,7 +219,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         Icon(
                           Icons.person,
                           size: 20,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(
                           width: 5,
@@ -245,7 +245,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         Icon(
                           Icons.timer,
                           size: 20,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(
                           width: 5,
@@ -271,7 +271,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: lightColorScheme.primary)),
+                      color: Theme.of(context).colorScheme.primary)),
               const Text(
                 "(You can select and copy links from description)",
                 style: TextStyle(color: Colors.black45, fontSize: 11),
@@ -297,7 +297,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   Text(
                     "Links: ",
                     style: TextStyle(
-                        color: lightColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -324,7 +324,7 @@ class _DetailScreenState extends State<DetailScreen> {
               Text(
                 "Required Skills: ",
                 style: TextStyle(
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10,),
@@ -337,7 +337,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       height: 45,
                       // width: 100,
                       decoration: BoxDecoration(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(15)
                       ),
                       child: Padding(
@@ -351,7 +351,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       height: 45,
                       // width: 100,
                       decoration: BoxDecoration(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(15)
                       ),
                       child: Padding(
@@ -365,7 +365,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       height: 45,
                       // width: 100,
                       decoration: BoxDecoration(
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(15)
                       ),
                       child: Padding(
@@ -381,7 +381,7 @@ class _DetailScreenState extends State<DetailScreen> {
               Text(
                 "About Client:",
                 style: TextStyle(
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold),
               ),
               const SizedBox(
@@ -398,7 +398,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ? Container(
         alignment: Alignment.center,
         height: 50,
-        decoration: BoxDecoration(color: lightColorScheme.primary),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
         child: Column(
           children: [
             const Text(
@@ -416,7 +416,7 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Container(
             alignment: Alignment.center,
             height: 50,
-            decoration: BoxDecoration(color: lightColorScheme.primary),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
             child: isApplied
                 ? Container(
               child: const Text(

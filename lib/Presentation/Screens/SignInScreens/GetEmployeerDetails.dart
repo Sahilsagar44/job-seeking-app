@@ -68,7 +68,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                     elevation: 0,
                     height: 50,
                     // minWidth: 100,
-                    color: lightColorScheme.primary,
+                    color: Theme.of(context).colorScheme.primary,
                     onPressed: () async {
                       ImagePicker imagePicker = ImagePicker();
                       XFile? file =
@@ -108,7 +108,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                   height: 60,
                   minWidth: 350,
                   shape: RoundedRectangleBorder(),
-                  color: lightColorScheme.primary,
+                  color:Theme.of(context).colorScheme.primary,
                   onPressed: () {
                     showCountryPicker(
                       showPhoneCode: false,
@@ -118,7 +118,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                               border: OutlineInputBorder(),
                               focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                BorderSide(color: lightColorScheme.primary),
+                                BorderSide(color: Theme.of(context).colorScheme.primary),
                               ))),
                       context: context,
                       onSelect: (Country country) {
@@ -197,7 +197,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                       height: 60,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: lightColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         // borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -282,7 +282,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                                         Text(
                                           "Please upload photo",
                                           style: TextStyle(
-                                              color: lightColorScheme.primary,
+                                              color: Theme.of(context).colorScheme.primary,
                                               fontFamily: "Roboto-Bold"),
                                         ),
                                       ],
@@ -312,7 +312,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                                         Text(
                                           "Please Select Country",
                                           style: TextStyle(
-                                              color: lightColorScheme.primary,
+                                              color: Theme.of(context).colorScheme.primary,
                                               fontFamily: "Roboto-Bold"),
                                         ),
                                       ],
@@ -359,7 +359,7 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                       minWidth: MediaQuery.of(context).size.width,
                       color: Colors.amber,
                       elevation: 0,
-                      child: Text("Continue",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold",fontSize: 20),),
+                      child: Text("Continue",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold",fontSize: 20),),
                     )
                   ],
                 ),

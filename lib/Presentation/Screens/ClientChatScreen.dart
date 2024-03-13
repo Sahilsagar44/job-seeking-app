@@ -124,7 +124,7 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: lightColorScheme.primary,
+              color: Theme.of(context).colorScheme.primary,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(15), topRight: Radius.circular(15)),
             ),

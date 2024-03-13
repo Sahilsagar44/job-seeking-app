@@ -19,7 +19,7 @@ class _SavedProjectsState extends State<SavedProjects> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Saved Projects",style: TextStyle(color: lightColorScheme.primary,fontFamily: "Roboto-Bold"),),
+        title: Text("Saved Projects",style: TextStyle(color: Theme.of(context).colorScheme.primary,fontFamily: "Roboto-Bold"),),
       ),
       body: Container(
         child: StreamBuilder(
@@ -69,7 +69,7 @@ class _SavedProjectsState extends State<SavedProjects> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             // border: Border.all(color: Colors.white54),
-                            color: lightColorScheme.primary
+                            color: Theme.of(context).colorScheme.primary
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
