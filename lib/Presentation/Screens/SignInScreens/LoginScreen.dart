@@ -28,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Stack(
       alignment: Alignment.bottomLeft,
       children: [
-        // RiveAnimation.asset("assets/RiveAssets/confetti.riv"),
         RiveAnimation.asset("assets/RiveAssets/shapes.riv"),
         Positioned.fill(
             child: BackdropFilter(
@@ -192,12 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: 10,
                           ),
-
-                          // GestureDetector(
-                          //   onTap: (){
-
-                          //   },
-                          //   child: Text("Login As Recruiter",style: TextStyle(color: lightColorScheme.primary,fontWeight: FontWeight.bold),))
                         ],
                       ),
                     ),

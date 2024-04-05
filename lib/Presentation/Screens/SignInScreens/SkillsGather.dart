@@ -88,6 +88,7 @@ class _SkillsGatherState extends State<SkillsGather> {
   String? selectedSkill2;
   String? selectedSkill3;
   String? selectedCountry;
+
   TextEditingController BirthDateController = TextEditingController();
   final key = GlobalKey<FormState>();
   @override
@@ -281,8 +282,9 @@ class _SkillsGatherState extends State<SkillsGather> {
                                           context: context,
                                           initialDate: DateTime.now(),
                                           firstDate: DateTime(1950),
-                                          //DateTime.now() - not to allow to choose before today.
-                                          lastDate: DateTime(2100));
+                                          lastDate: DateTime.now(),
+
+                                      );
 
                                       if (pickedDate != null) {
                                         print(
@@ -850,7 +852,38 @@ class _SkillsGatherState extends State<SkillsGather> {
                               ),
                             );
                           });
-                    } else {
+                    } else if(selectedSkill1==selectedSkill2 || selectedSkill2==selectedSkill3 || selectedSkill1==selectedSkill3){
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Container(
+                                height: 200,
+                                alignment: Alignment.center,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.list_alt_sharp,
+                                      size: 50,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Please Not select same Skill",
+                                      style: TextStyle(
+                                          color: Theme.of(context).colorScheme.primary,
+                                          fontFamily: "Roboto-Bold"),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          });
+                    }
+                    else {
                       if (key.currentState!.validate()) {
                         FirebaseFirestore.instance
                             .collection("Users")

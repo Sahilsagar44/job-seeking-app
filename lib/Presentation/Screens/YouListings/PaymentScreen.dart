@@ -219,9 +219,9 @@ bool isFinished=false;
                 buttonText: 'Slide to Pay | INR ${widget.proposedPrice}',
                 buttonWidget: Container(
                   child: Icon(Icons.arrow_forward_ios_rounded,
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),),
-                activeColor: Color(0xFF009C41),
+                activeColor: Theme.of(context).colorScheme.primary,
                 isFinished: isFinished,
                 onWaitingProcess: () {
                   Future.delayed(Duration(seconds: 2), () {

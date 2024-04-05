@@ -45,7 +45,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Positioned.fill(
                 child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),child: SizedBox(),)
             ),
-
             Center(
               child: Container(
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
@@ -155,8 +154,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     return "This field can not contain special characters";
                                   } else if (value.isEmpty) {
                                     return "Enter Full name";
-                                  } else if (value.length < 4) {
-                                    return "Enter minimum 4 characters";
+                                  } else if (value.length < 3) {
+                                    return "Enter minimum 3 characters";
                                   }
                                 },
                                 decoration: InputDecoration(
@@ -253,7 +252,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 cursorColor: Theme.of(context).colorScheme.secondary,
                                 validator: (value) {
                                   if (value!.length < 6 || value.length > 12) {
-                                    return "Enter minimum 4 and Maximum 12 characters";
+                                    return "Enter minimum 6 and Maximum 12 characters";
                                   } else if (value.isEmpty) {
                                     return "Enter Password";
                                   }
@@ -330,7 +329,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             ),
                                           );
                                         });
-                                  } else {
+                                  }
+                                  else {
                                     if (key.currentState!.validate()) {
                                       final provider =
                                       Provider.of<Auth>(context, listen: false);

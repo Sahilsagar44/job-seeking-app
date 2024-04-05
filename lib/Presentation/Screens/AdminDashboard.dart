@@ -50,129 +50,140 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
   @override
   void initState() {
-
     super.initState();
     getUser();
   }
+
   int index = 0;
   final PageController _myPage = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(child: Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).colorScheme.background,
-        elevation: 00,
-        // shape: CircularNotchedRectangle(),
-        child: SizedBox(
-          // color: lightColorScheme.primary,
-          height: 65,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              // mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-
-                GestureDetector(
-
-                  child: Icon(Icons.home,size: 35,color: index == 0 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground,),
-                  onTap: () {
-                    setState(() {
-                      _myPage.animateToPage(
-                          0,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut
-                      );
-                      index = 0;
-                    });
-                  },
-                ),
-                GestureDetector(
-
-                  child: Icon(Icons.change_circle_outlined,size: 35,color: index == 1 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
-                  onTap: () {
-                    setState(() {
-                      _myPage.animateToPage(
-                          1,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut
-                      );
-                      index = 1;
-                    });
-                  },
-                ),
-                const SizedBox(width: 25,),
-                GestureDetector(
-
-                  child: Icon(Icons.chat,size: 35,color: index == 2 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
-                  onTap: () {
-                    setState(() {
-                      _myPage.animateToPage(
-                          2,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut
-                      );
-                      index = 2;
-                    });
-                  },
-                ),
-                GestureDetector(
-
-                  child: Icon(Icons.settings,size: 35,color: index == 3 ? Theme.of(context).colorScheme.primary: Theme.of(context).colorScheme.onBackground),
-                  onTap: () {
-                    setState(() {
-                      _myPage.animateToPage(
-                          3,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut
-                      );
-                      index = 3;
-                    });
-                  },
-                )
-              ],
+    return WillPopScope(
+      child: Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          color: Theme.of(context).colorScheme.background,
+          elevation: 00,
+          // shape: CircularNotchedRectangle(),
+          child: SizedBox(
+            // color: lightColorScheme.primary,
+            height: 65,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                // mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  GestureDetector(
+                    child: Icon(
+                      Icons.home,
+                      size: 35,
+                      color: index == 0
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.onBackground,
+                    ),
+                    onTap: () {
+                      setState(() {
+                        _myPage.animateToPage(0,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut);
+                        index = 0;
+                      });
+                    },
+                  ),
+                  GestureDetector(
+                    child: Icon(Icons.change_circle_outlined,
+                        size: 35,
+                        color: index == 1
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onBackground),
+                    onTap: () {
+                      setState(() {
+                        _myPage.animateToPage(1,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut);
+                        index = 1;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  GestureDetector(
+                    child: Icon(Icons.chat,
+                        size: 35,
+                        color: index == 2
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onBackground),
+                    onTap: () {
+                      setState(() {
+                        _myPage.animateToPage(2,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut);
+                        index = 2;
+                      });
+                    },
+                  ),
+                  GestureDetector(
+                    child: Icon(Icons.settings,
+                        size: 35,
+                        color: index == 3
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onBackground),
+                    onTap: () {
+                      setState(() {
+                        _myPage.animateToPage(3,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut);
+                        index = 3;
+                      });
+                    },
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        body: PageView(
+          controller: _myPage,
+          onPageChanged: (int) {},
+          physics: const NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            YourLisings(
+                email: FirebaseAuth.instance.currentUser!.email.toString()),
+            const OnGoingProjects(),
+            ClientChatList(),
+            EmployerProfile(
+              gender: gender.toString(),
+              birthdate: birthdate.toString(),
+              country: country.toString(),
+              phone: phone.toString(),
+            )
+          ], // Comment this if you need to use Swipe.
+        ),
+        floatingActionButton: SizedBox(
+          height: 65.0,
+          width: 65.0,
+          child: FittedBox(
+            child: FloatingActionButton(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const ListProjectScreen()));
+              },
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              // elevation: 5.0,
             ),
           ),
         ),
       ),
-      body: PageView(
-        controller: _myPage,
-        onPageChanged: (int) {
-        },
-        physics: const NeverScrollableScrollPhysics(),
-        children: <Widget>[
-          YourLisings(email: FirebaseAuth.instance.currentUser!.email.toString()),
-          const OnGoingProjects(),
-          ClientChatList(),
-          EmployerProfile(
-            gender: gender.toString(),
-            birthdate: birthdate.toString(),
-            country: country.toString(),
-            phone: phone.toString(),
-          )
-        ], // Comment this if you need to use Swipe.
-      ),
-      floatingActionButton: SizedBox(
-        height: 65.0,
-        width: 65.0,
-        child: FittedBox(
-          child: FloatingActionButton(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const ListProjectScreen()));
-            },
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            // elevation: 5.0,
-          ),
-        ),
-      ),
-    ), onWillPop: () => _onBackButtonPressed(context),);
-      
+      onWillPop: () => _onBackButtonPressed(context),
+    );
   }
+
   _onBackButtonPressed(BuildContext context) async {
     bool? exitapp = await showDialog(
       context: context,

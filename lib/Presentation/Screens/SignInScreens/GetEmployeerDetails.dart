@@ -173,8 +173,8 @@ class _GetEmployeerDetailState extends State<GetEmployeerDetail> {
                               context: context,
                               initialDate: DateTime.now(),
                               firstDate: DateTime(1950),
-                              //DateTime.now() - not to allow to choose before today.
-                              lastDate: DateTime(2100));
+                              lastDate: DateTime.now()
+                          );
 
                           if (pickedDate != null) {
                             print(
